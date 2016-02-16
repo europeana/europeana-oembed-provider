@@ -22,6 +22,19 @@ module Europeana
       CCMA = ::OEmbed::Provider.new('http://oembed.europeana.eu/')
       CCMA << 'http://www.ccma.cat/tv3/alacarta/programa/titol/video/*/'
       ::OEmbed::Providers.register(CCMA)
+
+      ##
+      # Provider for ina.fr
+      #
+      # Examples:
+      # * http://www.ina.fr/video/I07337664/
+      # * http://www.ina.fr/politique/elections-et-scrutins/video/CAB92011596/liste-daniel-hechter.fr.html#xtor=AL-3
+      # * http://www.ina.fr/art-et-culture/arts-du-spectacle/video/AFE86002026/le-president-laval-parle-aux-delegues-du-mouvement-des-prisonniers.fr.html#xtor=AL-3
+      # * http://www.ina.fr/video/AFE86003412/les-actualites-francaises-edition-du-27-mai-1954.fr.html#xtor=AL-3
+      Ina = ::OEmbed::Provider.new('http://oembed.europeana.eu/')
+      Ina << 'http://www.ina.fr/video/*'
+      Ina << 'http://www.ina.fr/*/video/*'
+      ::OEmbed::Providers.register(Ina)
     end
   end
 end
@@ -57,7 +70,21 @@ get '/' do
       type: 'video',
       width: 500,
       height: 281,
-      html: "<iframe src=\"http://www.ccma.cat/video/embed/955989/\" allowfullscreen scrolling=\"no\" frameborder=\"0\" width=\"500px\" height=\"281px\"></iframe>"
+      html: "<iframe src=\"http://www.ccma.cat/video/embed/#{id}/\" allowfullscreen scrolling=\"no\" frameborder=\"0\" width=\"500px\" height=\"281px\"></iframe>"
+    }
+
+    [200, { 'Content-Type' => 'application/json' }, [JSON.generate(body)]]
+
+  when Europeana::OEmbed::Providers::Ina
+    uri = URI.parse(params['url'])
+    id = uri.path.match(%r{/video/([^/]+)/})[1]
+
+    body = {
+      version: '1.0',
+      type: 'video',
+      width: 620,
+      height: 349,
+      html: "<iframe width=\"620\" height=\"349\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\" scrolling=\"no\" src=\"https://player.ina.fr/player/embed/#{id}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/620/349/0\"></iframe>"
     }
 
     [200, { 'Content-Type' => 'application/json' }, [JSON.generate(body)]]
