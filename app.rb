@@ -3,6 +3,7 @@ require 'oembed'
 require 'rest-client'
 require 'sinatra'
 
+# @todo move these into their own Gem for reuse with ruby-oembed
 module Europeana
   module OEmbed
     module Providers
@@ -65,4 +66,8 @@ get '/' do
     [404, [Rack::Utils::HTTP_STATUS_CODES[404]]]
   end
 
+end
+
+get '/*' do
+  [404, [Rack::Utils::HTTP_STATUS_CODES[404]]]
 end
