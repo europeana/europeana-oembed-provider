@@ -29,7 +29,7 @@ application.
 
 The application responds to oEmbed requests at its root path. For example:
 
-http://localhost:3000/?url=http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/
+[http://localhost:3000/?url=http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/](http://localhost:3000/?url=http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/)
 
 Responses are in JSON.
 
