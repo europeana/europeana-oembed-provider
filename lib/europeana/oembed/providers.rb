@@ -29,6 +29,7 @@ module Europeana
       # Example: http://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=53728dac59db46c8a367663cd6359ddb
       Picturepipe = Provider.new('http://oembed.europeana.eu/')
       Picturepipe << 'http://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=*'
+      Picturepipe << 'https://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=*'
       ::OEmbed::Providers.register(Picturepipe)
     end
   end
