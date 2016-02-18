@@ -4,3 +4,6 @@
 
 # Ignore CF manifest
 /manifest.yml
+
+# Ignore coverage reports
+/coverage/

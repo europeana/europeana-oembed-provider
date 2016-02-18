@@ -20,6 +20,7 @@ group :development do
 end
 
 group :test do
+  gem 'coveralls', require: false
   gem 'rack-test', require: 'rack/test'
   gem 'webmock'
 end
