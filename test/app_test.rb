@@ -27,4 +27,12 @@ class AppTest < Minitest::Test
     assert_equal 'video', json['type']
     assert_match %r{<iframe src="http://www.ccma.cat/video/embed/955989/"}, json['html']
   end
+
+  def test_ina_url
+    get '/', url: 'http://www.ina.fr/politique/elections-et-scrutins/video/CAB92011596/liste-daniel-hechter.fr.html#xtor=AL-3'
+    assert last_response.ok?
+    json = JSON.parse(last_response.body)
+    assert_equal 'video', json['type']
+    assert_match %r{<iframe .*src="https://player.ina.fr/player/embed/CAB92011596/}, json['html']
+  end
 end
