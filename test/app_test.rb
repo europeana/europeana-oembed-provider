@@ -14,6 +14,12 @@ class AppTest < Minitest::Test
     assert_equal 'Not Found', last_response.body
   end
 
+  def test_unknown_url
+    get '/', url: 'http://www.example.com/'
+    assert last_response.not_found?
+    assert_equal 'Not Found', last_response.body
+  end
+
   def test_ccma_url
     get '/', url: 'http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/'
     assert last_response.ok?
