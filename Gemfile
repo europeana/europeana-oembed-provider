@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'puma'
+gem 'rake'
 gem 'rest-client'
 gem 'ruby-oembed'
 gem 'sinatra'
@@ -17,4 +18,8 @@ end
 
 group :development do
   gem 'foreman'
+end
+
+group :test do
+  gem 'rack-test', require: 'rack/test'
 end

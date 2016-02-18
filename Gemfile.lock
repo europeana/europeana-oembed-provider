@@ -112,7 +112,9 @@ DEPENDENCIES
   dotenv-rails (~> 2.0)
   foreman
   puma
+  rack-test
   rails_12factor (~> 0.0.3)
+  rake
   rest-client
   rubocop (= 0.35.1)
   ruby-oembed
