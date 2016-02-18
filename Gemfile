@@ -8,7 +8,6 @@ gem 'sinatra'
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'
-  gem 'uglifier', '~> 2.7.2'
 end
 
 group :development, :test do
