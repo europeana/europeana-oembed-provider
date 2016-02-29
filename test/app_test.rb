@@ -10,8 +10,8 @@ class AppTest < Minitest::Test
 
   def test_root_without_params
     get '/'
-    assert last_response.not_found?
-    assert_equal 'Not Found', last_response.body
+    assert last_response.ok?
+    assert_equal 'OK', last_response.body
   end
 
   def test_unknown_url
