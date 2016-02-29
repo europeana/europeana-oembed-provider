@@ -1,7 +1,7 @@
 module Europeana
   module OEmbed
     module Responder
-      class CCMA < Europeana::OEmbed::Responder::Base
+      class CCMA < Base
         def self.body_hash(url)
           uri = URI.parse(url)
           id = uri.path.split('/')[-1]

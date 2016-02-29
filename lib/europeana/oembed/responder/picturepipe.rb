@@ -3,7 +3,7 @@ require 'rest-client'
 module Europeana
   module OEmbed
     module Responder
-      class Picturepipe < Europeana::OEmbed::Responder::Base
+      class Picturepipe < Base
         def self.body_hash(url)
           uri = URI.parse(url)
           token = Rack::Utils.parse_query(uri.query)['token']

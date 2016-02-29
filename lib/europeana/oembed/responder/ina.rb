@@ -1,7 +1,7 @@
 module Europeana
   module OEmbed
     module Responder
-      class Ina < Europeana::OEmbed::Responder::Base
+      class Ina < Base
         def self.body_hash(url)
           uri = URI.parse(url)
           id = uri.path.match(%r{/video/([^/]+)/})[1]
