@@ -6,6 +6,8 @@ module Europeana
       autoload :CCMA, 'europeana/oembed/responder/ccma'
       autoload :Ina, 'europeana/oembed/responder/ina'
       autoload :Picturepipe, 'europeana/oembed/responder/picturepipe'
+      autoload :Rich, 'europeana/oembed/responder/rich'
+      autoload :Video, 'europeana/oembed/responder/video'
 
       def self.for(provider)
         case provider
