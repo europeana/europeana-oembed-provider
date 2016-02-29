@@ -11,6 +11,14 @@ module Europeana
       ::OEmbed::Providers.register(CCMA)
 
       ##
+      # Provider for crem-cnrs.fr
+      #
+      # Example: http://archives.crem-cnrs.fr/archives/items/9798/
+      CREMCNRS = Provider.new(Provider::ENDPOINT)
+      CREMCNRS << %r{\Ahttp://archives.crem-cnrs.fr/archives/items/[^/]+/\z}
+      ::OEmbed::Providers.register(CREMCNRS)
+
+      ##
       # Provider for ina.fr
       #
       # Examples:
