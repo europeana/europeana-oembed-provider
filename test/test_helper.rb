@@ -7,4 +7,4 @@ require 'webmock/minitest'
 require 'coveralls'
 Coveralls.wear!
 
-require File.expand_path '../../app.rb', __FILE__
+require 'europeana/oembed'
