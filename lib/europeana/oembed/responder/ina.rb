@@ -1,18 +1,20 @@
 module Europeana
   module OEmbed
     module Responder
-      class Ina < Europeana::OEmbed::Responder::Base
-        def self.body_hash(url)
-          uri = URI.parse(url)
+      class Ina < Video
+        def html
+          uri = URI.parse(@url)
           id = uri.path.match(%r{/video/([^/]+)/})[1]
+          %Q(<iframe width="620" height="349" frameborder="0" marginheight="0" marginwidth="0" scrolling="no" ) +
+            %Q(src="https://player.ina.fr/player/embed/#{id}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/620/349/0"></iframe>)
+        end
 
-          {
-            version: '1.0',
-            type: 'video',
-            width: 620,
-            height: 349,
-            html: "<iframe width=\"620\" height=\"349\" frameborder=\"0\" marginheight=\"0\" marginwidth=\"0\" scrolling=\"no\" src=\"https://player.ina.fr/player/embed/#{id}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/620/349/0\"></iframe>"
-          }
+        def width
+          620
+        end
+
+        def height
+          349
         end
       end
     end
