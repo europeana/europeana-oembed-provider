@@ -6,9 +6,17 @@ module Europeana
       # Provider for ccma.cat
       #
       # Example: http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/
-      CCMA = Provider.new('http://oembed.europeana.eu/')
+      CCMA = Provider.new(Provider::ENDPOINT)
       CCMA << 'http://www.ccma.cat/tv3/alacarta/programa/titol/video/*/'
       ::OEmbed::Providers.register(CCMA)
+
+      ##
+      # Provider for crem-cnrs.fr
+      #
+      # Example: http://archives.crem-cnrs.fr/archives/items/9798/
+      CREMCNRS = Provider.new(Provider::ENDPOINT)
+      CREMCNRS << %r{\Ahttp://archives.crem-cnrs.fr/archives/items/[^/]+/\z}
+      ::OEmbed::Providers.register(CREMCNRS)
 
       ##
       # Provider for ina.fr
@@ -18,7 +26,7 @@ module Europeana
       # * http://www.ina.fr/politique/elections-et-scrutins/video/CAB92011596/liste-daniel-hechter.fr.html#xtor=AL-3
       # * http://www.ina.fr/art-et-culture/arts-du-spectacle/video/AFE86002026/le-president-laval-parle-aux-delegues-du-mouvement-des-prisonniers.fr.html#xtor=AL-3
       # * http://www.ina.fr/video/AFE86003412/les-actualites-francaises-edition-du-27-mai-1954.fr.html#xtor=AL-3
-      Ina = Provider.new('http://oembed.europeana.eu/')
+      Ina = Provider.new(Provider::ENDPOINT)
       Ina << 'http://www.ina.fr/video/*'
       Ina << 'http://www.ina.fr/*/video/*'
       ::OEmbed::Providers.register(Ina)
@@ -27,7 +35,7 @@ module Europeana
       # Provider for picturepipe.net
       #
       # Example: http://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=53728dac59db46c8a367663cd6359ddb
-      Picturepipe = Provider.new('http://oembed.europeana.eu/')
+      Picturepipe = Provider.new(Provider::ENDPOINT)
       Picturepipe << 'http://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=*'
       Picturepipe << 'https://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=*'
       ::OEmbed::Providers.register(Picturepipe)
