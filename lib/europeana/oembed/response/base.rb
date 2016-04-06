@@ -28,7 +28,7 @@ module Europeana
 
         requires :version, :type
         permits :title, :author_name, :author_url, :provider_name, :provider_url,
-          :cache_age, :thumbnail_url, :thumbnail_width, :thumbnail_height
+                :cache_age, :thumbnail_url, :thumbnail_width, :thumbnail_height
 
         # @param url [URL]
         # @param source [Europeana::OEmbed::Source]
