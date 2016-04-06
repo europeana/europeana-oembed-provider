@@ -21,9 +21,9 @@ module Europeana
 
       def response_for(url, format: :json)
         oembed_provider = ::OEmbed::Providers.find(url)
-        source = sources.detect { |source| source.provider == oembed_provider }
-        fail "No oEmbed source registered for URL #{url}" if source.nil?
-        source.response_for(url, format: format)
+        url_source = sources.detect { |source| source.provider == oembed_provider }
+        fail "No oEmbed source registered for URL #{url}" if url_source.nil?
+        url_source.response_for(url, format: format)
       end
     end
 

@@ -36,17 +36,17 @@ module Europeana
         def body
           required_parameters.each_with_object(version: '1.0') do |param, body|
             body[param] = if respond_to?(param)
-              send(param)
-            elsif source.response_config.respond_to?(param)
-              source_param_value = source.response_config.send(param)
-              if source_param_value.respond_to? :call
-                source_param_value.call(self)
-              else
-                source_param_value
-              end
-            else
-              fail NotImplementedError, "Source fails to implement #{p.to_s}"
-            end
+                            send(param)
+                          elsif source.response_config.respond_to?(param)
+                            source_param_value = source.response_config.send(param)
+                            if source_param_value.respond_to? :call
+                              source_param_value.call(self)
+                            else
+                              source_param_value
+                            end
+                          else
+                            fail NotImplementedError, "Source fails to implement #{p}"
+                          end
           end
         end
 
@@ -54,21 +54,31 @@ module Europeana
           @html ||= begin
             case source.response_config.html.builder
             when :http
-              http_url = source.response_config.html.url.sub('%{id}', source.id_for(url))
-              request_headers = source.response_config.html.request_headers || {}
-              response = RestClient.get(http_url, request_headers)
-              if source.response_config.html.parser.nil?
-                response.body
-              else
-                source.response_config.html.parser.call(response.body)
-              end
+              html_http
             when :iframe
-              src = source.response_config.html.src.sub('%{id}', source.id_for(url))
-              %Q(<iframe src="#{src}" width="#{source.response_config.width}px" height="#{source.response_config.height}px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>)
+              html_iframe
             else
               fail "Unsupported HTML builder #{source.response_config.html.builder}"
             end
           end
+        end
+
+        protected
+
+        def html_http
+          http_url = source.response_config.html.url.sub('%{id}', source.id_for(url))
+          request_headers = source.response_config.html.request_headers || {}
+          response = RestClient.get(http_url, request_headers)
+          if source.response_config.html.parser.nil?
+            response.body
+          else
+            source.response_config.html.parser.call(response.body)
+          end
+        end
+
+        def html_iframe
+          src = source.response_config.html.src.sub('%{id}', source.id_for(url))
+          %(<iframe src="#{src}" width="#{source.response_config.width}px" height="#{source.response_config.height}px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>)
         end
       end
     end

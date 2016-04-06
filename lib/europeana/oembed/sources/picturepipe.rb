@@ -14,7 +14,7 @@ Europeana::OEmbed.register do |source|
     response.html.request_headers = { accept: :json }
     response.html.url = 'https://api.picturepipe.net/api/3.0/playouttoken/%{id}/play?format=json'
     response.html.parser = lambda { |http| JSON.parse(http)['html'].strip }
-    response.width = lambda { |response| response.html.match(/width: (\d+)/)[1] }
-    response.height = lambda { |response| response.html.match(/height: (\d+)/)[1] }
+    response.width = lambda { |context| context.html.match(/width: (\d+)/)[1] }
+    response.height = lambda { |context| context.html.match(/height: (\d+)/)[1] }
   end
 end
