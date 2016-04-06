@@ -13,5 +13,7 @@ Europeana::OEmbed.register do |source|
     response.html.src = 'http://archives.crem-cnrs.fr/archives/items/%{id}/player/346x130/'
     response.width = 361
     response.height = 250
+    response.provider_name = 'CREM-CNRS'
+    response.provider_url = 'http://crem-cnrs.fr/'
   end
 end
