@@ -36,5 +36,6 @@ Responses are in JSON.
 ## Supported providers
 
 * [CCMA](http://www.ccma.cat/) videos
+* [crem-cnrs.fr](http://crem-cnrs.fr) rich media
 * [Ina.fr](http://ina.fr/) videos
 * [Picturepipe](http://www.picturepipe.com/) videos
