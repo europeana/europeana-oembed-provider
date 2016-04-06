@@ -16,5 +16,7 @@ Europeana::OEmbed.register do |source|
     response.html.parser = lambda { |http| JSON.parse(http)['html'].strip }
     response.width = lambda { |context| context.html.match(/width: (\d+)/)[1] }
     response.height = lambda { |context| context.html.match(/height: (\d+)/)[1] }
+    response.provider_name = 'PicturePipe'
+    response.provider_url = 'http://www.picturepipe.com/'
   end
 end

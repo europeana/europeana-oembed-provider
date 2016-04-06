@@ -13,5 +13,7 @@ Europeana::OEmbed.register do |source|
     response.html.src = 'http://www.ccma.cat/video/embed/%{id}/'
     response.width = 500
     response.height = 281
+    response.provider_name = 'CCMA'
+    response.provider_url = 'http://www.ccma.cat/'
   end
 end

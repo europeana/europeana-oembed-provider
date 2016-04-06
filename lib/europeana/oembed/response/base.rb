@@ -7,14 +7,28 @@ module Europeana
         attr_reader :url, :source
 
         class << self
-          def requires(*parameters)
-            parameters.unshift(:type) unless parameters.include?(:type)
+          attr_reader :parameters
 
-            define_method(:required_parameters) do
-              parameters
-            end
+          def requires(*parameters)
+            add_parameters(:required, *parameters)
+          end
+
+          def permits(*parameters)
+            add_parameters(:optional, *parameters)
+          end
+
+          protected
+
+          def add_parameters(set, *parameters)
+            @parameters ||= superclass.ancestors.include?(Base) ? superclass.parameters : {}
+            @parameters[set] ||= []
+            @parameters[set] += parameters
           end
         end
+
+        requires :version, :type
+        permits :title, :author_name, :author_url, :provider_name, :provider_url,
+                :cache_age, :thumbnail_url, :thumbnail_width, :thumbnail_height
 
         # @param url [URL]
         # @param source [Europeana::OEmbed::Source]
@@ -34,20 +48,18 @@ module Europeana
 
         # @return [Hash]
         def body
-          required_parameters.each_with_object(version: '1.0') do |param, body|
-            body[param] = if respond_to?(param)
-                            send(param)
-                          elsif source.response_config.respond_to?(param)
-                            source_param_value = source.response_config.send(param)
-                            if source_param_value.respond_to? :call
-                              source_param_value.call(self)
-                            else
-                              source_param_value
-                            end
-                          else
-                            fail NotImplementedError, "Source fails to implement #{p}"
-                          end
+          {}.tap do |body|
+            self.class.parameters.each_pair do |set, params|
+              params.each do |param|
+                param_value = body_param(param, required: (set == :required))
+                body[param] = param_value unless param_value.nil?
+              end
+            end
           end
+        end
+
+        def version
+          '1.0'
         end
 
         def html
@@ -64,6 +76,17 @@ module Europeana
         end
 
         protected
+
+        def body_param(param, required:)
+          if respond_to?(param)
+            send(param)
+          elsif source.response_config.respond_to?(param)
+            source_param_value = source.response_config.send(param)
+            source_param_value.respond_to?(:call) ? source_param_value.call(self) : source_param_value
+          elsif required
+            fail NotImplementedError, "Source fails to implement #{p}"
+          end
+        end
 
         def html_http
           http_url = source.response_config.html.url.sub('%{id}', source.id_for(url))

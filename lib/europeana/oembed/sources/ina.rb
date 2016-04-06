@@ -18,5 +18,7 @@ Europeana::OEmbed.register do |source|
     response.html.src = 'https://player.ina.fr/player/embed/%{id}/1/1b0bd203fbcd702f9bc9b10ac3d0fc21/620/349/0'
     response.width = 620
     response.height = 349
+    response.provider_name = 'Ina.fr'
+    response.provider_url = 'http://www.ina.fr/'
   end
 end
