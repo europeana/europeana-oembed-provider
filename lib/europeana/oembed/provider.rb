@@ -1,3 +1,5 @@
+require 'oembed'
+
 module Europeana
   module OEmbed
     class Provider < ::OEmbed::Provider

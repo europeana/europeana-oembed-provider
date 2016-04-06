@@ -1,6 +1,6 @@
 module Europeana
   module OEmbed
-    module Responder
+    module Response
       class Video < Base
         requires :html, :width, :height
 

@@ -37,7 +37,7 @@ class AppTest < Minitest::Test
     assert_equal 'application/json', last_response.headers['Content-Type']
     json = JSON.parse(last_response.body)
     assert_equal 'rich', json['type']
-    assert_match %r{<iframe .*src="http://archives.crem-cnrs.fr/archives/items/9798/player/346x130/}, json['html']
+    assert_match %r{<iframe src="http://archives.crem-cnrs.fr/archives/items/9798/player/346x130/}, json['html']
   end
 
   def test_ina_url
@@ -46,7 +46,7 @@ class AppTest < Minitest::Test
     assert_equal 'application/json', last_response.headers['Content-Type']
     json = JSON.parse(last_response.body)
     assert_equal 'video', json['type']
-    assert_match %r{<iframe .*src="https://player.ina.fr/player/embed/CAB92011596/}, json['html']
+    assert_match %r{<iframe src="https://player.ina.fr/player/embed/CAB92011596/}, json['html']
   end
 
   def test_picturepipe_url
