@@ -2,6 +2,7 @@ module Europeana
   module OEmbed
     module Response
       autoload :Base, 'europeana/oembed/response/base'
+      autoload :HTML, 'europeana/oembed/response/html'
       autoload :Rich, 'europeana/oembed/response/rich'
       autoload :Video, 'europeana/oembed/response/video'
 

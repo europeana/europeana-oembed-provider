@@ -1,5 +1,3 @@
-require 'rest-client'
-
 module Europeana
   module OEmbed
     module Response
@@ -37,13 +35,8 @@ module Europeana
           @source = source
         end
 
-        def render(format: :json)
-          case format
-          when :json
-            JSON.generate(body)
-          else
-            fail "Unsupported format: #{format}"
-          end
+        def render
+          JSON.generate(body)
         end
 
         # @return [Hash]
@@ -58,21 +51,17 @@ module Europeana
           end
         end
 
+        ##
+        # oEmbed version
+        #
+        # @return [String]
         def version
           '1.0'
         end
 
+        # @return [String]
         def html
-          @html ||= begin
-            case source.response_config.html.builder
-            when :http
-              html_http
-            when :iframe
-              html_iframe
-            else
-              fail "Unsupported HTML builder #{source.response_config.html.builder}"
-            end
-          end
+          @html ||= HTML.for(url, source)
         end
 
         protected
@@ -86,22 +75,6 @@ module Europeana
           elsif required
             fail NotImplementedError, "Source fails to implement #{p}"
           end
-        end
-
-        def html_http
-          http_url = source.response_config.html.url.sub('%{id}', source.id_for(url))
-          request_headers = source.response_config.html.request_headers || {}
-          response = RestClient.get(http_url, request_headers)
-          if source.response_config.html.parser.nil?
-            response.body
-          else
-            source.response_config.html.parser.call(response.body)
-          end
-        end
-
-        def html_iframe
-          src = source.response_config.html.src.sub('%{id}', source.id_for(url))
-          %(<iframe src="#{src}" width="#{source.response_config.width}px" height="#{source.response_config.height}px" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>)
         end
       end
     end

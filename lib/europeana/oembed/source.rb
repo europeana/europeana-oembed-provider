@@ -23,9 +23,9 @@ module Europeana
         @response_config ||= OpenStruct.new(html: OpenStruct.new)
       end
 
-      def response_for(url, format: :json)
+      def response_for(url)
         response_class = Response.for(response_config.type)
-        response_class.new(url, self).render(format: format)
+        response_class.new(url, self).render
       end
 
       def id_for(url)

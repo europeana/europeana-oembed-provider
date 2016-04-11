@@ -31,11 +31,13 @@ The application responds to oEmbed requests at its root path. For example:
 
 [http://localhost:3000/?url=http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/](http://localhost:3000/?url=http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/)
 
-Responses are in JSON.
+Responses are in JSON format.
 
 ## Supported providers
 
-* [CCMA](http://www.ccma.cat/) videos
-* [crem-cnrs.fr](http://crem-cnrs.fr) rich media
-* [Ina.fr](http://ina.fr/) videos
-* [Picturepipe](http://www.picturepipe.com/) videos
+| Provider | oEmbed type |
+| -------- | ----------- |
+| [CCMA](http://www.ccma.cat/) | video |
+| [crem-cnrs.fr](http://crem-cnrs.fr) | rich |
+| [Ina.fr](http://ina.fr/) | video |
+| [Picturepipe](http://www.picturepipe.com/) | video |
