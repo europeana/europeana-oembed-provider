@@ -7,7 +7,7 @@ Europeana::OEmbed.register do |source|
 
   source.respond_with do |response|
     response.type = :rich
-    response.width = 640
+    response.width = 960
     response.height = 480
     response.provider_name = 'The Europeana Library'
     response.provider_url = 'http://www.theeuropeanlibrary.org/'
