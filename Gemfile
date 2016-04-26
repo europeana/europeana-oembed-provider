@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'puma'
 gem 'rake'
-gem 'rest-client'
 gem 'ruby-oembed'
 gem 'sinatra'
 

@@ -41,3 +41,4 @@ Responses are in JSON format.
 | [crem-cnrs.fr](http://crem-cnrs.fr) | rich |
 | [Ina.fr](http://ina.fr/) | video |
 | [Picturepipe](http://www.picturepipe.com/) | video |
+| [The European Library](http://www.theeuropeanlibrary.org/) | rich |

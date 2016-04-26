@@ -20,7 +20,7 @@ module Europeana
       end
 
       def response_config
-        @response_config ||= OpenStruct.new(html: OpenStruct.new)
+        @response_config ||= OpenStruct.new
       end
 
       def response_for(url)

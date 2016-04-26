@@ -85,7 +85,6 @@ DEPENDENCIES
   puma
   rack-test
   rake
-  rest-client
   rubocop (= 0.35.1)
   ruby-oembed
   simplecov

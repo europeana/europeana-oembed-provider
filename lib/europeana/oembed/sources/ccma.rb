@@ -9,8 +9,7 @@ Europeana::OEmbed.register do |source|
 
   source.respond_with do |response|
     response.type = :video
-    response.html.builder = :iframe
-    response.html.src = 'http://www.ccma.cat/video/embed/%{id}/'
+    response.html = 'http://www.ccma.cat/video/embed/%{id}/'
     response.width = 500
     response.height = 281
     response.provider_name = 'CCMA'

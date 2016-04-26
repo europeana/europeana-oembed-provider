@@ -10,12 +10,9 @@ Europeana::OEmbed.register do |source|
 
   source.respond_with do |response|
     response.type = :video
-    response.html.builder = :http
-    response.html.request_headers = { accept: :json }
-    response.html.url = 'https://api.picturepipe.net/api/3.0/playouttoken/%{id}/play?format=json'
-    response.html.parser = lambda { |http| JSON.parse(http)['html'].strip }
-    response.width = lambda { |context| context.html.match(/width: (\d+)/)[1] }
-    response.height = lambda { |context| context.html.match(/height: (\d+)/)[1] }
+    response.html = 'https://api.picturepipe.net/api/3.0/playouttoken/%{id}/play'
+    response.width = 640
+    response.height = 480
     response.provider_name = 'PicturePipe'
     response.provider_url = 'http://www.picturepipe.com/'
   end
