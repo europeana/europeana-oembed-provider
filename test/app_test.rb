@@ -50,23 +50,11 @@ class AppTest < Minitest::Test
   end
 
   def test_picturepipe_url
-    WebMock.stub_request(:get, %r{https://api\.picturepipe\.net/api/3\.0/playouttoken/[^/]+/play\?format=json}).
-      with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip, deflate', 'User-Agent'=>'Ruby'}).
-      to_return { |request|
-        token = request.uri.to_s.match(%r{playouttoken/([^/]+)/play})[1]
-        template = ERB.new(File.read(File.expand_path('../fixtures/picturepipe_response.json.erb', __FILE__)))
-        {
-          body: template.result(binding),
-          headers: { 'Content-Type' => 'application/json' },
-          status: 200
-        }
-      }
-
     get '/', url: 'http://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=53728dac59db46c8a367663cd6359ddb'
-    assert_requested :get, 'https://api.picturepipe.net/api/3.0/playouttoken/53728dac59db46c8a367663cd6359ddb/play?format=json'
     assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
     json = JSON.parse(last_response.body)
     assert_equal 'video', json['type']
-    assert_match %r{<script src="https://api\.picturepipe\.net/static/jwplayer/jwplayer\.js"></script>}, json['html']
+    assert_match %r{<iframe src="https://api.picturepipe.net/api/3.0/playouttoken/53728dac59db46c8a367663cd6359ddb/play}, json['html']
   end
 end
