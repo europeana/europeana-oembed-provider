@@ -1,6 +1,6 @@
 module Europeana
   module OEmbed
-    module Responder
+    module Response
       class Rich < Base
         requires :html, :width, :height
 
