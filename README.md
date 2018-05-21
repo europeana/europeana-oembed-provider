@@ -1,6 +1,6 @@
 # Europeana oEmbed Provider
 
-[![Build Status](https://travis-ci.org/europeana/europeana-oembed-provider.svg?branch=develop)](https://travis-ci.org/europeana/europeana-oembed-provider) [![Coverage Status](https://coveralls.io/repos/europeana/europeana-oembed-provider/badge.svg?branch=develop&service=github)](https://coveralls.io/github/europeana/europeana-oembed-provider?branch=develop) [![security](https://hakiri.io/github/europeana/europeana-oembed-provider/develop.svg)](https://hakiri.io/github/europeana/europeana-oembed-provider/develop) [![Dependency Status](https://gemnasium.com/europeana/europeana-oembed-provider.svg)](https://gemnasium.com/europeana/europeana-oembed-provider)
+[![Build Status](https://travis-ci.org/europeana/europeana-oembed-provider.svg?branch=develop)](https://travis-ci.org/europeana/europeana-oembed-provider) [![Coverage Status](https://coveralls.io/repos/europeana/europeana-oembed-provider/badge.svg?branch=develop&service=github)](https://coveralls.io/github/europeana/europeana-oembed-provider?branch=develop) [![security](https://hakiri.io/github/europeana/europeana-oembed-provider/develop.svg)](https://hakiri.io/github/europeana/europeana-oembed-provider/develop)
 
 An aggregate [oEmbed](http://oembed.com/) provider for a variety of embedabble
 media players used by Europeana's data partners.
