@@ -31,7 +31,13 @@ The application responds to oEmbed requests at its root path. For example:
 
 [http://localhost:3000/?url=http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/](http://localhost:3000/?url=http://www.ccma.cat/tv3/alacarta/programa/titol/video/955989/)
 
-Responses are in JSON format.
+Use port `5000` if started with foreman.
+
+Responses are in JSON format, for example using the request above:
+
+```
+{"version":"1.0","type":"video","html":"<iframe src=\"http://www.ccma.cat/video/embed/955989/\" width=\"500px\" height=\"281px\" frameborder=\"0\" marginwidth=\"0\" marginheight=\"0\" scrolling=\"no\"></iframe>","width":500,"height":281,"provider_name":"CCMA","provider_url":"http://www.ccma.cat/"}
+```
 
 ## Supported providers
 
@@ -42,3 +48,4 @@ Responses are in JSON format.
 | [Ina.fr](http://ina.fr/) | video |
 | [Picturepipe](http://www.picturepipe.com/) | video |
 | [The European Library](http://www.theeuropeanlibrary.org/) | rich |
+| [Europeana](https://www.europeana.eu/) | rich |
