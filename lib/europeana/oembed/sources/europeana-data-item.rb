@@ -1,25 +1,13 @@
 ##
-# Provider for europeana.eu
+# Provider for europeana.eu data item
 #
-# Europeana Item Page:
-# https://www.europeana.eu/portal/en/record/9200397/BibliographicResource_3000126284212.html
-# https://www.europeana.eu/portal/record/9200397/BibliographicResource_3000126284212.html
-#
-# Europeana Data Item:
+# Example:
 # http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212
-#
-# Specific Media within an Europeana Item Page:
-# https://www.europeana.eu/portal/en/record/9200397/BibliographicResource_3000126284212.html?url=http://molcat1.bl.uk/IllImages/Ekta/big/E109/E109547.jpg
 
 Europeana::OEmbed.register do |source|
-
-  source.urls << %r{\Ahttps?://(?:www.)?europeana.eu/portal/(?:[a-z]{2}/)?record/([0-9]+)/([^/]+)(?:\.html)?\z}
-
   source.urls << %r{\Ahttp://data.europeana.eu/item/([0-9]+)/([^/]+)\z}
 
-  source.urls << %r{\Ahttps?://(?:www.)?europeana.eu/portal/(?:[a-z]{2}/)?record/([0-9]+)/([^/]+)(?:\.html)?[?]url=(.+)\z}
-
-  # source.id = lambda { |url| URI.parse(url).path.match(%r{/items/([^/]+)/})[1] }
+  source.id = lambda { |url| URI.parse(url).path.match(%r{/item/([^/]+)/})[1] }
 
   source.respond_with do |response|
     response.type = :rich
@@ -48,7 +36,7 @@ Europeana::OEmbed.register do |source|
     #
     # If no language parameter was supplied, generate a language-agnostic item URL:
     # https://www.europeana.eu/portal/record/%1/%2.html
-    response.provider_url = ''
+    response.provider_url = 'https://www.europeana.eu/portal/{LANGUAGE}/record/%1/%2.html'
 
     # Get the URL of the image from “object.aggregations[1].isShownBy”, then look for the respective
     # web resource with the following JSON path expression and apply the additional logic below:
