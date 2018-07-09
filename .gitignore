@@ -1,6 +1,7 @@
 # Ignore dotenv config files
 /.env
 /.env.*
+!.env.example
 
 # Ignore CF manifest
 /manifest.yml

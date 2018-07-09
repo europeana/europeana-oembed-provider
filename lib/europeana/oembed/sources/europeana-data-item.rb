@@ -22,7 +22,7 @@ Europeana::OEmbed.register do |source|
     # It will contain an IFRAME HTML element with a “src” attribute set with a URL that points to
     # the service defined in Section 4.1 and with the “width” attribute (of the IFRAME) matching
     # the “maxwidth” of the request, and “height” matching “maxheight”.
-    response.html = ''
+    response.html = 'html element with a src attribute set'
 
     response.title = 'object.title'
     response.description = '1st value of object.proxies[.europeanaProxy=false].dcDescription'
