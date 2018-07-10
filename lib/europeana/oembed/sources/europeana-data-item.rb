@@ -5,24 +5,32 @@
 # http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212
 
 Europeana::OEmbed.register do |source|
-  source.urls << %r{\Ahttp://data.europeana.eu/item/([0-9]+)/([^/]+)\z}
 
-  source.id = lambda { |url| URI.parse(url).path.match(%r{/item/([^/]+)/})[1] }
+  re = %r{\Ahttp://data.europeana.eu/item/([0-9]+)/([^/]+)\z}
+
+  def handleUrl(url)
+    m = URI.parse(url).path.match(%r{/item/([^/]+)/([^/]+)})
+    "#{ENV['API_URI']}/#{m[1]}/#{m[2]}.json-ld?wskey=#{ENV['API_KEY']}"
+  end
+
+  source.urls << re
+
+  source.id = lambda { |url| handleUrl(url) }
 
   source.respond_with do |response|
     response.type = :rich
     response.version = '1.0'
 
     # Equals to “maxwidth”
-    response.width = 620
+    response.width = ENV['MAX_WIDTH']
 
     # Equals to “maxheight”
-    response.height = 349
+    response.height = ENV['MAX_HEIGHT']
 
     # It will contain an IFRAME HTML element with a “src” attribute set with a URL that points to
     # the service defined in Section 4.1 and with the “width” attribute (of the IFRAME) matching
     # the “maxwidth” of the request, and “height” matching “maxheight”.
-    response.html = 'html element with a src attribute set'
+    response.html = '%{id}'
 
     response.title = 'object.title'
     response.description = '1st value of object.proxies[.europeanaProxy=false].dcDescription'
