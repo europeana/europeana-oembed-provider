@@ -1,3 +1,6 @@
+require 'rest-client'
+require 'json/ld'
+
 ##
 # Provider for europeana.eu data item
 #
@@ -10,7 +13,15 @@ Europeana::OEmbed.register do |source|
 
   def handleUrl(url)
     m = URI.parse(url).path.match(%r{/item/([^/]+)/([^/]+)})
-    "#{ENV['API_URI']}/#{m[1]}/#{m[2]}.json-ld?wskey=#{ENV['API_KEY']}"
+    url = "#{ENV['API_URI']}/#{m[1]}/#{m[2]}.json-ld?wskey=#{ENV['API_KEY']}"
+    begin
+      response = RestClient::Request.execute(method: :get, url: url)
+      json_ld = JSON.parse(response)
+      puts json_ld.inspect
+    rescue => e
+      response = "GET #{url} => NOK (#{e.message})"
+    end
+    response
   end
 
   source.urls << re
@@ -30,7 +41,7 @@ Europeana::OEmbed.register do |source|
     # It will contain an IFRAME HTML element with a “src” attribute set with a URL that points to
     # the service defined in Section 4.1 and with the “width” attribute (of the IFRAME) matching
     # the “maxwidth” of the request, and “height” matching “maxheight”.
-    response.html = '%{id}'
+    response.html = 'html'
 
     response.title = 'object.title'
     response.description = '1st value of object.proxies[.europeanaProxy=false].dcDescription'
@@ -73,3 +84,4 @@ Europeana::OEmbed.register do |source|
     # response.thumbnail_height = ?
   end
 end
+
