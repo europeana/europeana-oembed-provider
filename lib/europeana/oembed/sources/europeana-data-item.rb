@@ -28,6 +28,7 @@ Europeana::OEmbed.register do |source|
   def handleUrl(url)
     m = URI.parse(url).path.match(%r{/item/([^/]+)/([^/]+)})
     url = "#{ENV['API_URI']}/#{m[1]}/#{m[2]}.json-ld?wskey=#{ENV['API_KEY']}"
+    provider_url = "#{ENV['API_PORTAL']}/#{m[1]}/#{m[2]}.html"
     begin
       response = RestClient::Request.execute(method: :get, url: url)
       json = JSON.parse(response)
@@ -35,6 +36,11 @@ Europeana::OEmbed.register do |source|
       puts "Title: '#{title}'"
       description = getObjectDC(json, 'description')
       puts "Description: '#{description}'"
+      author_name = getObjectEDM(json, 'dataProvider')
+      puts "Author name: '#{author_name}'"
+      author_url = getObjectEDM(json, 'isShownAt')
+      puts "Author url: '#{author_url}'"
+      puts "Provider url: '#{provider_url}'"
     rescue => e
       response = "GET #{url} => NOK (#{e.message})"
     end
@@ -63,7 +69,7 @@ Europeana::OEmbed.register do |source|
     response.title = 'object.title'
     response.description = '1st value of object.proxies[.europeanaProxy=false].dcDescription'
     response.author_name = '1st value of object.aggregations[1].edmDataProvider'
-    response.author_url = '1st value of object.aggregations[1].edmDataProvider'
+    response.author_url = '1st value of object.aggregations[1].isShownAt'
 
     response.provider_name = 'Europeana'
 
