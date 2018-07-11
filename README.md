@@ -49,3 +49,11 @@ Responses are in JSON format, for example using the request above:
 | [Picturepipe](http://www.picturepipe.com/) | video |
 | [The European Library](http://www.theeuropeanlibrary.org/) | rich |
 | [Europeana](https://www.europeana.eu/) | rich |
+
+## References
+
+* [oEmbed Specification](https://oembed.com/)
+* [JSON for Linking Data](https://json-ld.org/)
+* [RDF.rb](https://github.com/ruby-rdf/rdf)
+* [json-ld.rb](https://github.com/ruby-rdf/json-ld)
+* [jsonpath.rb](https://github.com/joshbuddy/jsonpath)
