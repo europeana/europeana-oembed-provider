@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'json/ld'
+require 'jsonpath'
 
 ##
 # Provider for europeana.eu data item
@@ -11,13 +12,29 @@ Europeana::OEmbed.register do |source|
 
   re = %r{\Ahttp://data.europeana.eu/item/([0-9]+)/([^/]+)\z}
 
+  def getObject(json, name, prefix = nil?, index = 0)
+    prefix_ = prefix.nil? ? "" : "#{prefix}:"
+    JsonPath.on(json, "$..['#{prefix_}#{name}']" )[index]
+  end
+
+  def getObjectDC(json, name, index = 0)
+    return getObject(json, name, 'dc', index)
+  end
+
+  def getObjectEDM(json, name, index = 0)
+    return getObject(json, name, 'edm', index)
+  end
+
   def handleUrl(url)
     m = URI.parse(url).path.match(%r{/item/([^/]+)/([^/]+)})
     url = "#{ENV['API_URI']}/#{m[1]}/#{m[2]}.json-ld?wskey=#{ENV['API_KEY']}"
     begin
       response = RestClient::Request.execute(method: :get, url: url)
-      json_ld = JSON.parse(response)
-      puts json_ld.inspect
+      json = JSON.parse(response)
+      title = getObjectDC(json, 'title')
+      puts "Title: '#{title}'"
+      description = getObjectDC(json, 'description')
+      puts "Description: '#{description}'"
     rescue => e
       response = "GET #{url} => NOK (#{e.message})"
     end
@@ -26,7 +43,7 @@ Europeana::OEmbed.register do |source|
 
   source.urls << re
 
-  source.id = lambda { |url| handleUrl(url) }
+  source.id = lambda {|url| handleUrl(url)}
 
   source.respond_with do |response|
     response.type = :rich

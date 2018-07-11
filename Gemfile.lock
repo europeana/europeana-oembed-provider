@@ -79,6 +79,9 @@ GEM
     json-ld (2.2.1)
       multi_json (~> 1.12)
       rdf (>= 2.2.8, < 4.0)
+    jsonpath (0.9.3)
+      multi_json
+      to_regexp (~> 0.2.1)
     link_header (0.0.8)
     loofah (2.2.2)
       crass (~> 1.0.2)
@@ -176,6 +179,7 @@ GEM
     thread_safe (0.3.6)
     tilt (2.0.8)
     tins (1.6.0)
+    to_regexp (0.2.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     unf (0.1.4)
@@ -197,6 +201,7 @@ DEPENDENCIES
   dotenv (~> 2.0)
   foreman
   json-ld
+  jsonpath
   minitest
   puma
   rack-test

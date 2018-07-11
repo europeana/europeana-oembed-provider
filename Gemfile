@@ -13,6 +13,7 @@ gem 'sinatra'
 gem 'rest-client'
 gem 'rdf'
 gem 'json-ld'
+gem 'jsonpath'
 
 group :development, :test do
   gem 'dotenv', '~> 2.0'
