@@ -1,7 +1,7 @@
 module Europeana
   module OEmbed
     class Source
-      attr_accessor :id
+      attr_accessor :id, :field
 
       def <<(url)
         urls << url

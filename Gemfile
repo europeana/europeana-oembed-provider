@@ -10,10 +10,9 @@ gem 'ruby-oembed'
 gem 'sinatra'
 
 # Needed for the Europeana oEmbed service
-gem 'rest-client'
 gem 'rdf'
 gem 'json-ld'
-gem 'jsonpath'
+gem 'rdf-vocab'
 
 group :development, :test do
   gem 'dotenv', '~> 2.0'

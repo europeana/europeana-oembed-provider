@@ -37,7 +37,13 @@ module Europeana
           if source.response_config.html.nil?
             url
           else
-            source.response_config.html.sub('%{id}', source.id_for(url))
+            if source.field
+              fields = source.field.call(url)
+              puts fields.inspect
+              source.response_config.title = fields[:title]
+            else
+              source.response_config.html.sub('%{id}', source.id_for(url))
+            end
           end
         end
 

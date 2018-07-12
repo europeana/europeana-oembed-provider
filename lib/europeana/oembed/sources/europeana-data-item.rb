@@ -1,6 +1,6 @@
-require 'rest-client'
 require 'json/ld'
-require 'jsonpath'
+require 'rdf'
+require 'rdf/vocab'
 
 ##
 # Provider for europeana.eu data item
@@ -10,46 +10,32 @@ require 'jsonpath'
 
 Europeana::OEmbed.register do |source|
 
-  re = %r{\Ahttp://data.europeana.eu/item/([0-9]+)/([^/]+)\z}
+  def get_fields(url)
+    graph = RDF::Graph.load(url)
 
-  def getObject(json, name, prefix = nil?, index = 0)
-    prefix_ = prefix.nil? ? "" : "#{prefix}:"
-    JsonPath.on(json, "$..['#{prefix_}#{name}']" )[index]
+    puts graph.dump(:ntriples)
+
+    europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
+    provider_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'false').first.subject
+
+    title = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.title).map(&:object)
+    description = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.description).map(&:object)
+
+    europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
+    provider_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::ORE.Aggregation).first.subject
+
+    edm_is_shown_at = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first.object.to_s
+
+    return  {
+      title: title.map(&:to_s).first(),
+      description: description.map(&:to_s).first(),
+      edm_is_shown_at: edm_is_shown_at
+    }
   end
 
-  def getObjectDC(json, name, index = 0)
-    return getObject(json, name, 'dc', index)
-  end
+  source.urls << %r{\Ahttp://data.europeana.eu/item/[0-9]+/[^/]+\z}
 
-  def getObjectEDM(json, name, index = 0)
-    return getObject(json, name, 'edm', index)
-  end
-
-  def handleUrl(url)
-    m = URI.parse(url).path.match(%r{/item/([^/]+)/([^/]+)})
-    url = "#{ENV['API_URI']}/#{m[1]}/#{m[2]}.json-ld?wskey=#{ENV['API_KEY']}"
-    provider_url = "#{ENV['API_PORTAL']}/#{m[1]}/#{m[2]}.html"
-    begin
-      response = RestClient::Request.execute(method: :get, url: url)
-      json = JSON.parse(response)
-      title = getObjectDC(json, 'title')
-      puts "Title: '#{title}'"
-      description = getObjectDC(json, 'description')
-      puts "Description: '#{description}'"
-      author_name = getObjectEDM(json, 'dataProvider')
-      puts "Author name: '#{author_name}'"
-      author_url = getObjectEDM(json, 'isShownAt')
-      puts "Author url: '#{author_url}'"
-      puts "Provider url: '#{provider_url}'"
-    rescue => e
-      response = "GET #{url} => NOK (#{e.message})"
-    end
-    response
-  end
-
-  source.urls << re
-
-  source.id = lambda {|url| handleUrl(url)}
+  source.field = lambda {|url| get_fields(url)}
 
   source.respond_with do |response|
     response.type = :rich
@@ -66,7 +52,7 @@ Europeana::OEmbed.register do |source|
     # the “maxwidth” of the request, and “height” matching “maxheight”.
     response.html = 'html'
 
-    response.title = 'object.title'
+    response.title = 'title'
     response.description = '1st value of object.proxies[.europeanaProxy=false].dcDescription'
     response.author_name = '1st value of object.aggregations[1].edmDataProvider'
     response.author_url = '1st value of object.aggregations[1].isShownAt'
