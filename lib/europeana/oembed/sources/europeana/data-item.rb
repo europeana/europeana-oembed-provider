@@ -12,13 +12,14 @@ Europeana::OEmbed.register do |source|
 
   def valid_rights_url(url)
     u = url.sub(%r{^https?://},'')
-    %w{
+    allowed_urls = %w{
       creativecommons.org/publicdomain/mark/1.0
       creativecommons.org/publicdomain/zero/1.0
       creativecommons.org/licenses/by/1.0
       creativecommons.org/licenses/by-sa/1.0
-    }.each do |rights_url|
-      return true if u.start_with?(rights_url) 
+    }
+    allowed_urls.each do |allowed_url|
+      return true if u.start_with?(allowed_url) 
     end
     false
   end
