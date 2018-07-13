@@ -14,6 +14,15 @@ module Europeana
         end
 
         def render
+          if source.api
+            result = source.api.call(url)
+            source.response_config.title = result[:title]
+            source.response_config.description = result[:description]
+            source.response_config.author_name = result[:author_name]
+            source.response_config.author_url = result[:author_url]
+            source.response_config.provider_name = result[:provider_name]
+            source.response_config.provider_url = result[:provider_url]
+          end
           '<iframe ' + attributes.join(' ') + '></iframe>'
         end
 
@@ -37,13 +46,7 @@ module Europeana
           if source.response_config.html.nil?
             url
           else
-            if source.field
-              fields = source.field.call(url)
-              puts fields.inspect
-              source.response_config.title = fields[:title]
-            else
-              source.response_config.html.sub('%{id}', source.id_for(url))
-            end
+            source.response_config.html.sub('%{id}', source.id_for(url))
           end
         end
 
