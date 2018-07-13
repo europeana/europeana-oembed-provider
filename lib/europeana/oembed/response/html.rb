@@ -5,7 +5,7 @@ module Europeana
         attr_reader :url, :source
 
         def self.for(url, source)
-          new(url, source).render
+          new(url, source).api.render
         end
 
         def initialize(url, source)
@@ -13,16 +13,15 @@ module Europeana
           @source = source
         end
 
-        def render
+        def api
           if source.api
             result = source.api.call(url)
-            source.response_config.title = result[:title]
-            source.response_config.description = result[:description]
-            source.response_config.author_name = result[:author_name]
-            source.response_config.author_url = result[:author_url]
-            source.response_config.provider_name = result[:provider_name]
-            source.response_config.provider_url = result[:provider_url]
+            result.each {|k, v| source.response_config[k] = v}
           end
+          self
+        end
+
+        def render
           '<iframe ' + attributes.join(' ') + '></iframe>'
         end
 

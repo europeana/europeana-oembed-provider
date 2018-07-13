@@ -55,14 +55,14 @@ Europeana::OEmbed.register do |source|
     response.version = '1.0'
     response.width = ENV['MAX_WIDTH']
     response.height = ENV['MAX_HEIGHT']
+    response.provider_name = 'Europeana'
+    response.provider_url = '[PROVIDER_URL]'
 
     response.html = ENV['API_EUROPEANA_SERVICE']
     response.title = '[TITLE]'
     response.description = '[DESCRIPTION]'
     response.author_name = '[AUTHOR_NAME]'
     response.author_url = '[AUTHOR_URL]'
-    response.provider_name = 'Europeana'
-    response.provider_url = '[PROVIDER_URL]'
     response.rights_url = '[RIGHTS_URL]'
     response.thumbnail_url = '[THUMBNAIL_URL]'
     response.thumbnail_width = 200
