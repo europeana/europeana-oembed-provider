@@ -20,7 +20,7 @@ Europeana::OEmbed.register do |source|
 
     graph = RDF::Graph.load(url)
 
-    # puts graph.dump(:ntriples)
+    puts graph.dump(:ntriples)
 
     # europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
     provider_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'false').first.subject
@@ -31,8 +31,12 @@ Europeana::OEmbed.register do |source|
     title = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
     description = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
 
-    author_name = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first.object.to_s
+    author_name = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.dataProvider).first.object.to_s
     author_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first.object.to_s
+
+    rights_default_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first.object.to_s
+    rights_image_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownBy).first.object.to_s
+    rights_url = rights_default_url
 
     provider_url = "#{ENV['API_PORTAL']}/#{id}.html"
 
@@ -41,7 +45,8 @@ Europeana::OEmbed.register do |source|
       description: description,
       author_name: author_name,
       author_url: author_url,
-      provider_url: provider_url
+      provider_url: provider_url,
+      rights_url: rights_url
     }
   end
 
