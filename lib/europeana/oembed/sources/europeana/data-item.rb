@@ -19,7 +19,7 @@ Europeana::OEmbed.register do |source|
       creativecommons.org/licenses/by-sa/1.0
     }
     allowed_urls.each do |allowed_url|
-      return true if u.start_with?(allowed_url) 
+      return true if u.start_with?(allowed_url)
     end
     false
   end
@@ -38,15 +38,15 @@ Europeana::OEmbed.register do |source|
     begin
       web_resources = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.WebResource)
     rescue NoMethodError => e
-      puts "ERROR: web_resource => #{e.inspect}"
+      puts "ERROR: web_resource, e => #{e.inspect}"
     rescue Exception => e
-      puts "ERROR: web_resource => #{e.inspect}"
+      puts "ERROR: web_resources e => #{e.inspect}"
     end
-    
+
     web_resources.each { |web_resource| puts "web_resource='${web_resource.inspect}'" }
 
     rights_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first.object.to_s
-    
+
     return valid_rights_url(rights_url) ? rights_url : 'INVALID'
   end
 
@@ -54,6 +54,9 @@ Europeana::OEmbed.register do |source|
 
     id = get_id(url)
 
+    begin
+
+    end
     graph = RDF::Graph.load(url)
 
     puts graph.dump(:ntriples)
@@ -74,13 +77,19 @@ Europeana::OEmbed.register do |source|
 
     provider_url = "#{ENV['API_PORTAL']}/#{id}.html"
 
+    thumbnail_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.object)
+    if thumbnail_url
+      thumbnail_url = thumbnail_url.first.to_triple.to_a[2]
+    end
+
     return {
-        title: title,
-        description: description,
-        author_name: author_name,
-        author_url: author_url,
-        provider_url: provider_url,
-        rights_url: rights_url
+        title: title || '',
+        description: description || '',
+        author_name: author_name || '',
+        author_url: author_url || '',
+        provider_url: provider_url || '',
+        rights_url: rights_url || '',
+        thumbnail_url: thumbnail_url || ''
     }
   end
 
