@@ -47,7 +47,7 @@ Europeana::OEmbed.register do |source|
 
     rights_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first.object.to_s
 
-    return valid_rights_url(rights_url) ? rights_url : 'INVALID'
+    return valid_rights_url(rights_url) ? rights_url : nil
   end
 
   def call_api(url)

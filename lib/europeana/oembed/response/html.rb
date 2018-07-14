@@ -14,7 +14,7 @@ module Europeana
         end
 
         def api
-          if source.api
+          if source.api&.respond_to?(:call)
             result = source.api.call(url)
             result.each {|k, v| source.response_config[k] = v}
           end
