@@ -10,7 +10,7 @@ require 'rdf/vocab'
 
 Europeana::OEmbed.register do |source|
 
-  def valid_rights_url(url)
+  def valid_rights(url)
     u = url.sub(%r{^https?://},'')
     allowed_urls = %w{
       creativecommons.org/publicdomain/mark/1.0
@@ -35,28 +35,16 @@ Europeana::OEmbed.register do |source|
     # If no value exists get the default from: “object.aggregations[1].edmRights
     #
     rights_image_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownBy).first.object.to_s
-    begin
-      web_resources = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.WebResource)
-    rescue NoMethodError => e
-      puts "ERROR: web_resource, e => #{e.inspect}"
-    rescue Exception => e
-      puts "ERROR: web_resources e => #{e.inspect}"
-    end
-
+    web_resources = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.WebResource)
     web_resources.each { |web_resource| puts "web_resource='${web_resource.inspect}'" }
 
-    rights_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first.object.to_s
-
-    return valid_rights_url(rights_url) ? rights_url : nil
+    graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first.object.to_s
   end
 
   def call_api(url)
 
     id = get_id(url)
 
-    begin
-
-    end
     graph = RDF::Graph.load(url)
 
     puts graph.dump(:ntriples)
@@ -74,47 +62,53 @@ Europeana::OEmbed.register do |source|
     author_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first.object.to_s
 
     rights_url = get_rights_url(graph, provider_aggregation)
+    # is_valid_rights = valid_rights(rights_url)
+    is_valid_rights = false
 
     provider_url = "#{ENV['API_PORTAL']}/#{id}.html"
 
-    thumbnail_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.object)
-    if thumbnail_url
-      thumbnail_url = thumbnail_url.first.to_triple.to_a[2]
-    end
+    thumbnail_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.object).first.object.to_s
 
-    return {
+    result = {
+        type: is_valid_rights ? :rich : :link,
         title: title || '',
         description: description || '',
         author_name: author_name || '',
         author_url: author_url || '',
         provider_url: provider_url || '',
-        rights_url: rights_url || '',
-        thumbnail_url: thumbnail_url || ''
+        rights_url: rights_url || ''
     }
+
+    if is_valid_rights
+      result[:thumbnail_url] = thumbnail_url || ''
+    end
+
+    result
   end
 
   source.urls << %r{\Ahttp://data.europeana.eu/item/[0-9]+/[^/]+\z}
 
-  source.api = lambda {|url| call_api(url)}
   source.id = lambda {|url| get_id(url)}
 
+  source.api = lambda {|url| call_api(url)}
+
   source.respond_with do |response|
-    response.type = :rich
+    # response.type = :rich
     response.version = '1.0'
-    response.width = ENV['MAX_WIDTH']
-    response.height = ENV['MAX_HEIGHT']
+    response.width = ENV['MAX_WIDTH'] || '[WIDTH]'
+    response.height = ENV['MAX_HEIGHT'] || '[HEIGHT]'
     response.provider_name = 'Europeana'
     response.provider_url = '[PROVIDER_URL]'
 
-    response.html = ENV['API_EUROPEANA_SERVICE']
+    response.html = ENV['API_EUROPEANA_SERVICE'] || '[HTML]'
     response.title = '[TITLE]'
     response.description = '[DESCRIPTION]'
     response.author_name = '[AUTHOR_NAME]'
     response.author_url = '[AUTHOR_URL]'
     response.rights_url = '[RIGHTS_URL]'
     response.thumbnail_url = '[THUMBNAIL_URL]'
-    response.thumbnail_width = 200
-    # response.thumbnail_height = ?
+    response.thumbnail_width = '[THUMBNAIL_WIDTH]'
+    response.thumbnail_height = '[THIMBNAIL_HEIGHT]'
   end
 end
 
