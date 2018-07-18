@@ -73,7 +73,7 @@ module Europeana
             source_param_value = source.response_config.send(param)
             source_param_value.respond_to?(:call) ? source_param_value.call(self) : source_param_value
           elsif required
-            fail NotImplementedError, "Source fails to implement #{p}"
+            fail NotImplementedError, "Source fails to implement #{param}"
           end
         end
       end
