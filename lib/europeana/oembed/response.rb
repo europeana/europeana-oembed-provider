@@ -8,7 +8,7 @@ module Europeana
 
       def self.for(type)
         case type
-        when :rich, :video
+        when :rich, :video, :europeana
           const_get(type.to_s.capitalize)
         else
           fail ArgumentError, "Unknown response type \"#{type}\""

@@ -5,13 +5,22 @@ require 'rdf/vocab'
 ##
 # Provider for europeana.eu data item
 #
-# Example:
-# http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212
+# Examples:
+#
+# Supported license
+# id=9200397/BibliographicResource_3000126284212
+# id=2048211/NMA_0043756
+#
+# Unsupported license
+# id=2023008/71022A99_priref_799
+#
+# Different licenses for the WebResource vs Aggregation
+# id=000006/UEDIN_214
 
 Europeana::OEmbed.register do |source|
 
   def valid_rights(url)
-    u = url.sub(%r{^https?://},'')
+    u = url.sub(%r{^https?://}, '')
     allowed_urls = %w{
       creativecommons.org/publicdomain/mark/1.0
       creativecommons.org/publicdomain/zero/1.0
@@ -36,23 +45,23 @@ Europeana::OEmbed.register do |source|
     #
     rights_image_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownBy).first.object.to_s
     web_resources = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.WebResource)
-    web_resources.each { |web_resource| puts "web_resource='${web_resource.inspect}'" }
+    web_resources.each {|web_resource| puts "web_resource='${web_resource.inspect}'"}
 
     graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first.object.to_s
   end
 
-  def call_api(url)
+  def get_response(url)
 
     id = get_id(url)
 
     graph = RDF::Graph.load(url)
 
-    puts graph.dump(:ntriples)
+    # puts graph.dump(:ntriples)
 
-    # europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
+    europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
     provider_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'false').first.subject
 
-    # europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
+    europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
     provider_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::ORE.Aggregation).first.subject
 
     title = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
@@ -62,38 +71,43 @@ Europeana::OEmbed.register do |source|
     author_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first.object.to_s
 
     rights_url = get_rights_url(graph, provider_aggregation)
-    # is_valid_rights = valid_rights(rights_url)
-    is_valid_rights = false
-
-    provider_url = "#{ENV['API_PORTAL']}/#{id}.html"
+    is_valid_rights = valid_rights(rights_url)
 
     thumbnail_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.object).first.object.to_s
 
-    result = {
-        type: is_valid_rights ? :rich : :link,
-        title: title || '',
-        description: description || '',
-        author_name: author_name || '',
-        author_url: author_url || '',
-        provider_url: provider_url || '',
-        rights_url: rights_url || ''
+    response = {
+      type: is_valid_rights ? :rich : :link,
+      version: '1.0',
+      width: ENV['MAX_WIDTH'] || '[*WIDTH*]',
+      height: ENV['MAX_HEIGHT'] || '[*HEIGHT*]',
+      provider_name: ENV['API_PROVIDER_NAME'] || 'Europeana',
+      provider_url: "#{ENV['API_PORTAL']}/#{id}.html",
+
+      html: ENV['API_EUROPEANA_SERVICE'] || '[*HTML*]',
+      title: title || '',
+      description: description || '',
+      author_name: author_name || '',
+      author_url: author_url || '',
+      rights_url: rights_url || ''
     }
 
     if is_valid_rights
-      result[:thumbnail_url] = thumbnail_url || ''
+      response[:thumbnail_url] = thumbnail_url || ''
+      response[:thumbnail_width] = '[*THUMBNAIL_WIDTH*]'
+      response[:thumbnail_height] = '[*THUMBNAIL_HEIGHT*]'
     end
 
-    result
+    response
   end
 
   source.urls << %r{\Ahttp://data.europeana.eu/item/[0-9]+/[^/]+\z}
 
   source.id = lambda {|url| get_id(url)}
 
-  source.api = lambda {|url| call_api(url)}
+  source.api = lambda {|url| get_response(url)}
 
   source.respond_with do |response|
-    # response.type = :rich
+    response.type = :rich
     response.version = '1.0'
     response.width = ENV['MAX_WIDTH'] || '[WIDTH]'
     response.height = ENV['MAX_HEIGHT'] || '[HEIGHT]'
@@ -108,7 +122,7 @@ Europeana::OEmbed.register do |source|
     response.rights_url = '[RIGHTS_URL]'
     response.thumbnail_url = '[THUMBNAIL_URL]'
     response.thumbnail_width = '[THUMBNAIL_WIDTH]'
-    response.thumbnail_height = '[THIMBNAIL_HEIGHT]'
+    response.thumbnail_height = '[THUMBNAIL_HEIGHT]'
   end
 end
 
