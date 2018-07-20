@@ -23,9 +23,9 @@ module Europeana
         @response_config ||= OpenStruct.new
       end
 
-      def response_for(url)
+      def response_for(url, opts)
         response_class = Response.for(response_config.type)
-        response_class.new(url, self).render
+        response_class.new(url, self, opts).render
       end
 
       def id_for(url)

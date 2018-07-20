@@ -30,9 +30,10 @@ module Europeana
 
         # @param url [URL]
         # @param source [Europeana::OEmbed::Source]
-        def initialize(url, source)
+        def initialize(url, source, opts = {})
           @url = url
           @source = source
+          @opts = opts
         end
 
         def render
@@ -61,7 +62,7 @@ module Europeana
 
         # @return [String]
         def html
-          @html ||= HTML.for(url, source)
+          @html ||= HTML.for(url, source, @opts)
         end
 
         protected

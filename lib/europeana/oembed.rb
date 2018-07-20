@@ -24,14 +24,14 @@ module Europeana
       end
 
       # @param url [String] URL of the resource to oEmbed
-      def response_for(url)
+      def response_for(url, opts)
         oembed_provider = ::OEmbed::Providers.find(url)
         url_source = sources.detect { |source| source.provider == oembed_provider }
         fail "No oEmbed source registered for URL #{url}" if url_source.nil?
-        url_source.response_for(url)
+        url_source.response_for(url, opts)
       end
     end
 
-    Dir[File.expand_path('../oembed/sources/**/*.rb', __FILE__)].each { |file| require file }
+    Dir[File.expand_path('../oembed/sources/*.rb', __FILE__)].each { |file| require file }
   end
 end

@@ -4,24 +4,21 @@ module Europeana
       class HTML
         attr_reader :url, :source
 
-        def self.for(url, source)
-          new(url, source).api.render
+        def self.for(url, source, opts)
+          new(url, source, opts).render
         end
 
-        def initialize(url, source)
+        def initialize(url, source, opts)
           @url = url
           @source = source
-        end
-
-        def api
-          if source.api&.respond_to?(:call)
-            result = source.api.call(url)
-            result.each {|k, v| source.response_config[k] = v}
-          end
-          self
+          @opts = opts
         end
 
         def render
+          if source.api&.respond_to?(:call)
+            result = source.api.call(url, @opts)
+            result[:attributes].each {|k, v| source.response_config[k] = v}
+          end
           '<iframe ' + attributes.join(' ') + '></iframe>'
         end
 

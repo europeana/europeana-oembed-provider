@@ -11,11 +11,14 @@ module Europeana
       get '/' do
         if params.key?('url')
           begin
-            body = Europeana::OEmbed.response_for(params['url'])
-            [200, { 'Content-Type' => 'application/json' }, [body]]
+            url = params.delete('url')
+            body = Europeana::OEmbed.response_for(url, params)
+            [200, {'Content-Type' => 'application/json'}, [body]]
           rescue StandardError => e
             if e.message =~ /No oEmbed source registered for URL/
               rack_response(404)
+            elsif e.message =~ /^Invalid parameter/
+              rack_response(400)
             else
               raise e
             end
