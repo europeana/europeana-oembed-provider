@@ -1,4 +1,4 @@
-load './lib/europeana/oembed/sources/helpers.rb'
+load './lib/europeana/oembed/sources/europeana/helpers.rb'
 
 ##
 # Provider for europeana.eu data item

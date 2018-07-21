@@ -1,4 +1,4 @@
-load './lib/europeana/oembed/sources/helpers.rb'
+load './lib/europeana/oembed/sources/europeana/helpers.rb'
 
 ##
 # Provider for europeana.eu media within an item page
@@ -8,6 +8,7 @@ load './lib/europeana/oembed/sources/helpers.rb'
 #
 
 Europeana::OEmbed.register do |source|
+
   source.urls << %r{\Ahttps?://(?:www.)?europeana.eu/portal/(?:[a-z]{2}/)?record/([0-9]+)/([^/]+)(?:\.html)?[?]url=(.+)\z}
 
   source.id = lambda { |url| URI.parse(url).path.match(%r{/record/([^/]+)/})[1] }
