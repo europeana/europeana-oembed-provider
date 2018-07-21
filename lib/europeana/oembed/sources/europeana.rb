@@ -56,10 +56,10 @@ Europeana::OEmbed.register do |source|
 
     # puts graph.dump(:ntriples)
 
-    europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
+    # europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
     provider_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'false').first.subject
 
-    europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
+    # europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
     provider_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::ORE.Aggregation).first.subject
 
     title = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
@@ -72,21 +72,21 @@ Europeana::OEmbed.register do |source|
     is_valid_rights = valid_rights(rights_url)
 
     response = {
-        type: is_valid_rights ? :rich : :link,
-        version: '1.0',
-        attributes: {
-            width: ENV['MAX_WIDTH'] || '[*MAX_WIDTH*]',
-            height: ENV['MAX_HEIGHT'] || '[*MAX_HEIGHT*]',
-            provider_name: ENV['API_PROVIDER_NAME'] || '[*API_PROVIDER_NAME*]',
-            provider_url: "#{ENV['API_PROVIDER_NAME']}/#{id}.html",
+      type: is_valid_rights ? :rich : :link,
+      version: ENV['API_PROVIDER_VERSION'] || '[*API_PROVIDER_VERSION*]',
+      attributes: {
+        width: ENV['MAX_WIDTH'] || '[*WIDTH*]',
+        height: ENV['MAX_HEIGHT'] || '[*HEIGHT*]',
+        provider_name: ENV['API_PROVIDER_NAME'] || '[*API_PROVIDER_NAME*]',
+        provider_url: "#{ENV['API_PORTAL']}/#{id}.html",
 
-            html: ENV['API_EUROPEANA_SERVICE'] || '[*API_EUROPEANA_SERVICE*]',
-            title: title || '',
-            description: description || '',
-            author_name: author_name || '',
-            author_url: author_url || '',
-            rights_url: rights_url || ''
-        }
+        html: ENV['API_EUROPEANA_SERVICE'] || '[*API_EUROPEANA_SERVICE*]',
+        title: title || '[*TITLE*]',
+        description: description || '[*DESCRIPTION*]',
+        author_name: author_name || '[*AUTHOR_NAME*]',
+        author_url: author_url || '[*AUTHOR_URL*]',
+        rights_url: rights_url || '[*RIGHTS_URL*]'
+      }
     }
 
     if is_valid_rights
@@ -113,20 +113,20 @@ Europeana::OEmbed.register do |source|
   source.respond_with do |response|
     # response.type = :europeana
     response.type = :rich
-    # response.version = '1.0'
-    # response.width = ENV['MAX_WIDTH'] || '[WIDTH]'
-    # response.height = ENV['MAX_HEIGHT'] || '[HEIGHT]'
-    # response.provider_name = 'Europeana'
-    # response.provider_url = '[PROVIDER_URL]'
-    #
-    # response.html = ENV['API_EUROPEANA_SERVICE'] || '[HTML]'
-    # response.title = '[TITLE]'
-    # response.description = '[DESCRIPTION]'
-    # response.author_name = '[AUTHOR_NAME]'
-    # response.author_url = '[AUTHOR_URL]'
-    # response.rights_url = '[RIGHTS_URL]'
-    # response.thumbnail_url = '[THUMBNAIL_URL]'
-    # response.thumbnail_width = '[THUMBNAIL_WIDTH]'
+    response.version = '1.0'
+    response.width = ENV['MAX_WIDTH'] || '[WIDTH]'
+    response.height = ENV['MAX_HEIGHT'] || '[HEIGHT]'
+    response.provider_name = ENV['API_PROVIDER_NAME'] || '[API_PROVIDER_NAME]'
+    response.provider_url = '[PROVIDER_URL]'
+
+    response.html = ENV['API_EUROPEANA_SERVICE'] || '[API_EUROPEANA_SERVICE]'
+    response.title = '[TITLE]'
+    response.description = '[DESCRIPTION]'
+    response.author_name = '[AUTHOR_NAME]'
+    response.author_url = '[AUTHOR_URL]'
+    response.rights_url = '[RIGHTS_URL]'
+    response.thumbnail_url = '[THUMBNAIL_URL]'
+    response.thumbnail_width = '[THUMBNAIL_WIDTH]'
     # response.thumbnail_height = '[THUMBNAIL_HEIGHT]'
   end
 end
