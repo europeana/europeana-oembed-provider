@@ -45,6 +45,10 @@ def api_call(url, opts, id)
   rights_url = get_rights_url(graph, provider_aggregation)
   is_valid_rights = valid_rights(rights_url)
 
+  provider_url = "#{ENV['API_PORTAL']}/"
+  provider_url += "#{opts['language']}/" unless opts['language'].nil?
+  provider_url += "record/#{id}.html"
+
   response = {
       type: is_valid_rights ? :rich : :link,
       version: ENV['API_PROVIDER_VERSION'] || '[*API_PROVIDER_VERSION*]',
@@ -52,7 +56,7 @@ def api_call(url, opts, id)
           width: ENV['MAX_WIDTH'] || '[*WIDTH*]',
           height: ENV['MAX_HEIGHT'] || '[*HEIGHT*]',
           provider_name: ENV['API_PROVIDER_NAME'] || '[*API_PROVIDER_NAME*]',
-          provider_url: "#{ENV['API_PORTAL']}/#{id}.html",
+          provider_url: provider_url,
 
           html: ENV['API_EUROPEANA_SERVICE'] || '[*API_EUROPEANA_SERVICE*]',
           title: title || '[*TITLE*]',
@@ -83,7 +87,7 @@ def check_opts(opts)
   opts.each do |key, value|
     case key
     when /^maxwidth|maxheight$/
-      raise "#{ex_name}: format '#{value}' not supported, must be 'json'" unless /^\d+$/.match?(value)
+      raise "#{ex_name}: format '#{value}' not correct, must be a number" unless /^\d+$/.match?(value)
     when /^format$/
       raise "#{ex_name}: format '#{value}' not supported, must be 'json'" unless value == "json"
     when /^language$/
