@@ -10,6 +10,8 @@ def check_opts(opts)
       raise "#{ex_name}: format '#{value}' not supported, must be 'json'" unless /^\d+$/.match?(value)
     when /^format$/
       raise "#{ex_name}: format '#{value}' not supported, must be 'json'" unless value == "json"
+    when /^language$/
+      raise "#{ex_name}: language '#{value}' not correct, must be two characters long" unless /^[a-z]{2}$/i.match?(value)
     else
       raise "#{ex_name}: unknown parameter '#{key}', must be 'format', 'maxwidth' or 'maxheight'"
     end
