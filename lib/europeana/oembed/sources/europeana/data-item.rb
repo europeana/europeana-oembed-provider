@@ -36,7 +36,6 @@ load './lib/europeana/oembed/sources/europeana/helpers.rb'
 #   7. Send an HTTP 200 response following the structure.
 
 Europeana::OEmbed.register do |source|
-
   source.urls << %r{\Ahttp://data.europeana.eu/item/[0-9]+/[^/]+\z}
 
   source.id = lambda { |url| URI.parse(url).path.match(%r{/item/([0-9]+/[^/]+)\z})[1] }
@@ -47,4 +46,3 @@ Europeana::OEmbed.register do |source|
     handle_response(response, :rich)
   end
 end
-
