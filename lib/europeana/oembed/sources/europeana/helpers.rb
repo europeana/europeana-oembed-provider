@@ -21,9 +21,6 @@ def handle_response(response, type)
   response.author_name = '[AUTHOR_NAME]'
   response.author_url = '[AUTHOR_URL]'
   response.rights_url = '[RIGHTS_URL]'
-  response.thumbnail_url = '[THUMBNAIL_URL]'
-  response.thumbnail_width = '[THUMBNAIL_WIDTH]'
-  # response.thumbnail_height = '[THUMBNAIL_HEIGHT]'
 end
 
 def api_call(url, opts, id)
