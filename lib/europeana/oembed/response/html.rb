@@ -17,7 +17,7 @@ module Europeana
         def render
           if source.api&.respond_to?(:call)
             result = source.api.call(url, @opts)
-            result[:attributes].each {|k, v| source.response_config[k] = v}
+            result.each { |k, v| source.response_config[k] = v }
           end
           '<iframe ' + attributes.join(' ') + '></iframe>'
         end

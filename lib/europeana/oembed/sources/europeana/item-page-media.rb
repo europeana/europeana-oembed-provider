@@ -8,7 +8,6 @@ load './lib/europeana/oembed/sources/europeana/helpers.rb'
 #
 
 Europeana::OEmbed.register do |source|
-
   source.urls << %r{\Ahttps?://(?:www.)?europeana.eu/portal/(?:[a-z]{2}/)?record/([0-9]+/[^/.]+)(?:\.html)?[?]url=(.+)\z}
 
   source.id = lambda { |url| URI.parse(url).path.match(%r{/record/([^/]+)/})[1] }
@@ -16,7 +15,6 @@ Europeana::OEmbed.register do |source|
   source.api = lambda { |url, opts| api_call(url, opts, URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?[?]url=(.+)\z})[1]) }
 
   source.respond_with do |response|
-    handle_response(response, :rich)
+    handle_response(response)
   end
 end
-

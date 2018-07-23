@@ -13,7 +13,7 @@ module Europeana
           begin
             url = params.delete('url')
             body = Europeana::OEmbed.response_for(url, params)
-            [200, {'Content-Type' => 'application/json'}, [body]]
+            [200, { 'Content-Type' => 'application/json' }, [body]]
           rescue StandardError => e
             if e.message =~ /No oEmbed source registered for URL/
               rack_response(404)
