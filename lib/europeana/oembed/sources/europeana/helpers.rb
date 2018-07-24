@@ -59,15 +59,14 @@ def api_call(url, opts, id)
   title = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
   description = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
 
-  author_name = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.dataProvider).first.object.to_s
-  author_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first.object.to_s
+  author_name = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.dataProvider).first&.object.to_s
+  author_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first&.object.to_s
+
+  provider_url = get_provider_url(opts['language'], id)
 
   rights_url = get_rights_url(graph, provider_aggregation)
-  is_valid_rights = valid_rights(rights_url)
 
-  provider_url = "#{ENV['API_PORTAL']}/"
-  provider_url += "#{opts['language']}/" unless opts['language'].nil?
-  provider_url += "record/#{id}.html"
+  is_valid_rights = valid_rights(rights_url)
 
   response = {
     type: is_valid_rights ? :rich : :link,
@@ -78,11 +77,11 @@ def api_call(url, opts, id)
     provider_url: provider_url,
 
     html: ENV['API_EUROPEANA_SERVICE'] || '[*API_EUROPEANA_SERVICE*]',
-    title: title || '[*TITLE*]',
-    description: description || '[*DESCRIPTION*]',
-    author_name: author_name || '[*AUTHOR_NAME*]',
-    author_url: author_url || '[*AUTHOR_URL*]',
-    rights_url: rights_url || '[*RIGHTS_URL*]'
+    title: title || '',
+    description: description || '',
+    author_name: author_name || '',
+    author_url: author_url || '',
+    rights_url: rights_url || ''
   }
 
   if is_valid_rights
@@ -116,11 +115,21 @@ def get_rights_url(graph, provider_aggregation)
   # If no value exists get the default from: “object.aggregations[1].edmRights
 
   # TODO
-  # rights_image_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownBy).first.object.to_s
-  # web_resources = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.WebResource)
-  # web_resources.each { |web_resource| puts "web_resource='${web_resource.inspect}'" }
+  edm_is_shown_by = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownBy).first&.object
 
-  graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first.object.to_s
+  if edm_is_shown_by
+    edm_is_shown_by_rights = graph.query(subject: edm_is_shown_by, predicate: RDF::Vocab::EDM.rights).first&.object
+  end
+
+  if edm_is_shown_by_rights
+    edm_is_shown_by_rights.to_s
+  else
+    graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.rights).first&.object.to_s
+  end
+end
+
+def get_provider_url(lang, id)
+  "#{ENV['API_PORTAL']}/#{lang ? lang + '/': ''}record/#{id}.html"
 end
 
 def valid_rights(url)
