@@ -14,7 +14,7 @@ Europeana::OEmbed.register do |source|
 
   source.id = lambda { |url| URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?\z})[1] }
 
-  source.api = lambda { |url, opts| api_call(url, opts, URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?\z})[1]) }
+  source.preprocessor = lambda { |url, opts| preprocessor(url, opts, URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?\z})[1]) }
 
   source.respond_with do |response|
     handle_response(response)

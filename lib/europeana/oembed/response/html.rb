@@ -15,9 +15,8 @@ module Europeana
         end
 
         def render
-          if source.api&.respond_to?(:call)
-            result = source.api.call(url, @opts)
-            result.each { |k, v| source.response_config[k] = v }
+          if source.preprocessor
+            source.data.each { |k, v| source.response_config[k] = v }
           end
           '<iframe ' + attributes.join(' ') + '></iframe>'
         end

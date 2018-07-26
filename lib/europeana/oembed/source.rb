@@ -1,7 +1,7 @@
 module Europeana
   module OEmbed
     class Source
-      attr_accessor :id, :api
+      attr_accessor :id, :preprocessor, :data
 
       def <<(url)
         urls << url
@@ -24,8 +24,9 @@ module Europeana
       end
 
       def response_for(url, opts)
-        response_class = Response.for(response_config.type)
-        response_class.new(url, self, opts).render
+        @data = preprocessor ? preprocessor.call(url, opts) : nil
+        response_class = Response.for(response_config.type, data: @data)
+        response_class.new(url, self).render
       end
 
       def id_for(url)

@@ -1,11 +1,11 @@
 module Europeana
   module OEmbed
     module Response
-      class Api < Base
+      class Link < Base
         requires :html, :width, :height
 
         def type
-          'api'
+          'link'
         end
       end
     end

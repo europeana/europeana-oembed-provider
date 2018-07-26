@@ -68,7 +68,7 @@ module Europeana
         protected
 
         def body_param(param, required:)
-          if respond_to?(param) && !(source.api && param == :type)
+          if respond_to?(param)
             send(param)
           elsif source.response_config.respond_to?(param)
             source_param_value = source.response_config.send(param)
