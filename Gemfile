@@ -16,11 +16,12 @@ gem 'rdf-vocab'
 
 group :development, :test do
   gem 'dotenv', '~> 2.0'
-  gem 'rubocop', '0.35.1', require: false # only update when Hound does
+  gem 'rubocop', '~> 0.53', require: false # only update when Hound does
 end
 
 group :development do
   gem 'foreman'
+  gem 'better_errors'
 end
 
 group :test do
