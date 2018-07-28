@@ -54,7 +54,7 @@ module Europeana
           response.rights_url = '[RIGHTS_URL]'
         end
 
-# Call the backend and preprocess the rdf data
+        # Call the backend and preprocess the rdf data
         def preprocessor(url, opts, id)
           opts = check_opts(opts)
 
@@ -110,13 +110,13 @@ module Europeana
 
         private
 
-# Get the type based on the rights_url, if valid => :rich otherwise => :link
+        # Get the type based on the rights_url, if valid => :rich otherwise => :link
         def get_type(data)
           valid_rights(data[:rights_url]) ? :rich : :link
         end
 
-# Validate the correct options passed with the url: maxwidth, minwidth, format and
-# language.
+        # Validate the correct options passed with the url: maxwidth, minwidth, format and
+        # language.
         def check_opts(opts)
           opts.each do |key, value|
             case key
@@ -132,7 +132,7 @@ module Europeana
           end.merge(maxwidth: opts['maxwidth'] || ENV['MAX_WIDTH'], maxheight: opts['maxheight'] ||= ENV['MAX_HEIGHT'])
         end
 
-# Extract the rights_url from the rdf data
+        # Extract the rights_url from the rdf data
         def get_rights_url(graph, provider_aggregation)
           # Get the URL of the image from “object.aggregations[1].isShownBy”, then look for the respective web resource
           # with the following JSON path expression and apply the additional logic below:
@@ -153,12 +153,12 @@ module Europeana
           end
         end
 
-# Build the provider url using the api_portal, language and id.
+        # Build the provider url using the api_portal, language and id.
         def get_provider_url(lang, id)
           "#{ENV['API_PORTAL']}/#{lang ? lang + '/' : ''}record/#{id}.html"
         end
 
-# Scan the allowed rights urls and if present return true, otherwise false.
+        # Scan the allowed rights urls and if present return true, otherwise false.
         def valid_rights(url)
           return false if url.nil?
           u = url.sub(%r{^https?://}, '')

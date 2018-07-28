@@ -8,6 +8,10 @@ module Europeana
     ##
     # Sinatra app to respond to oEmbed requests
     class App < Sinatra::Base
+      get '/healthcheck' do
+        [200, { 'Content-Type' => 'application/json' }, ["OK"]]
+      end
+
       get '/' do
         if params.key?('url')
           begin

@@ -8,6 +8,11 @@ class AppTest < Minitest::Test
     Europeana::OEmbed::App
   end
 
+  def test_health_check
+    get '/healthcheck'
+    assert_equal 200, last_response.status
+  end
+
   def test_root_without_params
     get '/'
     assert last_response.ok?
