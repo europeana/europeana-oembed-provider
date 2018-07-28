@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.3.1'
+ruby '2.5.1'
 
 gem 'puma'
 gem 'rake'
@@ -14,7 +14,7 @@ gem 'rdf-vocab'
 
 group :development, :test do
   gem 'dotenv', '~> 2.0'
-  gem 'rubocop', '~> 0.39.0', require: false # only update when Hound does
+  gem 'rubocop', '~> 0.53', require: false # only update when Hound does
 end
 
 group :development do

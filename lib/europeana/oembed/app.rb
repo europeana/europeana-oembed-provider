@@ -19,6 +19,8 @@ module Europeana
               rack_response(404)
             elsif e.message =~ /^Invalid parameter/
               rack_response(400)
+            elsif e.message =~ /^Format '(.*?)' not supported, must be 'json'$/
+              rack_response(501)
             else
               raise e
             end

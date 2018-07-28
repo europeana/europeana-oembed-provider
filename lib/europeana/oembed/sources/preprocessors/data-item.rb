@@ -1,4 +1,4 @@
-load './lib/europeana/oembed/sources/europeana/helpers.rb'
+require 'europeana/oembed/helpers'
 
 ##
 # Provider for europeana.eu data item
@@ -20,9 +20,9 @@ Europeana::OEmbed.register do |source|
 
   source.id = lambda { |url| URI.parse(url).path.match(%r{/item/([0-9]+/[^/]+)\z})[1] }
 
-  source.preprocessor = lambda { |url, opts| preprocessor(url, opts, URI.parse(url).path.match(%r{/item/([0-9]+/[^/]+)\z})[1]) }
+  source.preprocessor = lambda { |url, opts| Europeana::OEmbed::Helpers.preprocessor(url, opts, URI.parse(url).path.match(%r{/item/([0-9]+/[^/]+)\z})[1]) }
 
   source.respond_with do |response|
-    handle_response(response)
+    Europeana::OEmbed::Helpers.handle_response(response)
   end
 end

@@ -8,8 +8,13 @@ class AppTest < Minitest::Test
     Europeana::OEmbed::App
   end
 
+  def test_invalid_format_not_supported
+    get '/?url=http://data.europeana.eu/item/123/dummy_456&format=invalid'
+    assert_equal 501, last_response.status
+  end
+
   # TODO
-  def test_europeana_data_item_url
+  def test_data_item_url
     # get '/', url: 'http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212'
     # assert last_response.ok?
     # assert_equal 'application/json', last_response.headers['Content-Type']
