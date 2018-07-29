@@ -1,7 +1,7 @@
 require 'test_helper'
 require 'json'
 
-WebMock.disable_net_connect!(allow: %r{\Ahttps?://((data.europeana.eu/item/[^/]+/[^/]+)|((www.)?europeana.eu/api/v2/record/[^/]+/[^/.]+\.jsonld\?wskey=#{ENV['API_KEY']}))\z})
+WebMock.disable_net_connect!(allow: %r{\Ahttps?://((data.europeana.eu/item)|((www.)?europeana.eu/api/v2/record))})
 
 class AppTest < Minitest::Test
   include Rack::Test::Methods
@@ -11,7 +11,8 @@ class AppTest < Minitest::Test
   end
 
   def test_invalid_format_not_supported
-    get '/?url=http://data.europeana.eu/item/123/dummy_456&format=invalid'
+    id = '9200397/BibliographicResource_3000126284212'
+    get '/', url: "http://data.europeana.eu/item/#{id}", format: 'invalid'
     assert_equal 501, last_response.status
   end
 
@@ -31,6 +32,23 @@ class AppTest < Minitest::Test
     end
   end
 
+  # TODO
+  # def test_data_item_different_licenses
+  #   id = '000006/UEDIN_214'
+  #   get '/', url: "http://data.europeana.eu/item/#{id}"
+  #   assert last_response.ok?
+  #   assert_equal 'application/json', last_response.headers['Content-Type']
+  #   json = JSON.parse(last_response.body)
+  #   assert_equal '1.0', json['version']
+  #   assert_equal 'rich', json['type']
+  #   assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+  #   assert_equal 'Europeana', json['provider_name']
+  #   assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
+  #   %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+  #     assert json[attr].to_s.length > 0
+  #   end
+  # end
+
   def test_data_item_unsupported_license
     id = '2023008/71022A99_priref_799'
     get '/', url: "http://data.europeana.eu/item/#{id}"
@@ -49,6 +67,57 @@ class AppTest < Minitest::Test
       assert_nil json[attr]
     end
   end
+
+  def test_item_page
+    id = '9200397/BibliographicResource_3000126284212'
+    get '/', url: "https://www.europeana.eu/portal/record/#{id}.html"
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal '1.0', json['version']
+    assert_equal 'rich', json['type']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_equal 'Europeana', json['provider_name']
+    assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
+    %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+      assert json[attr].to_s.length > 0
+    end
+  end
+
+  def test_item_page_with_language
+    id = '9200397/BibliographicResource_3000126284212'
+    lang = 'en'
+    get '/', url: "https://www.europeana.eu/portal/#{lang}/record/#{id}.html"
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal '1.0', json['version']
+    assert_equal 'rich', json['type']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_equal 'Europeana', json['provider_name']
+    assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
+    %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+      assert json[attr].to_s.length > 0
+    end
+  end
+
+  # TODO
+  # def test_item_page_media
+  #   id = '9200397/BibliographicResource_3000126284212'
+  #   get '/', url: "https://www.europeana.eu/portal/record/#{id}.html?url=http://molcat1.bl.uk/IllImages/Ekta/big/E109/E109547.jpg"
+  #   assert last_response.ok?
+  #   assert_equal 'application/json', last_response.headers['Content-Type']
+  #   json = JSON.parse(last_response.body)
+  #   assert_equal '1.0', json['version']
+  #   assert_equal 'rich', json['type']
+  #   assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+  #   assert_equal 'Europeana', json['provider_name']
+  #   assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
+  #   %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+  #     assert json[attr].to_s.length > 0
+  #   end
+  # end
+
 end
 
 

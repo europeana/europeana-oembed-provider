@@ -55,10 +55,10 @@ module Europeana
         end
 
         # Call the backend and preprocess the rdf data
-        def preprocessor(url, opts, id)
+        def preprocessor(opts, id)
           opts = check_opts(opts)
 
-          graph = RDF::Graph.load(url)
+          graph = RDF::Graph.load("http://data.europeana.eu/item/#{id}")
 
           # puts graph.dump(:ntriples)
 

@@ -20,7 +20,7 @@ Europeana::OEmbed.register do |source|
 
   source.id = lambda { |url| URI.parse(url).path.match(%r{/item/([0-9]+/[^/]+)\z})[1] }
 
-  source.preprocessor = lambda { |url, opts| Europeana::OEmbed::Helpers.preprocessor(url, opts, URI.parse(url).path.match(%r{/item/([0-9]+/[^/]+)\z})[1]) }
+  source.preprocessor = lambda { |url, opts| Europeana::OEmbed::Helpers.preprocessor(opts, URI.parse(url).path.match(%r{/item/([0-9]+/[^/]+)\z})[1]) }
 
   source.respond_with do |response|
     Europeana::OEmbed::Helpers.handle_response(response)
