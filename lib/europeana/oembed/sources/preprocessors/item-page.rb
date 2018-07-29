@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'europeana/oembed/helpers'
 
 ##
@@ -12,9 +14,12 @@ require 'europeana/oembed/helpers'
 Europeana::OEmbed.register do |source|
   source.urls << %r{\Ahttps?://(?:www.)?europeana.eu/portal/(?:[a-z]{2}/)?record/([0-9]+/[^/.]+)(?:\.html)?\z}
 
-  source.id = lambda { |url| URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?\z})[1] }
+  source.id = ->(url) { URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?\z})[1] }
 
-  source.preprocessor = lambda { |url, opts| Europeana::OEmbed::Helpers.preprocessor(opts, URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?\z})[1]) }
+  source.preprocessor = lambda do |url, opts|
+    id = URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?\z})[1]
+    Europeana::OEmbed::Helpers.preprocessor(opts, id)
+  end
 
   source.respond_with do |response|
     Europeana::OEmbed::Helpers.handle_response(response)

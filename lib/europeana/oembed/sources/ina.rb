@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Provider for ina.fr
 #
@@ -10,7 +12,7 @@ Europeana::OEmbed.register do |source|
   source.urls << 'http://www.ina.fr/video/*'
   source.urls << 'http://www.ina.fr/*/video/*'
 
-  source.id = lambda { |url| URI.parse(url).path.match(%r{/video/([^/]+)/})[1] }
+  source.id = ->(url) { URI.parse(url).path.match(%r{/video/([^/]+)/})[1] }
 
   source.respond_with do |response|
     response.type = :video

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Provider for crem-cnrs.fr
 #
@@ -5,7 +7,7 @@
 Europeana::OEmbed.register do |source|
   source.urls << %r{\Ahttp://archives.crem-cnrs.fr/archives/items/[^/]+/\z}
 
-  source.id = lambda { |url| URI.parse(url).path.match(%r{/items/([^/]+)/})[1] }
+  source.id = ->(url) { URI.parse(url).path.match(%r{/items/([^/]+)/})[1] }
 
   source.respond_with do |response|
     response.type = :rich

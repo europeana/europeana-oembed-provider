@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Provider for picturepipe.net
 #
@@ -6,7 +8,7 @@ Europeana::OEmbed.register do |source|
   source.urls << 'http://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=*'
   source.urls << 'https://api.picturepipe.net/api/html/widgets/public/playout_cloudfront?token=*'
 
-  source.id = lambda { |url| Rack::Utils.parse_query(URI.parse(url).query)['token'] }
+  source.id = ->(url) { Rack::Utils.parse_query(URI.parse(url).query)['token'] }
 
   source.respond_with do |response|
     response.type = :video

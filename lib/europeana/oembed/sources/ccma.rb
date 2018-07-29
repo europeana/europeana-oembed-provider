@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ##
 # Provider for ccma.cat
 #
@@ -5,7 +7,7 @@
 Europeana::OEmbed.register do |source|
   source.urls << 'http://www.ccma.cat/tv3/alacarta/programa/titol/video/*/'
 
-  source.id = lambda { |url| URI.parse(url).path.split('/')[-1] }
+  source.id = ->(url) { URI.parse(url).path.split('/')[-1] }
 
   source.respond_with do |response|
     response.type = :video
