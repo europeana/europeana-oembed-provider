@@ -10,9 +10,12 @@ require 'europeana/oembed/helpers'
 Europeana::OEmbed.register do |source|
   source.urls << %r{\Ahttps?://(?:www.)?europeana.eu/portal/(?:[a-z]{2}/)?record/([0-9]+/[^/.]+)(?:\.html)?[?]url=(.+)\z}
 
-  source.id = lambda { |url| URI.parse(url).path.match(%r{/record/([^/]+)/})[1] }
+  source.id = lambda { |url| URI.parse(url).path.match(%r{/record/([^/]+/[^/.]+)})[1] }
 
-  source.preprocessor = lambda { |url, opts|  Europeana::OEmbed::Helpers.preprocessor(opts, URI.parse(url).path.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?[?]url=(.+)\z})[1]) }
+  source.preprocessor = lambda do |url, opts|
+    id, media_url = url.match(%r{/record/([0-9]+/[^/.]+)(?:\.html)?[?]url=(.+)\z})[1..2]
+    Europeana::OEmbed::Helpers.preprocessor(opts, id, media_url)
+  end
 
   source.respond_with do |response|
     Europeana::OEmbed::Helpers.handle_response(response)

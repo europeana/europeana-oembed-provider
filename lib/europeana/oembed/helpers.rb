@@ -55,7 +55,7 @@ module Europeana
         end
 
         # Call the backend and preprocess the rdf data
-        def preprocessor(opts, id)
+        def preprocessor(opts, id, media_url = nil)
           opts = check_opts(opts)
 
           graph = RDF::Graph.load("http://data.europeana.eu/item/#{id}")
@@ -98,6 +98,13 @@ module Europeana
           if is_valid_rights
             api_thumbnail_by_url = ENV['API_THUMBNAIL_BY_URI'] || 'https://www.europeana.eu/api/v2/thumbnail-by-url.json?uri=%{uri}&size=w%{width}'
             width = opts['maxwidth'].to_i < 200 ? 200 : 400
+            # TODO
+            # if media_url
+            #   edm_has_view = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.hasView)
+            #   edm_has_view.each do |statement|
+            #     puts "statement=#{statement.inspect}"
+            #   end
+            # end
             thumbnail_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.object).first.object.to_s
             thumbnail_by_url = api_thumbnail_by_url.sub('%{uri}', thumbnail_url).sub('%{width}', width.to_s)
             response[:thumbnail_url] = thumbnail_by_url || ''
