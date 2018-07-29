@@ -9,7 +9,7 @@ Europeana::OEmbed.register do |source|
 
   source.respond_with do |response|
     response.type = :rich
-    response.html = 'http://archives.crem-cnrs.fr/archives/items/%{id}/player/346x130/'
+    response.html = 'http://archives.crem-cnrs.fr/archives/items/%<id>/player/346x130/'
     response.width = 361
     response.height = 250
     response.provider_name = 'CREM-CNRS'

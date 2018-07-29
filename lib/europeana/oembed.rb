@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Europeana
   module OEmbed
     ##
@@ -32,6 +34,6 @@ module Europeana
       end
     end
 
-    Dir[File.expand_path('../oembed/sources/**/*.rb', __FILE__)].each { |file| require file }
+    Dir[File.expand_path('oembed/sources/**/*.rb', __dir__)].each { |file| require file }
   end
 end

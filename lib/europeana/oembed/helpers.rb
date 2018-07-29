@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'dotenv/load'
 require 'json/ld'
 require 'rdf'
@@ -37,9 +39,8 @@ module Europeana
   module OEmbed
     module Helpers
       class << self
-
         def handle_response(response)
-          response.type = lambda {|data| get_type(data)}
+          response.type = ->(data) { get_type(data) }
           response.version = ENV['API_PROVIDER_VERSION'] || '[API_PROVIDER_VERSION]'
           response.width = ENV['MAX_WIDTH'] || '[WIDTH]'
           response.height = ENV['MAX_HEIGHT'] || '[HEIGHT]'
@@ -81,32 +82,33 @@ module Europeana
           is_valid_rights = valid_rights(rights_url)
 
           response = {
-              version: ENV['API_PROVIDER_VERSION'] || '[*API_PROVIDER_VERSION*]',
-              width: ENV['MAX_WIDTH'] || '[*WIDTH*]',
-              height: ENV['MAX_HEIGHT'] || '[*HEIGHT*]',
-              provider_name: ENV['API_PROVIDER_NAME'] || '[*API_PROVIDER_NAME*]',
-              provider_url: provider_url,
+            version: ENV['API_PROVIDER_VERSION'] || '[*API_PROVIDER_VERSION*]',
+            width: ENV['MAX_WIDTH'] || '[*WIDTH*]',
+            height: ENV['MAX_HEIGHT'] || '[*HEIGHT*]',
+            provider_name: ENV['API_PROVIDER_NAME'] || '[*API_PROVIDER_NAME*]',
+            provider_url: provider_url,
 
-              html: ENV['API_EUROPEANA_SERVICE'] || '[*API_EUROPEANA_SERVICE*]',
-              title: title || '',
-              description: description || '',
-              author_name: author_name || '',
-              author_url: author_url || '',
-              rights_url: rights_url || ''
+            html: ENV['API_EUROPEANA_SERVICE'] || '[*API_EUROPEANA_SERVICE*]',
+            title: title || '',
+            description: description || '',
+            author_name: author_name || '',
+            author_url: author_url || '',
+            rights_url: rights_url || ''
           }
 
           if is_valid_rights
-            api_thumbnail_by_url = ENV['API_THUMBNAIL_BY_URI'] || 'https://www.europeana.eu/api/v2/thumbnail-by-url.json?uri=%{uri}&size=w%{width}'
+            api_thumbnail_by_url = ENV['API_THUMBNAIL_BY_URI'] ||
+                                   'https://www.europeana.eu/api/v2/thumbnail-by-url.json?uri=%<uri>&size=w<width>'
             width = opts['maxwidth'].to_i < 200 ? 200 : 400
             # TODO
-            # if media_url
-            #   edm_has_view = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.hasView)
-            #   edm_has_view.each do |statement|
-            #     puts "statement=#{statement.inspect}"
-            #   end
-            # end
+            if media_url
+              # edm_has_view = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.hasView)
+              # edm_has_view.each do |statement|
+              #   puts "statement=#{statement.inspect}"
+              # end
+            end
             thumbnail_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.object).first.object.to_s
-            thumbnail_by_url = api_thumbnail_by_url.sub('%{uri}', thumbnail_url).sub('%{width}', width.to_s)
+            thumbnail_by_url = api_thumbnail_by_url.sub('%<uri>', thumbnail_url).sub('%<width>', width.to_s)
             response[:thumbnail_url] = thumbnail_by_url || ''
             response[:thumbnail_width] = width
             # response[:thumbnail_height] = '[*THUMBNAIL_HEIGHT*]'
@@ -141,10 +143,10 @@ module Europeana
 
         # Extract the rights_url from the rdf data
         def get_rights_url(graph, provider_aggregation)
-          # Get the URL of the image from “object.aggregations[1].isShownBy”, then look for the respective web resource
+          # Get the URL of the image from "object.aggregations[1].isShownBy", then look for the respective web resource
           # with the following JSON path expression and apply the additional logic below:
-          # “object.aggregations[1].webResources[.about={IMAGE_URL}].webResourceEdmRights”
-          # If no value exists get the default from: “object.aggregations[1].edmRights
+          # "object.aggregations[1].webResources[.about={IMAGE_URL}].webResourceEdmRights"
+          # If no value exists get the default from: "object.aggregations[1].edmRights"
 
           # TODO
           edm_is_shown_by = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownBy).first&.object
@@ -169,12 +171,11 @@ module Europeana
         def valid_rights(url)
           return false if url.nil?
           u = url.sub(%r{^https?://}, '')
-          %w{ publicdomain/mark/1.0 publicdomain/zero/1.0 licenses/by/1.0 licenses/by-sa/1.0 }.each do |s|
+          %w{publicdomain/mark/1.0 publicdomain/zero/1.0 licenses/by/1.0 licenses/by-sa/1.0}.each do |s|
             return true if u.start_with?("creativecommons.org/#{s}")
           end
           false
         end
-
       end
     end
   end

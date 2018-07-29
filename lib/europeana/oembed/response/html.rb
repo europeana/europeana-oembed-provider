@@ -41,7 +41,7 @@ module Europeana
           if source.response_config.html.nil?
             url
           else
-            source.response_config.html.sub('%{id}', source.id_for(url))
+            source.response_config.html.sub('%<id>', source.id_for(url))
           end
         end
 

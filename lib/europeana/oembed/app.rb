@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'oembed'
 require 'sinatra'
@@ -9,7 +11,7 @@ module Europeana
     # Sinatra app to respond to oEmbed requests
     class App < Sinatra::Base
       get '/healthcheck' do
-        [200, { 'Content-Type' => 'application/json' }, ["OK"]]
+        [200, { 'Content-Type' => 'application/json' }, ['OK']]
       end
 
       get '/' do
@@ -19,11 +21,11 @@ module Europeana
             body = Europeana::OEmbed.response_for(url, params)
             [200, { 'Content-Type' => 'application/json' }, [body]]
           rescue StandardError => e
-            if e.message =~ /No oEmbed source registered for URL/
+            if e.message.match?(/No oEmbed source registered for URL/)
               rack_response(404)
-            elsif e.message =~ /^Invalid parameter/
+            elsif e.message.match?(/^Invalid parameter/)
               rack_response(400)
-            elsif e.message =~ /^Format '(.*?)' not supported, must be 'json'$/
+            elsif e.message.match?(/^Format '(.*?)' not supported, must be 'json'$/)
               rack_response(501)
             else
               raise e
