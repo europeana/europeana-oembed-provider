@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'json'
 
@@ -28,7 +30,7 @@ class AppTest < Minitest::Test
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
     %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
-      assert json[attr].to_s.length > 0
+      assert json[attr].to_s.length.positive?
     end
   end
 
@@ -49,7 +51,7 @@ class AppTest < Minitest::Test
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
     %w{width height title author_name author_url rights_url}.each do |attr|
-      assert json[attr].to_s.length > 0
+      assert json[attr].to_s.length.positive?
     end
     %w{thumbnail_url thumbnail_width}.each do |attr|
       assert_nil json[attr]
@@ -68,7 +70,7 @@ class AppTest < Minitest::Test
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
     %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
-      assert json[attr].to_s.length > 0
+      assert json[attr].to_s.length.positive?
     end
   end
 
@@ -85,7 +87,7 @@ class AppTest < Minitest::Test
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
     %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
-      assert json[attr].to_s.length > 0
+      assert json[attr].to_s.length.positive?
     end
   end
 
@@ -101,7 +103,7 @@ class AppTest < Minitest::Test
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
     %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
-      assert json[attr].to_s.length > 0
+      assert json[attr].to_s.length.positive?
     end
   end
 
@@ -118,7 +120,7 @@ class AppTest < Minitest::Test
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
     %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
-      assert json[attr].to_s.length > 0
+      assert json[attr].to_s.length.positive?
     end
   end
 
@@ -126,7 +128,4 @@ class AppTest < Minitest::Test
   def test_item_page_media_has_view
     assert true
   end
-
 end
-
-
