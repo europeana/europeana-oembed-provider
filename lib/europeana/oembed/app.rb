@@ -23,9 +23,7 @@ module Europeana
           rescue StandardError => e
             if e.message.match?(/No oEmbed source registered for URL/)
               rack_response(404)
-            elsif e.message.match?(/^Invalid parameter/)
-              rack_response(400)
-            elsif e.message.match?(/^Format '(.*?)' not supported, must be 'json'$/)
+            elsif e.message.match?(/^Invalid parameter (.*?)( '(.*?)')? must be:/)
               rack_response(501)
             else
               raise e

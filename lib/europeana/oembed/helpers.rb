@@ -130,13 +130,16 @@ module Europeana
           opts.each do |key, value|
             case key
             when /^maxwidth|maxheight$/ then
-              raise "Format '#{value}' not correct, must be a number" unless /^\d+$/.match?(value)
+              raise "Invalid parameter #{key} '#{value}' must be: integer" unless /^\d+$/.match?(value)
             when /^format$/ then
-              raise "Format '#{value}' not supported, must be 'json'" unless value == 'json'
+              formats = %w{json}
+              raise "Invalid parameter #{key} '#{value}' must be: #{formats}" unless formats.index(value)
             when /^language$/ then
-              raise "Language '#{value}' not correct, must be two characters long" unless /^[a-z]{2}$/i.match?(value)
+              languages = %w{bg ca cs da de el en es et fi fr ga hr hu it lt lv mt no nl pl pt ro ru sk sl sv}
+              raise "Invalid parameter #{key} '#{value}' must be: #{languages}" unless languages.index(value)
             else
-              raise "Unknown parameter '#{key}', must be 'format', 'maxwidth' or 'maxheight'"
+              parameters = %{format language maxwidth maxheight}
+              raise "Invalid parameter #{key} must be: #{parameters}"
             end
           end.merge(maxwidth: opts['maxwidth'] || ENV['MAX_WIDTH'], maxheight: opts['maxheight'] ||= ENV['MAX_HEIGHT'])
         end

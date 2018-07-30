@@ -18,6 +18,30 @@ class AppTest < Minitest::Test
     assert_equal 501, last_response.status
   end
 
+  def test_invalid_language
+    id = '9200397/BibliographicResource_3000126284212'
+    get '/', url: "http://data.europeana.eu/item/#{id}", language: 'invalid'
+    assert_equal 501, last_response.status
+  end
+
+  def test_invalid_maxwidth
+    id = '9200397/BibliographicResource_3000126284212'
+    get '/', url: "http://data.europeana.eu/item/#{id}", maxwidth: 'invalid'
+    assert_equal 501, last_response.status
+  end
+
+  def test_invalid_maxheight
+    id = '9200397/BibliographicResource_3000126284212'
+    get '/', url: "http://data.europeana.eu/item/#{id}", maxheight: 'invalid'
+    assert_equal 501, last_response.status
+  end
+
+  def test_invalid_parameter
+    id = '9200397/BibliographicResource_3000126284212'
+    get '/', url: "http://data.europeana.eu/item/#{id}", invalid: 'value'
+    assert_equal 501, last_response.status
+  end
+
   def test_data_item_license_ok
     id = '9200397/BibliographicResource_3000126284212'
     get '/', url: "http://data.europeana.eu/item/#{id}"
@@ -39,6 +63,7 @@ class AppTest < Minitest::Test
     assert true
   end
 
+  # TODO: Still fails when run with all tests, for some reason succeeds when run alone.
   def test_data_item_license_nok
     id = '2023008/71022A99_priref_799'
     get '/', url: "http://data.europeana.eu/item/#{id}"
