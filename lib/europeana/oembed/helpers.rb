@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-# require 'dotenv/load'
+require 'dotenv/load' if ENV['RACK_ENV'] != 'production'
+
 require 'json/ld'
 require 'rdf'
 require 'rdf/vocab'
@@ -59,7 +60,8 @@ module Europeana
         def preprocessor(opts, id, media_url = nil)
           prefer_europeana_proxy = ENV['API_PREFER_EUROPEANA_PROXY'].match(/true|yes|1/i)
           opts = check_opts(opts)
-          graph = RDF::Graph.load("http://data.europeana.eu/item/#{id}")
+          url = "http://data.europeana.eu/item/#{id}"
+          graph = RDF::Graph.load(url)
 
           # puts graph.dump(:ntriples)
 
@@ -77,7 +79,12 @@ module Europeana
             provider_aggregation_to_use = provider_aggregation
           end
 
+          dc11_title = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.title)
+          dc11_title.each_object do |object|
+            puts object.inspect
+          end
           title = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
+          dc11_description = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.description)
           description = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
 
           author_name = graph.query(subject: provider_aggregation_to_use, predicate: RDF::Vocab::EDM.dataProvider).first&.object.to_s

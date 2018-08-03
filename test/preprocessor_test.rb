@@ -42,6 +42,26 @@ class AppTest < Minitest::Test
     assert_equal 501, last_response.status
   end
 
+  # TODO: Still fails when run with all tests, for some reason succeeds when run alone.
+  def test_data_item_license_nok
+    id = '2023008/71022A99_priref_799'
+    get '/', url: "http://data.europeana.eu/item/#{id}"
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal '1.0', json['version']
+    assert_equal 'link', json['type']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_equal 'Europeana', json['provider_name']
+    assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
+    %w{width height title author_name author_url rights_url}.each do |attr|
+      assert json[attr].to_s.length.positive?
+    end
+    %w{thumbnail_url thumbnail_width}.each do |attr|
+      assert_nil json[attr]
+    end
+  end
+
   def test_data_item_license_ok
     id = '9200397/BibliographicResource_3000126284212'
     get '/', url: "http://data.europeana.eu/item/#{id}"
@@ -61,26 +81,6 @@ class AppTest < Minitest::Test
   # TODO
   def test_data_item_license_more
     assert true
-  end
-
-  # TODO: Still fails when run with all tests, for some reason succeeds when run alone.
-  def test_data_item_license_nok
-    id = '2023008/71022A99_priref_799'
-    get '/', url: "http://data.europeana.eu/item/#{id}"
-    assert last_response.ok?
-    assert_equal 'application/json', last_response.headers['Content-Type']
-    json = JSON.parse(last_response.body)
-    assert_equal '1.0', json['version']
-    assert_equal 'link', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
-    assert_equal 'Europeana', json['provider_name']
-    assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title author_name author_url rights_url}.each do |attr|
-      assert json[attr].to_s.length.positive?
-    end
-    %w{thumbnail_url thumbnail_width}.each do |attr|
-      assert_nil json[attr]
-    end
   end
 
   def test_item_page
