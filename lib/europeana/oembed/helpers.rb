@@ -57,27 +57,35 @@ module Europeana
 
         # Call the backend and preprocess the rdf data
         def preprocessor(opts, id, media_url = nil)
+          prefer_europeana_proxy = ENV['API_PREFER_EUROPEANA_PROXY'].match(/true|yes|1/i)
           opts = check_opts(opts)
-
           graph = RDF::Graph.load("http://data.europeana.eu/item/#{id}")
 
           # puts graph.dump(:ntriples)
 
-          # europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
+          europeana_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'true').first.subject
           provider_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'false').first.subject
 
-          # europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
+          europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
           provider_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::ORE.Aggregation).first.subject
 
-          title = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
-          description = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
+          if prefer_europeana_proxy
+            provider_proxy_to_use = europeana_proxy.nil? ? provider_proxy : europeana_proxy
+            provider_aggregation_to_use = europeana_aggregation.nil? ? provider_aggregation : europeana_aggregation
+          else
+            provider_proxy_to_use = provider_proxy
+            provider_aggregation_to_use = provider_aggregation
+          end
 
-          author_name = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.dataProvider).first&.object.to_s
-          author_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first&.object.to_s
+          title = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
+          description = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
+
+          author_name = graph.query(subject: provider_aggregation_to_use, predicate: RDF::Vocab::EDM.dataProvider).first&.object.to_s
+          author_url = graph.query(subject: provider_aggregation_to_use, predicate: RDF::Vocab::EDM.isShownAt).first&.object.to_s
 
           provider_url = get_provider_url(opts['language'], id)
 
-          rights_url = get_rights_url(graph, provider_aggregation)
+          rights_url = get_rights_url(graph, provider_aggregation_to_use)
 
           is_valid_rights = valid_rights(rights_url)
 
@@ -111,6 +119,7 @@ module Europeana
             thumbnail_by_url = api_thumbnail_by_url.sub('%<uri>', thumbnail_url).sub('%<width>', width.to_s)
             response[:thumbnail_url] = thumbnail_by_url || ''
             response[:thumbnail_width] = width
+            # TODO
             # response[:thumbnail_height] = '[*THUMBNAIL_HEIGHT*]'
           end
 
