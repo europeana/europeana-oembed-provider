@@ -79,12 +79,7 @@ module Europeana
             provider_aggregation_to_use = provider_aggregation
           end
 
-          dc11_title = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.title)
-          dc11_title.each_object do |object|
-            puts object.inspect
-          end
           title = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
-          dc11_description = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.description)
           description = graph.query(subject: provider_proxy_to_use, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
 
           author_name = graph.query(subject: provider_aggregation_to_use, predicate: RDF::Vocab::EDM.dataProvider).first&.object.to_s
