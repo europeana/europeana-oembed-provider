@@ -20,10 +20,9 @@ For full details, see [LICENSE.md](LICENSE.md).
 The Europeana oEmbed Provider is a simple [Sinatra](http://www.sinatrarb.com/)
 application.
 
-1. Clone the repo
+1. `git clone https://github.com/europeana/europeana-oembed-provider.git`
 2. `bundle install`
-3. `bundle exec ruby app.rb -s Puma` (or `foreman start` in development
-  environments)
+3. `bundle exec ruby app.rb -s Puma` (or `foreman start` in development environments)
 
 ## Usage
 
