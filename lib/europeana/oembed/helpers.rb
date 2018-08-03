@@ -86,13 +86,17 @@ module Europeana
             description = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
           end
 
+          # Author name
           author_name = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.dataProvider).first&.object.to_s
+
+          # Author url
           author_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.isShownAt).first&.object.to_s
 
+          # Provider url
           provider_url = get_provider_url(opts['language'], id)
 
+          # Rights url
           rights_url = get_rights_url(graph, provider_aggregation)
-
           is_valid_rights = valid_rights(rights_url)
 
           response = {

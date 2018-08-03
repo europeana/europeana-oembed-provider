@@ -27,7 +27,7 @@ module Europeana
         end
 
         requires :version, :type
-        permits :title, :author_name, :author_url, :provider_name, :provider_url,
+        permits :title, :description, :author_name, :author_url, :provider_name, :provider_url,
                 :cache_age, :thumbnail_url, :thumbnail_width, :thumbnail_height, :rights_url
 
         # @param url [URL]
