@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'dotenv/load'
+# require 'dotenv/load'
 require 'json/ld'
 require 'rdf'
 require 'rdf/vocab'
