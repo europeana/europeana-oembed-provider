@@ -51,10 +51,10 @@ class AppTest < Minitest::Test
     json = JSON.parse(last_response.body)
     assert_equal '1.0', json['version']
     assert_equal 'rich', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+    %w{width height title description author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
       assert json[attr].to_s.length.positive?
     end
   end
@@ -68,10 +68,10 @@ class AppTest < Minitest::Test
     json = JSON.parse(last_response.body)
     assert_equal '1.0', json['version']
     assert_equal 'link', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title author_name author_url rights_url}.each do |attr|
+    %w{width height title description author_name author_url rights_url}.each do |attr|
       assert json[attr].to_s.length.positive?
     end
     %w{thumbnail_url thumbnail_width}.each do |attr|
@@ -92,10 +92,10 @@ class AppTest < Minitest::Test
     json = JSON.parse(last_response.body)
     assert_equal '1.0', json['version']
     assert_equal 'rich', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+    %w{width height title description author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
       assert json[attr].to_s.length.positive?
     end
   end
@@ -109,10 +109,10 @@ class AppTest < Minitest::Test
     json = JSON.parse(last_response.body)
     assert_equal '1.0', json['version']
     assert_equal 'rich', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+    %w{width height title description author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
       assert json[attr].to_s.length.positive?
     end
   end
@@ -125,10 +125,10 @@ class AppTest < Minitest::Test
     json = JSON.parse(last_response.body)
     assert_equal '1.0', json['version']
     assert_equal 'rich', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+    %w{width height title description author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
       assert json[attr].to_s.length.positive?
     end
   end
@@ -142,10 +142,10 @@ class AppTest < Minitest::Test
     json = JSON.parse(last_response.body)
     assert_equal '1.0', json['version']
     assert_equal 'rich', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]+"}, json['html']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
+    %w{width height title description author_name author_url thumbnail_url thumbnail_width rights_url}.each do |attr|
       assert json[attr].to_s.length.positive?
     end
   end
