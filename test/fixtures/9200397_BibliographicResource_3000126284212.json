@@ -1,0 +1,1118 @@
+{
+  "@context": {
+    "ore": "http://www.openarchives.org/ore/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "edm": "http://www.europeana.eu/schemas/edm/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+  },
+  "@graph": [
+    {
+      "@id": "http://data.europeana.eu/agent/base/110408",
+      "@type": "edm:Agent",
+      "http://rdvocab.info/ElementsGr2/biographicalInformation": {
+        "@language": "en",
+        "@value": "The Political career of Marcus Tullius Cicero began in 75 BC when Marcus Tullius Cicero was elected to political office, and ended in 43 BC, when he was assassinated upon the orders of Mark Antony. Cicero, a Roman statesman, lawyer, political theorist, philosopher, and Roman constitutionalist, reached the height of Roman power, the Consulship, and played a critical role in the transformation of the Roman Republic into the Roman Empire. A contemporary of Julius Caesar, Cicero is widely considered one of Rome's greatest orators and prose stylists.Cicero is generally perceived to be one of the most versatile minds of ancient Rome. He introduced the Romans to the chief schools of Greek philosophy and created a Latin philosophical vocabulary, distinguishing himself as a linguist, translator, and philosopher. An impressive orator and successful lawyer, Cicero probably thought his political career his most important achievement. Today, he is appreciated primarily for his humanism and philosophical and political writings. His voluminous correspondence, much of it addressed to his friend Atticus, has been especially influential, introducing the art of refined letter writing to European culture. Cornelius Nepos, the 1st-century BC biographer of Atticus, remarked that Cicero's letters to Atticus contained such a wealth of detail \"concerning the inclinations of leading men, the faults of the generals, and the revolutions in the government\" that their reader had little need for a history of the period.During the chaotic latter half of the first century BC, marked by civil wars and the dictatorship of Gaius Julius Caesar, Cicero championed a return to the traditional republican government. However, his career as a statesman was marked by inconsistencies and a tendency to shift his position in response to changes in the political climate. His indecision may be attributed to his sensitive and impressionable personality; he was prone to overreaction in the face of political and private change. \"Would that he had been able to endure prosperity with greater self-control and adversity with more fortitude!\" wrote C. Asinius Pollio, a contemporary Roman statesman and historian."
+      },
+      "http://rdvocab.info/ElementsGr2/dateOfBirth": "-0106-01-03",
+      "http://rdvocab.info/ElementsGr2/dateOfDeath": "-0043-12-07",
+      "http://rdvocab.info/ElementsGr2/placeOfBirth": {
+        "@id": "http://dbpedia.org/resource/Italy"
+      },
+      "http://rdvocab.info/ElementsGr2/placeOfDeath": {
+        "@id": "http://dbpedia.org/resource/Formia"
+      },
+      "http://rdvocab.info/ElementsGr2/professionOrOccupation": [
+        {
+          "@id": "http://dbpedia.org/resource/Lawyer"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Politician"
+        },
+        {
+          "@language": "en",
+          "@value": "Politician, lawyer, orator and philosopher"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Philosopher"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Orator"
+        }
+      ],
+      "edm:end": "-0043-12-07",
+      "edm:isRelatedTo": [
+        {
+          "@id": "http://dbpedia.org/resource/Quintilian"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Plato"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Middle_Platonism"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Pliny_the_Younger"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Tacitus"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Stoicism"
+        }
+      ],
+      "http://www.w3.org/2002/07/owl#sameAs": [
+        {
+          "@id": "http://www.wikidata.org/entity/Q16208993"
+        },
+        {
+          "@id": "http://yago-knowledge.org/resource/Political_career_of_Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Political_career_of_Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://wikidata.dbpedia.org/resource/Q16208993"
+        }
+      ],
+      "skos:altLabel": {
+        "@language": "en",
+        "@value": "Marcus Tullius Cicero"
+      },
+      "skos:prefLabel": {
+        "@language": "en",
+        "@value": "Political career of Marcus Tullius Cicero"
+      }
+    },
+    {
+      "@id": "http://data.europeana.eu/agent/base/110409",
+      "@type": "edm:Agent",
+      "http://rdvocab.info/ElementsGr2/biographicalInformation": [
+        {
+          "@language": "en",
+          "@value": "The writings of Marcus Tullius Cicero constitute one of the most famous bodies of historical and philosophical work in all of classical antiquity. Cicero, a Roman statesman, lawyer, political theorist, philosopher, and Roman constitutionalist, lived from 106 to 43 BC. He was a Roman senator and consul (chief-magistrate) who played a critical role in the transformation of the Roman Republic into the Roman Empire. A contemporary of Julius Caesar, Cicero is widely considered one of Rome's greatest orators and prose stylists.Cicero is generally held to be one of the most versatile minds of ancient Rome. He introduced the Romans to the chief schools of Greek philosophy and created a Latin philosophical vocabulary, distinguishing himself as a linguist, translator, and philosopher. An impressive orator and successful lawyer, Cicero probably thought his political career his most important achievement. Today, he is appreciated primarily for his humanism and philosophical and political writings. His voluminous correspondence, much of it addressed to his friend Atticus, has been especially influential, introducing the art of refined letter writing to European culture. Cornelius Nepos, the 1st-century BC biographer of Atticus, remarked that Cicero's letters to Atticus contained such a wealth of detail \"concerning the inclinations of leading men, the faults of the generals, and the revolutions in the government\" that their reader had little need for a history of the period.During the chaotic latter half of the first century BC, marked by civil wars and the dictatorship of Gaius Julius Caesar, Cicero championed a return to the traditional republican government. However, his career as a statesman was marked by inconsistencies and a tendency to shift his position in response to changes in the political climate. His indecision may be attributed to his sensitive and impressionable personality; he was prone to overreaction in the face of political and private change. \"Would that he had been able to endure prosperity with greater self-control and adversity with more fortitude!\" wrote C. Asinius Pollio, a contemporary Roman statesman and historian."
+        },
+        {
+          "@language": "fr",
+          "@value": "Cicéron est considéré comme le plus grand auteur latin classique, tant par son style que par la hauteur morale de ses vues.En complément de sa biographie, voici une liste d'œuvres qui ont été traduites et publiées en France."
+        }
+      ],
+      "http://rdvocab.info/ElementsGr2/dateOfBirth": "-0106-01-03",
+      "http://rdvocab.info/ElementsGr2/dateOfDeath": "-0043-12-07",
+      "http://rdvocab.info/ElementsGr2/placeOfBirth": {
+        "@id": "http://dbpedia.org/resource/Italy"
+      },
+      "http://rdvocab.info/ElementsGr2/placeOfDeath": {
+        "@id": "http://dbpedia.org/resource/Formia"
+      },
+      "http://rdvocab.info/ElementsGr2/professionOrOccupation": [
+        {
+          "@language": "en",
+          "@value": "Politician, lawyer, orator and philosopher"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Orator"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Philosopher"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Lawyer"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Politician"
+        }
+      ],
+      "edm:end": "-0043-12-07",
+      "edm:isRelatedTo": [
+        {
+          "@id": "http://dbpedia.org/resource/Augustine_of_Hippo"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Voltaire"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Tacitus"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Demosthenes"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/John_Adams"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Peripatetic_school"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Pierre-Joseph_Proudhon"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Leo_Strauss"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/John_Locke"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Quintilian"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Founding_Fathers_of_the_United_States"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Pliny_the_Younger"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Plato"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Montesquieu"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/David_Hume"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Aristotle"
+        }
+      ],
+      "http://www.w3.org/2002/07/owl#sameAs": [
+        {
+          "@id": "http://rdf.freebase.com/ns/m.04n153v"
+        },
+        {
+          "@id": "http://wikidata.dbpedia.org/resource/Q3594159"
+        },
+        {
+          "@id": "http://fr.dbpedia.org/resource/Œuvres_de_Cicéron"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Writings_of_Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q3594159"
+        }
+      ],
+      "skos:altLabel": {
+        "@language": "en",
+        "@value": "Marcus Tullius Cicero"
+      },
+      "skos:prefLabel": [
+        {
+          "@language": "fr",
+          "@value": "Œuvres de Cicéron"
+        },
+        {
+          "@language": "en",
+          "@value": "Writings of Marcus Tullius Cicero"
+        }
+      ]
+    },
+    {
+      "@id": "http://data.europeana.eu/agent/base/59788",
+      "@type": "edm:Agent",
+      "http://rdvocab.info/ElementsGr2/biographicalInformation": [
+        {
+          "@language": "no",
+          "@value": "Marcus Tullius Cicero (uttales /ˈkikeroː/ på klassisk latin; født 3. januar 106 f.Kr., død 7. desember 43 f.Kr.) var en romersk politiker, jurist, taler og skribent, alminnelig ansett som den største latinske prosaist."
+        },
+        {
+          "@language": "ka",
+          "@value": "მარკუს ტულიუს ციცერონი (ლათ. Marcus Tullius Cicero; დ. 3 იანვარი, ძვ. წ. 106, არპინუმი, იტალია — გ. 7 დეკემბერი, ძვ. წ. 43, ფორმია, იტალია), რომაელი პოლიტიკოსი, ადვოკატი და პოლიტიკური მოაზროვნე, ძველი რომის ყველაზე სახელგანთქმული ორატორი და კონსული ძვ. წ. 63 წელს."
+        },
+        {
+          "@language": "hy",
+          "@value": "Մարկոս Տուլիոս Կիկերոն (լատիներեն՝ Marcus Tullius Cicerō, 3 հունվար 106 մ.թ.ա., - 7 դեկտեմբեր 43 մ.թ.ա.), հին հռոմեական քաղաքական գործիչ և փիլիսոփա, նշանավոր հռետոր։ Մ.թ.ա. 63 թ. զբաղեցնելով հյուպատոսի պաշտոնը՝ բացահայտել է Կատիլինայի դավադրությունը և սպանել տվել նրա դավակիցներին։ Քաղաքացիական պատերազմներում հարել է նախ Պոմպեոսի կուսակցությանը, բայց վերջինիս սպանությունից հետո հաշտվել Կեսարի հետ։Վերջինիս մահից հետո ուժգնորեն հակառակվելէ Մարկոս Անտոնիոսին՝ պաշտպանելով Կեսարի զարմիկ Օկտավիանոսին (ապագա Օկտավիանոս Օգոստոս կայսեր)։ Անտոնիոսի և Օկտավիանոսի հաշտվելուց և նրանց կողմից Երկրորդ եռապետություն կազմելուց հետո՝ եռապետների հրամանով սպանվել է։Գագաթնակետին է հասցրել լատինական պերճախոսական արվեստը։ Նրա ատենախոսություններն ու ճառերն օրինակ են ծառայել հետագա դարերի լատինական և եվրոպական ամբողջ հռետորական արվեստի համար։ Պահպանվել է նրա նամակների մեծ մասը, որոնց միջոցով կարելի է պատկերացում կազմել մ.թ.ա. I դարի կեսերի հռոմեական պատմության որոշ դրվագների վերաբերյալ։Նրա ճառերում՝ «Ընդդեմ Գ. Վեռեսի» (70 թ.), «Ի պաշտպանություն Մանիլիոսի օրինագծի» (68 թ.), «Հարդարացում Պ.Սեստիոսի» (56 թ.) պահպանվել են կարևոր փաստեր և արժեքավոր բնորոշումներ ու գնահատականներ, որոնք ցույց են տալիս, որ Կիկերոնն արևելյան իրադարձությունների, Հայոց Տիգրան Մեծ արքայի քաղաքականության խորաթափանց դիտող էր։ Կիկերոնը Տիգրան Մեծի ժամանակակիցներից միակն է, որի վկայությունները նրա մասին պահպանվել են։"
+        },
+        {
+          "@language": "da",
+          "@value": "Marcus Tullius Cicero (3. januar 106 f.Kr. – 7. december 43 f.Kr.) var romersk politiker, retoriker, jurist og skribent.Cicero tilhørte den romerske ridderstand og begyndte sin karriere som advokat i (romerretten), hvor han opnåede ry for modigt at forsvare romerske borgere, som var blevet uretfærdigt dømt under Sullas udrensninger.Han var en erklæret forsvarer af den romerske republik og gjorde karriere i magistraten. Han var kvæstor på Sicilien i 76 f.kr, praetor i Rom i 66 f.Kr. og consul i 63 f.Kr.. Som consul afværgede han den catilinariske sammensværgelse. Under det første triumvirat måtte han for en tid gå i eksil. Efter benådning optrådte han atter som politiker, men hans indflydelse var svækket.Efter mordet på Julius Cæsar tog han parti mod Marcus Antonius. Det kostede ham livet, men var på længere sigt måske medvirkende til Antonius' fald. Cicero blev myrdet under proskriptionerne år 43 f.Kr., 63 år gammel.Ciceros retorik kan opleves i 58 bevarede politiske/juridiske taler og skrifter samt mere end 800 breve. Cicero, der var eklektiker, anses som fader til den klassiske latinske prosa."
+        },
+        {
+          "@language": "ga",
+          "@value": "Ba státaire, dlíodóir, teoiriceoir polaitiúil, scríbhneoir agus fealsamh Rómhánach é Cicearó (fíorainm: Marcus Tullius Cicero; Tully an leagan a úsáideann sean-údair Bhéarla; 3 Eanáir, 106 RC - 7 Nollaig, 43 RC). Glactar go forleathan leis mar dhuine de na príomh-óráidithe Laidine agus de na scríbhneoirí móra sa teanga, agus is clasaicigh iad a chuid aistí.Bhí tionchar Chicearó ar fhorbairt agus ar stíl a theanga chomh mór millteanach is go n-úsáideann a lán teangacha Eorpacha i gcónaí téarmaí Laidine a tháinig ó pheann Chicearó: focail de chuid Chicearó iad humanitas (daonnacht), qualitas (cáilíocht), quantitas (cainníocht) agus essentia (eisint, bunbhrí, bunchiall, éirim an scéil), mar shampla. Ba é Cicearó a chuir príomhscoileanna na fealsúnachta Gréagaí in aithne do mhuintir na Róimhe, agus ba spreagadh dó teanga na bhfealsún Gréagach téarmaí nua a chumadh le haghaidh lucht labhartha na Laidine.Deirtear gurbh iad litreacha Chicearó, ar tháinig Francesco Petrarca, an file Iodálach a dtugtar \"athair an daonnachais\" air, orthu, - gurbh iad na litreacha seo a chuir tús leis an Renaissance sa Iodáil. Dúirt an scoláire Polannach Tadeusz Zieliński gurbh é an rud a bhí i gceist leis an Renaissance ná gur chuir na daoine suim nua i saothar Chicearó, agus nár tháinig athbheochan na seanársaíochta clasaicí - an chultúir shean-Rómhánaigh agus shean-Ghréagaigh - ach sna sálaí ag athbheochan Chicearó. Chuaigh saothar Chicearó i bhfeidhm ar smaointeoirí na hochtú haoise déag ach go háirithe, cosúil le Montesquieu, David Hume, agus John Locke. Inniu féin is é saothar Chicearó an fhoinse is cuimsithí dá bhfuil againn ar imeachtaí agus ar chultúr na sean-Róimhe roimh ré na n-impirí.I gcúrsaí polaitíochta bhí Cicearó ag dul go tréan ar son na Poblachta agus in aghaidh na deachtóireachta. Nuair a rinne Lucius Sergius Catilina iarracht cumhacht a shealbhú agus deireadh a chur le poblacht na Róimhe, ba é Cicearó a chuir faoi chois an chomhcheilg seo le feabhas a reitrice agus a óráidíochta. Ní raibh sé róchairdiúil le Caesar ach an oiread, ó nár thaitin deachtóireacht Caesar leis, mar phoblachtánach. Le linn an chogaidh chathartha i ndiaidh bhás Caesar, chuir Cicearó in aghaidh Marcus Antonius, agus mar sin, feallmharaíodh ar ordú ó Antonius é."
+        },
+        {
+          "@language": "hr",
+          "@value": "Marko Tulije Ciceron (lat. Marcus Tullius Cicero; Arpin, 3. siječnja 106. pr. Kr. – Formijan kod Gajete, 7. prosinca 43. pr. Kr.), državnik, odvjetnik, politički teoretičar, filozof i najveći rimski govornik."
+        },
+        {
+          "@language": "tr",
+          "@value": "Marcus Tullius Cicero (MÖ 106 - MÖ 43), (Latin) Romalı devlet adamı, bilgin, hatip ve yazar. Felsefe öğrenimini, Epikürosçu Phaedros, Stoacı Diodotos ve Akademi'ye bağlı Philon'dan almış olan Cicero'nun önemi, Yunan düşüncesini daha sonraki kuşaklara aktarmasından oluşur. Bilgi kuramı açısından, kesinliğe bağlanmak yerine olasılıkların yolunu izlemeyi yeğleyen, buna karşın ahlak alanında, dogmatik bir tavır sergileyip, Stoacılara ve bu arada Sokrates'e yönelen Cicero, Latincenin felsefe dili olarak gelişmesine katkı yapmış ve bu arada, dinsel görüşleri açısından daima agnostik kalmıştır."
+        },
+        {
+          "@language": "ar",
+          "@value": "ماركوس توليوس كيكِرو Marcus Tullius Cicero - شيشرون Cicero -، الكاتب الروماني وخطيب روما المميز، ولد سنة 106 ق.م، صاحب إنتاج ضخم يعتبر نموذجا مرجعيا للتعبير اللاتيني الكلاسيكي وصلنا لحسن الحظ جانب كبير منه، لقد أثارت شخصية شيشرون الكثير من الجدل والتقويمات المتضاربة وخاصة في الجانب السياسي من حياته، فهو تارة مثقف مضيع في وسط سيء، وتارة أخرى ثري إيطالي صاعد في روما، وثالثة انتهازي متقلب و\"أداة طيعة في يد الملكية\" و\"متملق لبومبي ثم سيزار\" بحسب ثيودور مومسين وجيروم كاركوبينو، ولكنه أيضا بحسب بيير كريمال الجسر الذي عبره وصلنا جانب من الفلسفة اليونانية.في عام 63 قبل الميلاد, أصبح شيشرون أول رجل جديد لأكثر من ثلاثين عام."
+        },
+        {
+          "@language": "nl",
+          "@value": "Marcus Tullius Cicero ( Arpinum, 3 januari 106 v.Chr. – Caieta, 7 december 43 v.Chr. ) was een Romeins redenaar, politicus, advocaat en filosoof. Zijn leven viel samen met de overgang van de Romeinse Republiek naar het keizerrijk en hij was zelf betrokken bij de meeste politieke gebeurtenissen uit die tijd. Cicero's geschriften geven een belangrijk historisch, maar gekleurd inzicht in deze periode."
+        },
+        {
+          "@language": "ro",
+          "@value": "Marcus Tullius Cicero (n. 106 î.Hr., d. 43 î.Hr.) a jucat un rol important în perioada de sfârșit a Republicii romane. Activitatea sa literară și politico-socială s-a concretizat în domenii atât de numeroase, încât Cicero poate fi calificat drept un om universal, homo universalis. El a fost autorul roman care a exercitat cea mai profundă influență asupra literaturii latine și s-a manifestat ca unul dintre cei mai prolifici scriitori, mai prolific chiar decât Seneca și Augustin."
+        },
+        {
+          "@language": "zh",
+          "@value": "馬庫斯·圖利烏斯·西塞罗（Marcus Tullius Cicero，前106年1月3日－前43年12月7日，其名在拉丁语中读为[ˈkɪkɛroː]（音译为基凯罗），西塞罗为英文音译，英语发音：/ˈsɪsɨroʊ/），是罗马共和国晚期的哲学家、政治家、律师、作家、雄辩家。他出生于騎士阶级的一个富裕家庭，青年投身法律和政治，其后曾担任罗马共和国的执政官；同时，因为其演说和文学作品，他被广泛地认为是古罗马最好的演说家和最好的散文作家之一。在罗马共和国晚期的政治危机中，他是共和国所代表的自由主义的忠诚辩护者，安东尼的政敌。他支持古罗马的宪制，因此也被认为是三权分立学说的古代先驱。西塞罗因其作品的文学成就，为拉丁语的发展作出了不小的贡献。他在当时是罗马显著的文学人物，其演说风格雄伟、论文机智、散文流畅，设定了古典拉丁语的文学风格。西塞罗也是一位古希腊哲学的研究者。他通过翻译，为罗马人介绍了很多希腊哲学的作品，使得希腊哲学的研究得以在希腊被罗马征服之后得以延续。西塞罗在古罗马时代的影响在中世纪时代渐渐衰落，但在文艺复兴时被重新振兴。彼特拉克在14世纪重新发现了西塞罗的书信，由此开始了文艺复兴学者对西塞罗的重新研究。因此有学者认为，文艺复兴在本质上是对西塞罗的复兴。西塞罗的影响在启蒙时代达到了顶峰，受其政治哲学影响者包括洛克、休谟、孟德斯鸠等哲学家。美国国父亚当斯、汉密尔顿等人也常在其作品中引用西塞罗的作品。西塞罗深远地影响了欧洲的哲学和政治学说，并且至今仍是罗马历史的研究对象。"
+        },
+        {
+          "@language": "eu",
+          "@value": "Zizeron (latinez Marcus Tullius Cicero) (K. a. 106ko urtarrilaren 3 - K. a. 43ko abenduaren 7) politikari eta hizlari erromatarra izan zen. Latinezko hizlari handienatzat jotzen da.Familia Arpinum-ekoa zen, Mariorena bezalakoa. Bizitza osoan bi familien arteko konparazioak jasan behar izan zituen Zizeronek. Mariorena aberatsagoa eta ospetsuagoa izanda, ez zituen konparazio horiek oso gustokoak.Zizeron izena cicer hitzetik dator, zeinak latinez txitxirioa esan nahi duen. Plutarkoren arabera, Zizeronen arbasoren batek txitxirio baten moduko pikorra zeukan sudurraren puntan. Politikan sartu zenean ez zuen goitizena aldatu, hala eskatu bazioten ere."
+        },
+        {
+          "@language": "sr",
+          "@value": "„Кикерон“ преусмерава овде. Погледајте и Кикерон (Француска).Марко Тулије Цицерон (лат. Marcus Tullius Cicero; 3. јануар 106. — 7. децембар 43. п. н. е.) је био римски државник, књижевник и беседник."
+        },
+        {
+          "@language": "lt",
+          "@value": "Markas Tulijus Ciceronas (Marcus Tullius Cicero , 106 m. pr. m. e. sausio 3 d. – 43 m. pr. m. e. gruodžio 7 d.) – romėnų politikas, retorikas, filosofas ir rašytojas."
+        },
+        {
+          "@language": "is",
+          "@value": "Marcus Tullíus Cíceró (3. janúar 106 f.Kr. – 7. desember 43 f.Kr.) var rómverskur stjórnmálamaður, heimspekingur og rithöfundur, og er almennt talinn meðal bestu höfunda á latínu í óbundnu máli."
+        },
+        {
+          "@language": "uk",
+          "@value": "Марк Туллій Цицерон (лат. Marcus Tullius Cicero, 3 січня 106 до н. е. — 7 грудня 43 до н. е.) — давньоримський політичний діяч, видатний оратор, філософ та літератор. Один із зачинателів римської розповідної прози."
+        },
+        {
+          "@language": "cs",
+          "@value": "Marcus Tullius Cicero (3. ledna 106 př. n. l. Arpinum – 7. prosince 43 př. n. l. Řím) byl římský řečník, republikánský politik, filosof a spisovatel."
+        },
+        {
+          "@language": "hu",
+          "@value": "Marcus Tullius Cicero (Kr. e. 106. január 3., Arpinum – ma: Arpino, Olaszország – Kr. e. 43. december 7. , Formiae – ma Formia, Róma) – az ókori Rómában élt író, filozófus és politikus. Kortársai – köztük politikai ellenfelei is – ragyogó, már-már boszorkányos tehetségű szónoknak tartották, de írásai is remekművek. Mindenképp az antik irodalom egyik óriása, de a tankönyvek általában abban is megegyeznek, hogy ő az antik széppróza legnagyobb mestere. Ehhez hozzájárul az is, hogy azon kevés ókori szerző közé tartozik, akiknek művei nem töredékesek, hiánytalanul maradtak meg: számtalan (magán)levele, bírósági vád- és védőbeszéde, filozófiai és esztétikai értekezése túlélte az évezredeket. Filozófusként is számottevő (elsősorban a sztoikus iskolához sorolható, de még inkább „eklektikus”, az iskolákból neki tetsző tanokat vegyítő filozófusnak szokás minősíteni).Politikusi karrierje is rendkívüli, nemzetségéből elsőként (homo novus) tölthetett be állami tisztségeket (aedilis, praetor), végül egész a konzulságig eljutott, s e minőségében elsősorban az ő nevéhez fűződik az „államellenesnek” tartott (ma populistának mondanánk) Catilina-féle összeesküvés (coniuratio Catilinae) leleplezése, amiért a szenátus magas kitüntetésben (pater patriae – A Haza Atyja) részesítette. Élete erőszakos halállal ért véget, mivel a köztársaságkor végének köztársaságpárti politikusaként többször is a vesztes oldalra állt. Az utókor nem egységes politikájának megítélésében: hogy csak a szélsőségeket említsük, egyesek (például marxista regényírók[forrás?]) a köztársaság népellenes plutokrata elitjének hiú, törtető, kapzsi, cinikus, demagóg, és maradi szolgájaként festik le, míg mások a szabadság, a hagyományok és a régi értékek bátor védelmezőjének a kibontakozóban lévő emberellenes, egyeduralmi diktatúrával szemben. Nem szabad azonban elfelejteni – ahogyan azt Jókai Mór megfogalmazta –, hogy „a történelmet Cicero és társai írták”. Cicero történeti szerepéről és politikusi megnyilvánulásairól vélt ismereteink többsége magától Cicerótól vagy elvbarátaitól származik, ezért minden tekintetben erős forráskritikával kell közelíteni.Érdekesség, hogy állítólag ő találta meg Arkhimédész szicíliai sírját, melyet a helyi görögök már elfeledtek, és nem tudtak megmutatni az utazóknak."
+        },
+        {
+          "@language": "ca",
+          "@value": "Marc Tul·li Ciceró, en llatí Marcus Tullius Cicero, (Arpinum, 3 de gener de 106 aC - Formia, 7 de desembre de 43 aC) fou polític, filòsof, escriptor i orador de l'antiga Roma. Es coneix la seva vida gràcies a la biografia que d'ell va escriure Plutarc, a les seves abundants epístoles -que encara es conserven- i al zel dels humanistes del s. XV i XVI que varen copiar els rars manuscrits dels seus discursos i obres. Ciceró és conegut per ser un dels autors més importants de la literatura llatina d'època republicana, que va afavorir, entre moltes altres coses, a l'esplendor de la llengua llatina."
+        },
+        {
+          "@language": "de",
+          "@value": "Marcus Tullius Cicero (klassische Aussprache: [ˈkɪkɛroː]; * 3. Januar 106 v. Chr. in Arpinum; † 7. Dezember 43 v. Chr. bei Formiae) war ein römischer Politiker, Anwalt, Schriftsteller und Philosoph, der berühmteste Redner Roms und Konsul im Jahr 63 v. Chr.Cicero war einer der vielseitigsten, aber auch – so die Sicht von Plutarch – wankelmütigsten Köpfe der römischen Antike. Als Schriftsteller war er schon für die Antike stilistisches Vorbild, seine Werke wurden als Muster einer vollendeten, „goldenen“ Latinität nachgeahmt (Ciceronianismus). Seine Bedeutung auf philosophischem Gebiet liegt in erster Linie nicht in seinen eigenständigen Erkenntnissen, sondern in der Vermittlung griechischen philosophischen Gedankenguts an die lateinischsprachige Welt; oft sind seine griechischen Quellen nur in seiner Bearbeitung greifbar, da sie sonst nirgends überliefert sind. Für die Niederschlagung der Verschwörung des Catilina und die daraus resultierende vorläufige Rettung der Republik ehrte ihn der Senat mit dem Titel pater patriae (Vater des Vaterlandes).Sein umfangreicher Schriftverkehr, insbesondere die Briefe an Atticus, beeinflussten maßgeblich und nachhaltig die europäische Briefkultur. Diese Briefe und sein übriges Werk liefern uns ein detailreiches Bild der Zustände Roms am Ende der Republik. Während der Bürgerkriege und der Diktatur Gaius Iulius Caesars trat Cicero immer wieder für eine Rückkehr zur traditionellen republikanischen Verfassungsform und Herrschaftsausübung ein. In seiner politischen Praxis zeigte er eine Flexibilität, die ihm den Vorwurf des Opportunismus und der Prinzipienlosigkeit eingetragen hat und deren Bewertung in der Forschung weiterhin umstritten ist. Nach der Ermordung Caesars 44 v. Chr. wurde Cicero von den Triumviren Antonius, Octavianus und Lepidus auf die Proskriptionsliste gesetzt und am 7. Dezember 43 v. Chr. auf der Flucht ermordet."
+        },
+        {
+          "@language": "it",
+          "@value": "Marco Tùllio Ciceróne (in latino Marcus Tullius Cicero, pronunciato /'markus 'tulljus 'ʧiʧero/ secondo la pronuncia italiana tradizionale del latino, ['maːr.kʊs 'tʊl.lɪ.ʊs 'kɪ.kɛ.roː] secondo la pronuncia restituita, cioè classica ricostruita; in greco antico Κικέρων, Kikérōn; Arpino, 3 gennaio 106 a.C. – Formia, 7 dicembre 43 a.C.) è stato un avvocato, politico, scrittore e oratore romano.Esponente di un'agiata famiglia dell'ordine equestre, Cicerone fu una delle figure più rilevanti di tutta l'antichità romana. La sua vastissima produzione letteraria, che va dalle orazioni politiche agli scritti di filosofia e retorica, oltre a offrire un prezioso ritratto della società romana negli ultimi travagliati anni della repubblica, rimase come esempio per tutti gli autori del I secolo a.C., tanto da poter essere considerata il modello della letteratura latina classica. Attraverso l'opera di Cicerone, grande ammiratore della cultura greca, i Romani poterono anche acquisire una migliore conoscenza della filosofia. Tra i suoi maggiori contributi alla cultura latina ci fu senza dubbio la creazione di un lessico filosofico latino: Cicerone si impegnò, infatti, a trovare il corrispondente vocabolo in latino per tutti i termini specifici del linguaggio filosofico greco. Tra le opere fondamentali per la comprensione del mondo latino si collocano invece le Lettere (Epistulae, in particolar modo quelle all'amico Tito Pomponio Attico), che offrono numerosissime riflessioni su ogni avvenimento, permettendo di comprendere quali fossero le reali linee politiche dell'aristocrazia romana.Cicerone occupò per molti anni anche un ruolo di primaria importanza nel mondo della politica: dopo aver salvato la repubblica dal tentativo eversivo di Lucio Sergio Catilina ed aver così ottenuto l'appellativo di pater patriae (padre della patria), ricoprì un ruolo di primissima importanza all'interno della fazione degli Optimates. Fu infatti Cicerone che, negli anni delle guerre civili, difese strenuamente fino alla morte una repubblica giunta ormai all'ultimo respiro e destinata a trasformarsi nel principatus augusteo."
+        },
+        {
+          "@language": "cy",
+          "@value": "Gwleidydd, cyfreithiwr, athronydd ac awdur Rhufeinig oedd Marcus Tullius Cicero (3 Ionawr 106 CC – 7 Rhagfyr 43 CC). Ganed Cicero yn Arpinum (Arpino heddiw), tua 100 km i'r de o Rufain. Roedd yn deulu yn uchelwyr lleol, gyda chysylltiad pell ag un arall o enwogion Arpinum, Gaius Marius,ond heb gysylltiad a'r teuluoedd seneddol. Bu'n astudio'r gyfraith dan Quintus Mucius Scaevola, a dywed Plutarch ei fod yn fyfyriwr eithriadol o alluog. Dechreuodd ei yrfa fel cyfreithiwr tua 83-81 CC; ei achos llys pwysig cyntaf oedd amddiffyn Sextus Roscius ar gyhuddiad o lofruddio ei dad. Ymhlith y bobl a gyhuddwyd gan Cicero fel y gwir lofruddion roedd Chrysogonus, ffefryn Lucius Cornelius Sulla oedd yn feistr Rhufain ar y pryd. Yn 79 CC, aeth Cicero i Wlad Groeg, Asia Leiaf a Rhodos, a threuliodd amser yn astudio rhethreg dan Molon o Rhodos. Wedi dychwelyd i Rufain, fe'i hetholwyd yn quaestor yn 75 CC, gan wasanaethu yn Sicilia. Gofynnodd y Siciliaid iddo eu cynrychioli i erlyn Gaius Verres, llywodraethwr Sicilia oedd wedi ymgyfoethogi ar draul y wlad. Bu'r achos yn erbyn Verres yn 70 CC yn llwyddiant mawr i Cicero, a daeth yn enwog yn Rhufain.Etholwyd ef yn gonswl yn 63 CC. Yn ystod ei gyfnod fel conswl, llwyddodd i ddatgelu cynllwyn gan gefnogwyr Lucius Sergius Catilina yn erbyn y wladwriaeth. Ffôdd Catilina pan draddododd Cicero araith yn ei erbyn yn y Senedd, a dienyddiwyd nifer o'i ganlynwyr.Yn 61 CC gwahoddodd Iŵl Cesar ef i fod yn bedwerydd yn ei bartneriaeth gyda Gnaeus Pompeius Magnus a Marcus Licinius Crassus, ond gwrthododd Cicero. Yn 58 CC cyhoeddodd Publius Clodius Pulcher, tribwn y bobl, ddeddf yn alltudio unrhyw un oedd wedi dienyddio dinasyddion Rhufeinig heb eu rhoi ar brawf. Roedd Cicero wedi gwneud hyn adeg cynllwyn Catilina, a bu raid iddo adael am Wlad Groeg. Dychwelodd i Rufain yn 57 CC. Amddiffynnodd Cicero Milo ar gyhuddiad o lofruddio, ac ystyrir ei araith Pro Milone yn un o'i gampweithiau. Er hynny, alltudiwyd Milo. Erbyn 50 CC roedd y berthynas rhwng Cesar a Pompeius wedi dirywio, a rhoddodd Cicero ei gefnogaeth i Pompeius. Yn y cyfnod wedi llofruddiaeth Cesar yn 44 CC, cyhoeddodd gyfres o ymosodiadau ar Marcus Antonius, y Philippicau. Pan ddaeth Antonius ac Octavianus i gytundeb i rannu grym, cyhoddwyd enw Cicero ar restr o elynion. Daliwyd ef wrth iddo adael ei fila yn Formiae ar ei ffordd tua'r porthladd i geisio dianc, a lladdwyd ef."
+        },
+        {
+          "@language": "el",
+          "@value": "Ο Μάρκος Τύλλιος Κικέρων (Marcus Tullius Cicero, 3 Ιανουαρίου 106 π.Χ. - 7 Δεκεμβρίου 43 π.Χ.), γνωστός και ως Κικέρων, ήταν Ρωμαίος φιλόσοφος, πολιτικός, δικηγόρος, ρήτορας, ύπατος και συνταγματολόγος. Θεωρείται ευρέως ως ένας από τους μεγαλύτερους ρήτορες και συγγραφείς στη λατινική γλώσσα."
+        },
+        {
+          "@language": "be",
+          "@value": "Марк Тулій Цыцэрон (лац.: Marcus Tullius Cicero, 3 студзеня 106 да н.э. — 7 снежня 43 да н.э.) — выдатны старажытнарымскі прамоўца, філосаф, палітык."
+        },
+        {
+          "@language": "sk",
+          "@value": "Marcus Tullius Cicero (* 3. január 106 pred Kr., Arpinium – † 7. december 43 pred Kr., Formie) bol rímsky štátnik, rečník a filozof, autor početných politicko-teoretických, filozofických aj rečníckych spisov. Cicero je považovaný za jedného z najväčších rímskych rečníkov a prozaikov a za jedného z najvýznamnejších starých Rimanov vôbec.Cicero je vnímaný vo všeobecnosti ako jeden z najvšestrannejších vzdelancov, ktorých svetu dala rímska kultúra. Počas svojho života sa Cicero preslávil ako vynikajúci rečník a úspešný právnik, dnes je však oceňovaný predovšetkým ako filozof, humanista a autor politických prác. Jeho filozofické dielo otvorilo Rimanom dvere ku gréckej filozofii. Cicero sám pre ňu vytvoril latinskú slovnú zásobu. Forma latinského jazyka, ktorou Cicero písal, je považovaná za vzor klasickej latinčiny. Dochovaná objemná korešpondencia, z veľkej časti adresovaná jeho blízkemu priateľovi Titovi Pomponiovi Atticovi, slúžila po nasledujúce storočia ako vzor písania listov pre vzdelané vrstvy v Európe. Podľa životopisca Cornelia Nepota obsahovala táto korešpondencia také bohatstvo informácii „o zmýšľaní predných mužov, chybách vojvodcov a búrení vo vláde“, že mohla nahradiť historiografické dielo .Počas búrlivej druhej polovice 1. storočia pred Kr. poznačenej občianskymi vojnami, vzostupmi a pádmi diktátorov, Cicero obhajoval návrat k tradičnej republike. V skutočnom živote sa však nechával unášať raz k jednej raz k druhej politickej strane podľa panujúcej politickej situácie. Nie je ľahké vysvetliť premenlivosť jeho názorov, ktorá mohla vyplývať z jeho povahy. Gaius Asinius Pollio, významný štátnik a historik Ciceronovej doby, sa o ňom vyjadril: „Kiež by bol schopný zniesť bohatstvo s väčším sebazáporom a nepriateľstvo s väčšou vytrvalosťou!“"
+        },
+        {
+          "@language": "pt",
+          "@value": "Marco Túlio Cícero, em latim Marcus Tullius Cicero (Arpino, 3 de Janeiro de 106 a.C. — Formia, 7 de Dezembro de 43 a.C.), foi um filósofo, orador, escritor, advogado e político romano. Cícero é normalmente visto como sendo uma das mentes mais versáteis da Roma antiga. Foi ele quem apresentou aos Romanos as escolas da filosofia grega e criou um vocabulário filosófico em Latim, distinguindo-se como um linguista, tradutor, e filósofo. Um orador impressionante e um advogado de sucesso, Cícero provavelmente pensava que a sua carreira política era a sua maior façanha. Hoje em dia, ele é apreciado principalmente pelo seu humanismo e trabalhos filosóficos e políticos. A sua correspondência, muita da qual é dirigida ao seu amigo Ático, é especialmente influente, introduzindo a arte de cartas refinadas à cultura Europeia. Cornelius Nepos, o biógrafo de Ático do século I a.C., comentou que as cartas de Cícero continham tal riqueza de detalhes \"sobre as inclinações de homens importantes, as falhas dos generais, e as revoluções no governo\" que os seus leitores tinham pouca necessidade de uma história do período.Durante a segunda metade caótica do século I a.C., marcada pelas guerras civis e pela ditadura de Júlio César, Cícero patrocinou um retorno ao governo republicano tradicional. Contudo, a sua carreira como estadista foi marcada por inconsistências e uma tendência para mudar a sua posição em resposta a mudanças no clima político. A sua indecisão pode ser atribuída à sua personalidade sensível e impressionável: era propenso a reagir de modo exagerado sempre que havia mudanças políticas e privadas. \"Oxalá que ele pudesse aguentar a prosperidade com mais auto-controlo e a adversidade com mais firmeza!\" escreveu C. Asínio Pólio, um estadista e historiador Romano seu contemporâneo."
+        },
+        {
+          "@language": "pl",
+          "@value": "Marcus Tullius Cicero (ur. 3 stycznia 106 p.n.e., zm. 7 grudnia 43 p.n.e.) – mówca rzymski, popularyzator filozofii greckiej, polityk, słynny ze stłumienia spisku Katyliny. Stronnik optymatów. Zamordowany wraz z bratem Kwintusem na polecenie Marka Antoniusza, który zemścił się w ten sposób za wygłoszone przeciw niemu Filipiki.Cycero, jako homo novus (czyli jako pierwszy w rodzinie sprawujący wysoki urząd), rozpoczął swą karierę jako kwestor w 75 roku p.n.e. na Sycylii w mieście Lilibeum, w 69 został edylem kurulnym, w 66 pretorem, w 63 – wraz z Gajuszem Antoniuszem Hybrydą – konsulem. To właśnie za swego konsulatu wykrył spisek Katyliny, co zostało opisane w De coniuratione Catilinae przez Salustiusza. W kulturze Europy stał się symbolem mówcy i obrońcy wolności republiki."
+        },
+        {
+          "@language": "bs",
+          "@value": "Marko Tulije Ciceron (lat. Marcus Tullius Cicero; je bio antički rimski filozof, državnik, pravnik i politički teoretičar i najznačajniji rimski govornik. Rođen je 3. januara 106. godine p. n. e. a umro 7. decembra 43. godine p. n. e.. Ciceron se smatra za jednog od najsvestranijih umova antičkog Rima. Upoznao je Rimljane sa najvažnijim grčkim filozofskim učenjima, stvorio je latinski filozofski rječnik (u koji je uložio poseban napor kako bi pronašao odgovarajuće izraze u latinskom jeziku za sve specifične termine iz grčkog filozofskog vokabulara) i istakao se kao lingvista, prevodilac i filozof. Bio je i uspješan pravnik a naročito je bila impresivna njegova govornička vještina. Ipak, Ciceron je vjerovatno smatrao da mu je politička karijera bila najvažnije postignuće. U savremeno doba, Ciceron je prvenstveno cijenjen zbog svog humanizma te radova sa filozofskim i političkim temama. Razmijenio je i obimnu korespondenciju, posebno pisma (Epistulae, sačuvano ih je oko 900) koja je upućivao svojoj porodici i prijateljima, naročito prijatelju Atikusu (Titus Pomponius Atticus). Ova korespondecija, odnosno, Ciceronova vještina rafiniranog pisanja pisama, kasnije će imati veliki uticaj i široku primjenu u Evropi. Kornelije Nepos (Cornelius Nepos) navodi da su Ciceronova pisma sadržavala ogromno bogatstvo detalja o sklonostima vodećih ljudi, manama generala i revolucijama u vlasti da njihovom čitaocu nije bilo potrebno izučavanje historije kako bi se upoznali s datim vremenima. Dakle, Ciceron je, bez sumnje, bio jedna od najvažnijih ličnosti iz cijelog perioda antičkog Rima. Osim pomenutih radova i vještina, zaslužan je i za neprocjenjivo vrijedan opis rimskog društva iz burnih vremena posljednjih dana Rimske Republike te je bio i toliko važan uzor svim autorima iz I stoljeća p. n. e. da ga se može smatrati prototipom klasične latinske literature. Ciceron je dugo godina imao važnu ulogu u politici; nakon što je spasio Republiku od podrivanja Lucija Sergija Katilina (Lucius Sergius Catilina) prozvan je pater patriae (otac domovine, patrije) a za vrijeme rimskih građanskih ratova do kraja je branio Republiku koja je tada bila na izdahu i neumitno se transformirala u principat (principatus) pod Avgustom (Gaius Julius Caesar Octavianus, Cezar Augustus)."
+        },
+        {
+          "@language": "es",
+          "@value": "Marco Tulio Cicerón, en latín Marcus Tullius Cicero, pronunciado ['mar.kʊs 'tul.liʊs ˈkɪkɛroː] (Arpino, 3 de enero de 106 a. C. - Formia, 7 de diciembre de 43 a. C.) fue un jurista, político, filósofo, escritor, y orador romano. Es considerado uno de los más grandes retóricos y estilistas de la prosa en latín de la República romana.Reconocido universalmente como uno de los más importantes autores de la historia romana, es responsable de la introducción de las más célebres escuelas filosóficas helenas en la intelectualidad republicana, así como de la creación de un vocabulario filosófico en latín. Gran orador y reputado abogado, Cicerón centró —mayormente— su atención en su carrera política. Hoy en día es recordado por sus escritos de carácter humanista, filosófico y político. Sus cartas, la mayoría enviadas a Ático, alcanzaron un enorme reconocimiento en la literatura europea por la introducción de un depurado estilo epistolar. Cornelio Nepote destacó la riqueza ornamental de estas cartas, escritas «acerca de las inclinaciones de los líderes, los vicios de los comandantes y las revoluciones estatales», que transportaban al lector a esa época.Constituido en uno de los máximos defensores del sistema republicano tradicional combatió, usando cualquier recurso, la dictadura de César. No obstante, durante su propia carrera no dudó en cambiar de postura dependiendo del clima político. Esta indecisión es fruto de su carácter sensible e impresionable. Intemperante, era propenso a reaccionar de manera excesiva ante los cambios. El escritor Asinio Polión escribió de él:¡Ojalá hubiera sido capaz de soportar la prosperidad con mayor autocontrol y la adversidad, con mayor energía!"
+        },
+        {
+          "@language": "fi",
+          "@value": "Marcus Tullius Cicero [maːrkus tullius kikeroː] (3. tammikuuta 106 eaa. – 7. joulukuuta 43 eaa.) oli roomalainen poliitikko, puhuja, filosofi, lakimies ja kirjailija. Häntä pidetään yleisesti latinankielisen proosan mestarina, ja klassinen latina määritellään yleensä hänen ja Julius Caesarin teosten pohjalta. Ciceron teoksia on säilynyt poikkeuksellisen paljon. Hänen vaikutuksensa myöhempään kirjallisuuteen ja kielenkäyttöön on ollut merkittävää. Häntä pidetään myös eräänä eurooppalaisen humanismin perustajahahmoista.Cicero eli aikana, jolloin Rooman tasavalta oli väistämättä murenemassa pala palalta. Hän pyrki poliittisen uransa aikana idealistisesti puolustamaan tätä harvainvaltaa, muttei kyennyt vaikuttamaan sen korvautumiseen yksinvallalla. Hän oli poliittisessa toiminnassaan pragmaattinen, vaikka hänen toimintaansa sisältyi monia ristiriitaisuuksia ja mielenmuutoksia."
+        },
+        {
+          "@language": "ja",
+          "@value": "マルクス・トゥッリウス・キケロ（ラテン語: Marcus Tullius Cicero, 紀元前106年1月3日 - 紀元前43年12月7日）は、共和政ローマ期の政治家、文筆家、哲学者である。"
+        },
+        {
+          "@language": "sq",
+          "@value": "Ciceroni, Mark Tul Cicero, lindi më 3 janar të vitit 106 p.e.s dhe vdiq më 7 dhjetor të vitit 43 p.e.s, ishte historian dhe filozof i Romës antike i lindur pranë Aripinit. Studioi në Romë për drejtësinë dhe retorikën. Njohuritë e tija në artin e oratorisë (gojtarisë) dhe të filozofisë ai i plotësoi veçanërisht pas një udhëtimi që kishte bërë në Greqi. Në vitin 63 p.e.s ai ishte konsull dhe gjatë kryerjes së kësaj detyre ai zbuloi komplotin e Katilinës dhe më vonë të bjerë si viktimë e kundështarëve të tij dhe të dërgohet nga ata në mërgim. Pas dy vite mërgimi ai kthehet përsëri në Romë dhe merret me studime retorike dhe filozofike. Pasi ai mendonte se vetëm në rrugën që shihte Pompeu mund të mbrohej çështja e republikës, ai edhe mbajti anën e tij në luftën civile. Pas vrasjes së Çezarit ai ishte një ndër krerët e partisë së senatit dhe e luftonte Mark Antonin. Për shkak të kësaj vije që ndiqte, Ciceroni u vra nga agjentët e Antonit në vitin 43 p.e.s.Gjatë jetës së tij ai ishte i dalluar për oratori (gojtari). Ka mbajtur fjalime të ndryshme si burrë shteteti dhe si avokat. Fjalimet e tija janë çmuar si fjalë bindëse, si të forcës tërheqëse të fjalës. Nga këto fjalime të Ciceronit mund të kuptohen dhe të njihen më mirë rrethanat dhe jeta e tij.Cicero shkroi disa vepra si: \"De oratore\" (Mbi oratorinë), \"De republika\" (Mbi shtetin), \"De amicitia\" (Mbi miqësinë), \"De setnecutute\" (Mbi pleqërinë).Gjuha që përdor Ciceroni në veprat e tija është e zgjedhur dhe e përpunuar me stilin e tij të qartë dhe të bukur, ai mendimet i ilustron me figura tërheqëse gjuhësore.Nga korrospondeca (letërkëmbimi) e tij me mikun e tij të ngushtë Pompon Atikun mund të kuptojmë se Ciceroni ka jetuar në pronat e Atikut për një farë kohe. Ciceroni na lë disa të dhëna mbi mardhëniet dhe pasuritë e Dyrrahut (Durrësit t sotëm) dhe të Apollonisë (Fierit të sotëm) të cilat janë të shkruara në akuzat e tij drejtuar kundërshtarit të tij Pizonit. Nga këto shënime kuptojmë se Ciceroni kishte jetuar edhe në tokat Ilire për të cilat thoshte se disa prej tyre shfrytëzoheshin nga sundimtarët e provincës maqedonase."
+        },
+        {
+          "@language": "mk",
+          "@value": "Марко Тулиј Цицерон или Кикерон (лат. Marcus Tullius Cicero, 3 јануари 106 п.н.е. – 7 декември 43 п.н.е.) — римски оратор, државник и филозоф. Важи за најголемиот говорник на сите времиња."
+        },
+        {
+          "@language": "he",
+          "@value": "מרקוס טוליוס קיקרו (קרוי בעברית גם \"ציצרו\"‏ או \"ציצרון\"‏, בלטינית: Marcus Tullius Cicero‏; 3 בינואר 106 לפנה\"ס - 7 בדצמבר 43 לפנה\"ס) היה נואם, מדינאי, סופר ופילוסוף ברפובליקה הרומית המאוחרת. הוא נחשב לאמן הפרוזה בשפה הלטינית.קיקרו נולד בעיר ארפינום (כיום ארפינו, איטליה), ונהרג מחוץ לרומא כאשר נמלט מאויביו הפוליטיים. בין לידתו ומותו התרחשו האירועים הסוערים ביותר בתולדות הרפובליקה הרומית, אשר הביאו לבסוף למותה של הרפובליקה (שקיקרו היה בין גדולי מגיניה), ולעלייתה של צורת השלטון החדשה - הקיסרות הרומית."
+        },
+        {
+          "@language": "et",
+          "@value": "Marcus Tullius Cicero (traditsiooniline hääldus ['tsitseroo], klassikalises ladina keeles ['kikeroo]) (3. jaanuar, 106 eKr – 7. detsember, 43 eKr) oli Vana-Rooma oraator, riigimees, poliitiline filosoof, jurist ja filosoof. Teda peetakse üheks suurimaks rooma oraatoriks ja kirjanikuks. Cicero tegevusega seondub samuti vägagi lähedalt 17.–18. sajandi mõtlejate Locke'i, Voltaire'i ja Hume'i teooriad ja vaimne tegevus."
+        },
+        {
+          "@language": "en",
+          "@value": "Marcus Tullius Cicero (/ˈsɪsɨroʊ/; Classical Latin: [maːrkʊs tʊlliʊs ˈkɪkɛroː]; Ancient Greek: Κικέρων Kikerōn; 3 January 106 BC – 7 December 43 BC; sometimes anglicized as Tully /ˈtʌli/), was a Roman philosopher, politician, lawyer, orator, political theorist, consul and constitutionalist. He came from a wealthy municipal family of the Roman equestrian order, and is widely considered one of Rome's greatest orators and prose stylists.His influence on the Latin language was so immense that the subsequent history of prose in not only Latin but European languages up to the 19th century was said to be either a reaction against or a return to his style. According to Michael Grant, \"the influence of Cicero upon the history of European literature and ideas greatly exceeds that of any other prose writer in any language\". Cicero introduced the Romans to the chief schools of Greek philosophy and created a Latin philosophical vocabulary (with neologisms such as humanitas, qualitas, quantitas, and essentia) distinguishing himself as a linguist, translator, and philosopher.Petrarch's rediscovery of Cicero's letters is often credited for initiating the 14th-century Renaissance in public affairs, humanism, and classical Roman culture. According to Polish historian Tadeusz Zieliński, \"Renaissance was above all things a revival of Cicero, and only after him and through him of the rest of Classical antiquity.\" The peak of Cicero's authority and prestige came during the eighteenth-century Enlightenment, and his impact on leading Enlightenment thinkers such as John Locke, David Hume, and Montesquieu was substantial.His works rank among the most influential in European culture, and today still constitute one of the most important bodies of primary material for the writing and revision of Roman history, especially the last days of the Roman Republic.Though he was an accomplished orator and successful lawyer, Cicero believed his political career was his most important achievement. It was during his consulship that the Second Catilinarian Conspiracy attempted the government overthrow through an attack on the city from outside forces, and Cicero suppressed the revolt by executing five conspirators without due process. During the chaotic latter half of the 1st century BC marked by civil wars and the dictatorship of Gaius Julius Caesar, Cicero championed a return to the traditional republican government. Following Julius Caesar's death Cicero became an enemy of Mark Antony in the ensuing power struggle, attacking him in a series of speeches. He was proscribed as an enemy of the state by the Second Triumvirate and consequently killed in 43 BC."
+        },
+        {
+          "@language": "fr",
+          "@value": "Cicéron (en latin Marcus Tullius Cicero), né le 3 janvier 106 av. J.-C. à Arpinum en Italie et assassiné le 7 décembre 43 av. J.-C. à Gaète, est un philosophe romain, homme d'État et un auteur latin.Citoyen romain issu de la bourgeoisie italienne, Cicéron n’appartient pas à la noblesse, ce qui en principe ne le destine pas à un rôle politique majeur. Contrairement à ses contemporains Pompée et Jules César, la carrière militaire ne l’intéresse pas, et après une solide formation à la rhétorique et au droit, il réussit grâce à ses talents d’avocat à se constituer suffisamment d’appuis pour parvenir en 63 av. J.-C. à la magistrature suprême, le consulat. Dans une République en crise menacée par les ambitieux, il déjoue la conjuration de Catilina par la seule énergie de ses discours, les Catilinaires. Ce succès qui fait sa fierté cause ensuite son exil en 58 av. J.-C., pour avoir exécuté des conjurés sans procès. Revenu à Rome en 57 av. J.-C., il ne joue plus de rôle important sur la scène politique, dominée par Pompée et César. Durant la guerre civile qui débute en 49 av. J.-C., il rallie Pompée avec hésitation, puis est forcé de s'accommoder du pouvoir de César, avant de s’allier à Octave contre Antoine. Sa franche opposition à Antoine lui coute la vie en 43 av. J.-C.Orateur remarquable, il publie une abondante production considérée comme un modèle de l’expression latine classique, et dont une grande partie nous est parvenue. Il consacre sa période d’inactivité politique à la rédaction d’ouvrages sur la rhétorique et à l’adaptation en latin des théories philosophiques grecques. En partie perdus pendant le Moyen Âge, ses ouvrages connaissent un regain d’intérêt durant la renaissance carolingienne puis la renaissance italienne et l'époque classique. En revanche, au XIXe siècle et dans la première moitie du XXe siècle, il n'est considéré que comme un simple compilateur des philosophes grecs et sa vie politique est diversement appréciée et commentée : intellectuel égaré au milieu d’une foire d’empoigne, parvenu italien monté à Rome, opportuniste versatile, « instrument passif de la monarchie » larvée de Pompée puis de César selon Theodor Mommsen et Jérôme Carcopino. Selon la vision plus positive de Pierre Grimal, il est l’intermédiaire précieux qui nous transmit une partie de la philosophie grecque."
+        },
+        {
+          "@language": "sv",
+          "@value": "För brodern, se Quintus Tullius Cicero.För andra betydelser, se Cicero (olika betydelser).Marcus Tullius Cicero, ibland endast Cicero (uttalas ['kɪ:kero] på antikt latin), född 3 januari 106 f.Kr. i Arpinum (nuvarande Arpino), död 7 december 43 f.Kr. i Formia, Lazio, var en romersk talare, författare och politiker. Han skrev tal, brev och böcker om retorik och filosofi. Cicero var gift med Terentia och hade två barn, dottern Tullia och sonen Marcus Tullius Cicero Minor. Bror till Quintus Tullius Cicero. Cicero var, tillsammans med Cato d.y., den kanske mest begåvade politikern under sin samtid."
+        },
+        {
+          "@language": "lv",
+          "@value": "Marks Tullijs Cicerons (latīņu: Marcus Tullius Cicero, 106. gada p.m.ē. 3. janvāris - 43. gada p.m.ē. 7. decembris), Senās Romas filozofs, valstsvīrs, jurists, literāts, politikas teorētiķis un Romas likumu izstradātājs. Cicerons tiek uzskatīts par vienu no izcilākajiem Romas oratoriem un prozas stilistiem."
+        },
+        {
+          "@language": "gl",
+          "@value": "Marco Tulio Cicerón (en latín Marcus Tullius Cicero, pronunciado ['mar.kʊs 'tul.liʊs 'ki.ke.ro:]; máis coñecido por Cicerón) nado en Arpino o 3 de xaneiro do 106 a. C. e finado en Formia o 7 de decembro del 43 a. C. foi un xurista, político, filósofo, escritor e orador romano. Está considerado coma un dos máis grandes retóricos e estilistas da prosa en latín da República romana."
+        },
+        {
+          "@language": "ru",
+          "@value": "Марк Ту́ллий Цицеро́н (лат. Marcus Tullius Cicero; 3 января 106 до н. э., Арпинум — 7 декабря 43 до н. э., Формия) — древнеримский политик и философ, блестящий оратор."
+        },
+        {
+          "@language": "sl",
+          "@value": "Mark Tulij Cicero (Marcus Tullius Cicero, latinsko ['kikero:]), rimski državnik, pravnik, politični teoretik in filozof, * 3. januar, 106 pr. n. št., Arpinum, Italija, † 7. december 43 pr. n. št., Formia, Italija."
+        },
+        {
+          "@language": "az",
+          "@value": "Mark Tulli Siseron — Qədim Roma natiqi, filosof və siyasi xadim. Dialoq formasında yazılmış fəlsəfi əsərləri eklektik məzmundadır. İdrak nəzəriyyəsində Siseron skeptisizmə meyl göstərmiş və hesab etmişdir ki, real təsəvvürləri real olmayan təsəvvürlərdən fərqləndirmək üçün meyar yoxdur. Siseron başlıca diqqəti etika problemlərinə verirdi. <span id=\"interwiki-bs-fa\" /><span id=\"interwiki-fi-fa\" /><span id=\"interwiki-fr-fa\" /><span id=\"interwiki-it-fa\" /><span id=\"interwiki-li-fa\" /><span id=\"interwiki-af-fa\" /><span id=\"interwiki-de-ga\" />"
+        },
+        {
+          "@language": "bg",
+          "@value": "Марк Тулий Цицерон (на латински: Marcus Tullius Cicero) е римски държавник, най-прочутият оратор на Рим, адвокат, писател, философ и консул 63 пр.н.е. Известен е като най-големият стилист на латинската проза.Животът му съвпадна с упадъка и падането на Римската република, и е бил важен фактор в много от най-значимите политически събития на своето време. Роден е на 3 януари 106 пр.н.е. в Арпинум."
+        },
+        {
+          "@language": "ko",
+          "@value": "마르쿠스 툴리우스 키케로(Marcus Tullius Cicero 기원전 106년 1월 3일 - 기원전 43년 12월 7일)는 로마시대의 정치가, 웅변가, 문학가, 철학자이다."
+        }
+      ],
+      "http://rdvocab.info/ElementsGr2/dateOfBirth": "-0106-01-03",
+      "http://rdvocab.info/ElementsGr2/dateOfDeath": "-0043-12-07",
+      "http://rdvocab.info/ElementsGr2/placeOfBirth": {
+        "@id": "http://dbpedia.org/resource/Lazio"
+      },
+      "http://rdvocab.info/ElementsGr2/placeOfDeath": {
+        "@id": "http://dbpedia.org/resource/Roman_Republic"
+      },
+      "http://rdvocab.info/ElementsGr2/professionOrOccupation": [
+        {
+          "@language": "en",
+          "@value": "Politician, lawyer, orator, philosopher and poet"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Poet"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Philosopher"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Politician"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Orator"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Lawyer"
+        }
+      ],
+      "edm:end": "-0043-12-07",
+      "http://www.w3.org/2002/07/owl#sameAs": [
+        {
+          "@id": "http://rdf.freebase.com/ns/m.01tf5"
+        },
+        {
+          "@id": "http://sv.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://ia.dbpedia.org/resource/Ciceron"
+        },
+        {
+          "@id": "http://hr.dbpedia.org/resource/Ciceron"
+        },
+        {
+          "@id": "http://ru.dbpedia.org/resource/Марк_Туллий_Цицерон"
+        },
+        {
+          "@id": "http://lv.dbpedia.org/resource/Cicerons"
+        },
+        {
+          "@id": "http://ga.dbpedia.org/resource/Cicearó"
+        },
+        {
+          "@id": "http://ky.dbpedia.org/resource/Цицерон"
+        },
+        {
+          "@id": "http://ca.dbpedia.org/resource/Ciceró"
+        },
+        {
+          "@id": "http://yo.dbpedia.org/resource/Kísẹ́rò"
+        },
+        {
+          "@id": "http://sco.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://pms.dbpedia.org/resource/Ciceron"
+        },
+        {
+          "@id": "http://my.dbpedia.org/resource/ဆစ်ဆရို"
+        },
+        {
+          "@id": "http://it.dbpedia.org/resource/Marco_Tullio_Cicerone"
+        },
+        {
+          "@id": "http://af.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://vi.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://pt.dbpedia.org/resource/Cícero"
+        },
+        {
+          "@id": "http://www4.wiwiss.fu-berlin.de/gutendata/resource/people/Cicero_Marcus_Tullius_106_BC-43_BC"
+        },
+        {
+          "@id": "http://sk.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://ko.dbpedia.org/resource/마르쿠스_툴리우스_키케로"
+        },
+        {
+          "@id": "http://an.dbpedia.org/resource/Cicerón"
+        },
+        {
+          "@id": "http://hu.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://ku.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://purl.org/collections/nl/am/p-3322"
+        },
+        {
+          "@id": "http://tr.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://wikidata.dbpedia.org/resource/Q1541"
+        },
+        {
+          "@id": "http://de.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://sq.dbpedia.org/resource/Ciceroni"
+        },
+        {
+          "@id": "http://th.dbpedia.org/resource/คิเคโร"
+        },
+        {
+          "@id": "http://he.dbpedia.org/resource/מרקוס_טוליוס_קיקרו"
+        },
+        {
+          "@id": "http://war.dbpedia.org/resource/Cicerón"
+        },
+        {
+          "@id": "http://bs.dbpedia.org/resource/Ciceron"
+        },
+        {
+          "@id": "http://oc.dbpedia.org/resource/Ciceron"
+        },
+        {
+          "@id": "http://es.dbpedia.org/resource/Marco_Tulio_Cicerón"
+        },
+        {
+          "@id": "http://pl.dbpedia.org/resource/Cyceron"
+        },
+        {
+          "@id": "http://qu.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://simple.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://ja.dbpedia.org/resource/マルクス・トゥッリウス・キケロ"
+        },
+        {
+          "@id": "http://uk.dbpedia.org/resource/Цицерон"
+        },
+        {
+          "@id": "http://ro.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://fr.dbpedia.org/resource/Cicéron"
+        },
+        {
+          "@id": "http://sw.cyc.com/concept/Mx4rvjXOvJwpEbGdrcN5Y29ycA"
+        },
+        {
+          "@id": "http://eo.dbpedia.org/resource/Cicerono"
+        },
+        {
+          "@id": "http://fa.dbpedia.org/resource/سیسرون"
+        },
+        {
+          "@id": "http://gl.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://et.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://ml.dbpedia.org/resource/സിസറോ"
+        },
+        {
+          "@id": "http://dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://la.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://cs.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://eu.dbpedia.org/resource/Zizeron"
+        },
+        {
+          "@id": "http://is.dbpedia.org/resource/Cíceró"
+        },
+        {
+          "@id": "http://lb.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://fi.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://ast.dbpedia.org/resource/Cicerón"
+        },
+        {
+          "@id": "http://bg.dbpedia.org/resource/Цицерон"
+        },
+        {
+          "@id": "http://tl.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://ms.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://kk.dbpedia.org/resource/Цицерон"
+        },
+        {
+          "@id": "http://be.dbpedia.org/resource/Марк_Тулій_Цыцэрон"
+        },
+        {
+          "@id": "http://az.dbpedia.org/resource/Mark_Tulli_Siseron"
+        },
+        {
+          "@id": "http://vec.dbpedia.org/resource/Cicerone"
+        },
+        {
+          "@id": "http://www.wikidata.org/entity/Q1541"
+        },
+        {
+          "@id": "http://ar.dbpedia.org/resource/شيشرون"
+        },
+        {
+          "@id": "http://sr.dbpedia.org/resource/Марко_Тулије_Цицерон"
+        },
+        {
+          "@id": "http://als.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://br.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://io.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://mg.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://lt.dbpedia.org/resource/Markas_Tulijus_Ciceronas"
+        },
+        {
+          "@id": "http://mk.dbpedia.org/resource/Цицерон"
+        },
+        {
+          "@id": "http://hy.dbpedia.org/resource/Կիկերոն"
+        },
+        {
+          "@id": "http://sl.dbpedia.org/resource/Mark_Tulij_Cicero"
+        },
+        {
+          "@id": "http://ka.dbpedia.org/resource/ციცერონი"
+        },
+        {
+          "@id": "http://scn.dbpedia.org/resource/Ciciruni"
+        },
+        {
+          "@id": "http://zh.dbpedia.org/resource/西塞罗"
+        },
+        {
+          "@id": "http://da.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://sh.dbpedia.org/resource/Ciceron"
+        },
+        {
+          "@id": "http://bn.dbpedia.org/resource/সিসারো"
+        },
+        {
+          "@id": "http://cy.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://nl.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://nn.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://id.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://no.dbpedia.org/resource/Marcus_Tullius_Cicero"
+        },
+        {
+          "@id": "http://jv.dbpedia.org/resource/Cicero"
+        },
+        {
+          "@id": "http://el.dbpedia.org/resource/Μάρκος_Τύλλιος_Κικέρων"
+        }
+      ],
+      "skos:altLabel": {
+        "@language": "en",
+        "@value": "Marcus Tullius Cicero"
+      },
+      "skos:prefLabel": [
+        {
+          "@language": "pt",
+          "@value": "Cícero"
+        },
+        {
+          "@language": "zh",
+          "@value": "西塞罗"
+        },
+        {
+          "@language": "ca",
+          "@value": "Ciceró"
+        },
+        {
+          "@language": "es",
+          "@value": "Marco Tulio Cicerón"
+        },
+        {
+          "@language": "tr",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "nl",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "mk",
+          "@value": "Цицерон"
+        },
+        {
+          "@language": "uk",
+          "@value": "Цицерон"
+        },
+        {
+          "@language": "bg",
+          "@value": "Цицерон"
+        },
+        {
+          "@language": "de",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "no",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "cs",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "gl",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "sk",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "hu",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "ro",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "da",
+          "@value": "Marcus Tullius Cicero"
+        },
+        {
+          "@language": "pl",
+          "@value": "Cyceron"
+        },
+        {
+          "@language": "ka",
+          "@value": "ციცერონი"
+        },
+        {
+          "@language": "ja",
+          "@value": "マルクス・トゥッリウス・キケロ"
+        },
+        {
+          "@language": "ko",
+          "@value": "마르쿠스 툴리우스 키케로"
+        },
+        {
+          "@language": "he",
+          "@value": "מרקוס טוליוס קיקרו"
+        },
+        {
+          "@language": "it",
+          "@value": "Marco Tullio Cicerone"
+        },
+        {
+          "@language": "el",
+          "@value": "Μάρκος Τύλλιος Κικέρων"
+        },
+        {
+          "@language": "is",
+          "@value": "Cíceró"
+        },
+        {
+          "@language": "lt",
+          "@value": "Markas Tulijus Ciceronas"
+        },
+        {
+          "@language": "sq",
+          "@value": "Ciceroni"
+        },
+        {
+          "@language": "ga",
+          "@value": "Cicearó"
+        },
+        {
+          "@language": "eu",
+          "@value": "Zizeron"
+        },
+        {
+          "@language": "be",
+          "@value": "Марк Тулій Цыцэрон"
+        },
+        {
+          "@language": "fr",
+          "@value": "Cicéron"
+        },
+        {
+          "@language": "sl",
+          "@value": "Mark Tulij Cicero"
+        },
+        {
+          "@language": "lv",
+          "@value": "Cicerons"
+        },
+        {
+          "@language": "cy",
+          "@value": "Cicero"
+        },
+        {
+          "@language": "et",
+          "@value": "Cicero"
+        },
+        {
+          "@language": "en",
+          "@value": "Cicero"
+        },
+        {
+          "@language": "sv",
+          "@value": "Cicero"
+        },
+        {
+          "@language": "fi",
+          "@value": "Cicero"
+        },
+        {
+          "@language": "hy",
+          "@value": "Կիկերոն"
+        },
+        {
+          "@language": "az",
+          "@value": "Mark Tulli Siseron"
+        },
+        {
+          "@language": "sr",
+          "@value": "Марко Тулије Цицерон"
+        },
+        {
+          "@language": "bs",
+          "@value": "Ciceron"
+        },
+        {
+          "@language": "hr",
+          "@value": "Ciceron"
+        },
+        {
+          "@language": "ar",
+          "@value": "شيشرون"
+        },
+        {
+          "@language": "ru",
+          "@value": "Марк Туллий Цицерон"
+        }
+      ]
+    },
+    {
+      "@id": "http://data.europeana.eu/aggregation/europeana/9200397/BibliographicResource_3000126284212",
+      "@type": "edm:EuropeanaAggregation",
+      "dcterms:created": "2015-03-26T11:27:45.108Z",
+      "dcterms:modified": "2015-05-15T11:18:14.579Z",
+      "edm:aggregatedCHO": {
+        "@id": "http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212"
+      },
+      "edm:completeness": "7",
+      "edm:country": "United Kingdom",
+      "edm:datasetName": "9200397_Ag_EU_TEL_ a1348_BL",
+      "edm:landingPage": {
+        "@id": "http://www.europeana.eu/portal/recordhttp://data.theeuropeanlibrary.org/BibliographicResource/3000126284212.html"
+      },
+      "edm:language": "en",
+      "edm:preview": {
+        "@id": "http://molcat1.bl.uk/IllImages/Ekta/big/E109/E109547.jpg"
+      }
+    },
+    {
+      "@id": "http://data.europeana.eu/aggregation/provider/9200397/BibliographicResource_3000126284212",
+      "@type": "ore:Aggregation",
+      "edm:aggregatedCHO": {
+        "@id": "http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212"
+      },
+      "edm:dataProvider": "The British Library",
+      "edm:isShownAt": {
+        "@id": "http://www.bl.uk/catalogues/illuminatedmanuscripts/ILLUMIN.ASP?Size=mid&IllID=27023"
+      },
+      "edm:isShownBy": {
+        "@id": "http://molcat1.bl.uk/IllImages/Ekta/big/E109/E109547.jpg"
+      },
+      "edm:object": {
+        "@id": "http://molcat1.bl.uk/IllImages/Ekta/big/E109/E109547.jpg"
+      },
+      "edm:provider": {
+        "@language": "en",
+        "@value": "The European Library"
+      },
+      "edm:rights": {
+        "@id": "http://creativecommons.org/publicdomain/mark/1.0/"
+      }
+    },
+    {
+      "@id": "http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212",
+      "@type": "edm:ProvidedCHO"
+    },
+    {
+      "@id": "http://data.europeana.eu/proxy/europeana/9200397/BibliographicResource_3000126284212",
+      "@type": "ore:Proxy",
+      "dc:creator": [
+        {
+          "@id": "http://data.europeana.eu/agent/base/110409"
+        },
+        {
+          "@id": "http://data.europeana.eu/agent/base/59788"
+        },
+        {
+          "@id": "http://data.europeana.eu/agent/base/110408"
+        }
+      ],
+      "edm:europeanaProxy": "true",
+      "edm:type": "IMAGE",
+      "ore:proxyFor": {
+        "@id": "http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212"
+      },
+      "ore:proxyIn": {
+        "@id": "http://data.europeana.eu/aggregation/europeana/9200397/BibliographicResource_3000126284212"
+      }
+    },
+    {
+      "@id": "http://data.europeana.eu/proxy/provider/9200397/BibliographicResource_3000126284212",
+      "@type": "ore:Proxy",
+      "dc:creator": "Marcus Tullius Cicero",
+      "dc:date": [
+        "c. 1483",
+        "1483/1483"
+      ],
+      "dc:description": "Detail of a miniature of a judge and a court in session. Image taken from f. 2 of Orationes. Written in Latin.",
+      "dc:format": "JPEG",
+      "dc:identifier": "E109547",
+      "dc:language": "la",
+      "dc:relation": "Orationes",
+      "dc:rights": "Public Domain. Attribution to the British Library is recommended. For further details please visit: http://www.bl.uk/catalogues/illuminatedmanuscripts/reuse.asp",
+      "dc:subject": [
+        "British Library Harley Collection",
+        "BL Harley 2681",
+        "f. 2",
+        "Gothic"
+      ],
+      "dc:title": "Court in session from BL Harley 2681, f. 2",
+      "dc:type": [
+        {
+          "@id": "http://vocab.getty.edu/aat/300265483"
+        },
+        "Catalogue of Illuminated Manuscripts"
+      ],
+      "dcterms:extent": "365 x 255 (260 x 165)",
+      "dcterms:isPartOf": [
+        {
+          "@id": "http://www.bl.uk/catalogues/illuminatedmanuscripts/record.asp?MSID=3848"
+        },
+        {
+          "@id": "http://data.theeuropeanlibrary.org/Collection/a1348"
+        }
+      ],
+      "dcterms:spatial": "France, Central (Paris)",
+      "edm:europeanaProxy": "false",
+      "edm:type": "IMAGE",
+      "ore:proxyFor": {
+        "@id": "http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212"
+      },
+      "ore:proxyIn": {
+        "@id": "http://data.europeana.eu/aggregation/provider/9200397/BibliographicResource_3000126284212"
+      }
+    },
+    {
+      "@id": "http://molcat1.bl.uk/IllImages/Ekta/big/E109/E109547.jpg",
+      "@type": "edm:WebResource",
+      "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#fileByteSize": {
+        "@type": "http://www.w3.org/2001/XMLSchema#long",
+        "@value": "475282"
+      },
+      "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#hasMimeType": "image/jpeg",
+      "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#height": 1180,
+      "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#orientation": "landscape",
+      "http://www.ebu.ch/metadata/ontologies/ebucore/ebucore#width": 1500,
+      "edm:componentColor": [
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#hexBinary",
+          "@value": "#000000"
+        },
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#hexBinary",
+          "@value": "#A52A2A"
+        },
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#hexBinary",
+          "@value": "#696969"
+        },
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#hexBinary",
+          "@value": "#2F4F4F"
+        },
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#hexBinary",
+          "@value": "#DCDCDC"
+        },
+        {
+          "@type": "http://www.w3.org/2001/XMLSchema#hexBinary",
+          "@value": "#800000"
+        }
+      ],
+      "edm:hasColorSpace": "sRGB",
+      "edm:rights": {
+        "@id": "http://creativecommons.org/publicdomain/mark/1.0/"
+      }
+    },
+    {
+      "@id": "http://molcat1.bl.uk/IllImages/Ekta/mid/E109/E109547.jpg",
+      "@type": "edm:WebResource",
+      "edm:rights": {
+        "@id": "http://creativecommons.org/publicdomain/mark/1.0/"
+      }
+    },
+    {
+      "@id": "http://vocab.getty.edu/aat/300265483",
+      "@type": "skos:Concept",
+      "skos:altLabel": [
+        {
+          "@language": "en",
+          "@value": "illuminated manuscript"
+        },
+        {
+          "@language": "de",
+          "@value": "Bilderhandschrift"
+        },
+        {
+          "@language": "it",
+          "@value": "manoscritto miniato"
+        },
+        {
+          "@language": "sv",
+          "@value": "upplystmanuskript"
+        },
+        {
+          "@language": "fr",
+          "@value": "manuscrit enluminé"
+        },
+        {
+          "@language": "es",
+          "@value": "manuscrito iluminado"
+        },
+        {
+          "@language": "zh-hant",
+          "@value": "裝飾畫手稿"
+        }
+      ],
+      "skos:broader": {
+        "@id": "http://vocab.getty.edu/aat/300028569"
+      },
+      "skos:note": "http://vocab.getty.edu/aat/rev/5003153656",
+      "skos:prefLabel": [
+        {
+          "@language": "nl",
+          "@value": "verluchte manuscripten"
+        },
+        {
+          "@language": "en",
+          "@value": "illuminated manuscripts"
+        },
+        {
+          "@language": "zh-latn-pinyin-x-notone",
+          "@value": "shou chao ben zhuang shi hua"
+        },
+        {
+          "@language": "zh-hant",
+          "@value": "手抄本裝飾畫"
+        },
+        {
+          "@language": "zh-latn-pinyin-x-hanyu",
+          "@value": "shǒu chāo běn zhuāng shì huà"
+        },
+        {
+          "@language": "zh-latn-wadegile",
+          "@value": "shou ch'ao pen chuang shih hua"
+        },
+        {
+          "@language": "es",
+          "@value": "manuscritos iluminados"
+        }
+      ],
+      "skos:related": {
+        "@id": "http://vocab.getty.edu/aat/300311820"
+      }
+    },
+    {
+      "@id": "http://www.bl.uk/catalogues/illuminatedmanuscripts/ILLUMIN.ASP?Size=mid&IllID=27023",
+      "@type": "edm:WebResource",
+      "edm:rights": {
+        "@id": "http://creativecommons.org/publicdomain/mark/1.0/"
+      }
+    }
+  ]
+}

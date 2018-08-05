@@ -1,0 +1,370 @@
+{
+  "@context": {
+    "ore": "http://www.openarchives.org/ore/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "edm": "http://www.europeana.eu/schemas/edm/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#"
+  },
+  "@graph": [
+    {
+      "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/0310c988-7f01-486e-9e13-505d4832a6ef/0310c988-7f01-486e-9e13-505d4832a6ef_1646.jpg",
+      "@type": "edm:WebResource"
+    },
+    {
+      "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/91e5bf6d-f259-414b-b051-a6e40fd5797e/91e5bf6d-f259-414b-b051-a6e40fd5797e_kpl sd211 achterzijde.jpg",
+      "@type": "edm:WebResource"
+    },
+    {
+      "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/c861eda3-2aa7-44b0-bfe4-43c8908aca13/c861eda3-2aa7-44b0-bfe4-43c8908aca13_05 kpl sd 211.jpg",
+      "@type": "edm:WebResource"
+    },
+    {
+      "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/e44cbe5a-2a4f-4900-b010-8ae105c46414/e44cbe5a-2a4f-4900-b010-8ae105c46414_kpl sd211.jpg",
+      "@type": "edm:WebResource"
+    },
+    {
+      "@id": "http://data.europeana.eu/aggregation/europeana/2023008/71022A99_priref_799",
+      "@type": "edm:EuropeanaAggregation",
+      "dcterms:created": "2014-03-26T14:46:04.335Z",
+      "dcterms:modified": "2018-07-05T10:01:16.738Z",
+      "edm:aggregatedCHO": {
+        "@id": "http://data.europeana.eu/item/2023008/71022A99_priref_799"
+      },
+      "edm:completeness": "0",
+      "edm:country": "Belgium",
+      "edm:datasetName": "2023008_Ag_BE_Elocal_ProvincieLimburg",
+      "edm:landingPage": {
+        "@id": "http://www.europeana.eu/portal/record71022A99.priref.799.html"
+      },
+      "edm:language": "nl"
+    },
+    {
+      "@id": "http://data.europeana.eu/aggregation/provider/2023008/71022A99_priref_799",
+      "@type": "ore:Aggregation",
+      "edm:aggregatedCHO": {
+        "@id": "http://data.europeana.eu/item/2023008/71022A99_priref_799"
+      },
+      "edm:dataProvider": "Provinciaal Centrum voor Cultureel Erfgoed",
+      "edm:hasView": [
+        {
+          "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/e44cbe5a-2a4f-4900-b010-8ae105c46414/e44cbe5a-2a4f-4900-b010-8ae105c46414_kpl sd211.jpg"
+        },
+        {
+          "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/91e5bf6d-f259-414b-b051-a6e40fd5797e/91e5bf6d-f259-414b-b051-a6e40fd5797e_kpl sd211 achterzijde.jpg"
+        },
+        {
+          "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/c861eda3-2aa7-44b0-bfe4-43c8908aca13/c861eda3-2aa7-44b0-bfe4-43c8908aca13_05 kpl sd 211.jpg"
+        }
+      ],
+      "edm:isShownAt": {
+        "@id": "http://www.erfgoedplus.be/details/71022A99.priref.799"
+      },
+      "edm:isShownBy": {
+        "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/0310c988-7f01-486e-9e13-505d4832a6ef/0310c988-7f01-486e-9e13-505d4832a6ef_1646.jpg"
+      },
+      "edm:object": {
+        "@id": "http://arnold.erfgoedplus.be/alfresco/guestDownload/direct/workspace/SpacesStore/0310c988-7f01-486e-9e13-505d4832a6ef/0310c988-7f01-486e-9e13-505d4832a6ef_1646.jpg"
+      },
+      "edm:provider": "Erfgoedplus.be",
+      "edm:rights": {
+        "@id": "http://creativecommons.org/licenses/by-nc-sa/4.0/"
+      }
+    },
+    {
+      "@id": "http://data.europeana.eu/item/2023008/71022A99_priref_799",
+      "@type": "edm:ProvidedCHO"
+    },
+    {
+      "@id": "http://data.europeana.eu/proxy/europeana/2023008/71022A99_priref_799",
+      "@type": "ore:Proxy",
+      "dc:date": [
+        {
+          "@id": "http://semium.org/time/17xx"
+        },
+        {
+          "@id": "http://semium.org/time/17xx_1_third"
+        }
+      ],
+      "edm:europeanaProxy": "true",
+      "edm:type": "IMAGE",
+      "edm:year": "1722",
+      "ore:proxyFor": {
+        "@id": "http://data.europeana.eu/item/2023008/71022A99_priref_799"
+      },
+      "ore:proxyIn": {
+        "@id": "http://data.europeana.eu/aggregation/europeana/2023008/71022A99_priref_799"
+      }
+    },
+    {
+      "@id": "http://data.europeana.eu/proxy/provider/2023008/71022A99_priref_799",
+      "@type": "ore:Proxy",
+      "dc:description": {
+        "@language": "nl",
+        "@value": "Halffiguur, in drievierde naar links gewend. In de linkerhand houdt de begijn een half geopend gebedenboek. Links: ..."
+      },
+      "dc:identifier": "71022A99.priref.799",
+      "dc:title": {
+        "@language": "nl",
+        "@value": "Portret van Hasseltse begijn Vossius"
+      },
+      "dc:type": {
+        "@id": "http://vocab.getty.edu/aat/300177435"
+      },
+      "dcterms:created": "1722",
+      "dcterms:extent": "hoogte: 80 cm (zonder lijst); breedte: 60 cm (zonder lijst); hoogte: 95 cm (met lijst); breedte: 75 cm (met lijst)",
+      "dcterms:medium": {
+        "@id": "http://vocab.getty.edu/aat/300015050"
+      },
+      "edm:currentLocation": {
+        "@id": "http://www.pcce.be/egb/place#crab.snid.115144.Provinciehuis"
+      },
+      "edm:europeanaProxy": "false",
+      "edm:type": "IMAGE",
+      "ore:proxyFor": {
+        "@id": "http://data.europeana.eu/item/2023008/71022A99_priref_799"
+      },
+      "ore:proxyIn": {
+        "@id": "http://data.europeana.eu/aggregation/provider/2023008/71022A99_priref_799"
+      }
+    },
+    {
+      "@id": "http://semium.org/time/1722",
+      "@type": "edm:TimeSpan",
+      "dcterms:isPartOf": {
+        "@id": "http://semium.org/time/17xx_1_third"
+      },
+      "edm:begin": "Thu Jan 01 01:00:00 CET 1722",
+      "edm:end": "Thu Dec 31 01:00:00 CET 1722",
+      "skos:prefLabel": "1722"
+    },
+    {
+      "@id": "http://semium.org/time/17xx",
+      "@type": "edm:TimeSpan",
+      "dcterms:isPartOf": {
+        "@id": "http://semium.org/time/AD2xxx"
+      },
+      "edm:begin": "Sat Jan 01 01:00:00 CET 1701",
+      "edm:end": "Wed Dec 31 01:00:00 CET 1800",
+      "skos:prefLabel": [
+        "18..",
+        {
+          "@language": "en",
+          "@value": "18th"
+        },
+        {
+          "@language": "nl",
+          "@value": "18de eeuw"
+        },
+        "18??",
+        {
+          "@language": "fr",
+          "@value": "18e siècle"
+        },
+        {
+          "@language": "en",
+          "@value": "18-th"
+        },
+        {
+          "@language": "ru",
+          "@value": "18й век"
+        },
+        "18e",
+        {
+          "@language": "en",
+          "@value": "18th century"
+        }
+      ]
+    },
+    {
+      "@id": "http://semium.org/time/17xx_1_third",
+      "@type": "edm:TimeSpan",
+      "dcterms:isPartOf": {
+        "@id": "http://semium.org/time/17xx"
+      },
+      "edm:begin": "Sat Jan 01 01:00:00 CET 1701",
+      "edm:end": "Thu Dec 31 01:00:00 CET 1733",
+      "skos:prefLabel": [
+        {
+          "@language": "en",
+          "@value": "Early 18th century"
+        },
+        {
+          "@language": "ru",
+          "@value": "Начало 18-го века"
+        }
+      ]
+    },
+    {
+      "@id": "http://semium.org/time/AD2xxx",
+      "@type": "edm:TimeSpan",
+      "dcterms:isPartOf": {
+        "@id": "http://semium.org/time/ChronologicalPeriod"
+      },
+      "skos:prefLabel": [
+        {
+          "@language": "fr",
+          "@value": "2e millénaire après J.-C."
+        },
+        {
+          "@language": "en",
+          "@value": "Second millenium AD, years 1001-2000"
+        },
+        {
+          "@language": "en",
+          "@value": "Second millenium AD"
+        }
+      ]
+    },
+    {
+      "@id": "http://vocab.getty.edu/aat/300015050",
+      "@type": "skos:Concept",
+      "skos:altLabel": [
+        {
+          "@language": "zh-hant",
+          "@value": "油性塗料"
+        },
+        {
+          "@language": "en",
+          "@value": "oil paints (paints)"
+        },
+        {
+          "@language": "en-us",
+          "@value": "oil color"
+        },
+        {
+          "@language": "en-gb",
+          "@value": "oil colours"
+        },
+        {
+          "@language": "fr",
+          "@value": "peintures à l'huile (oil paints)"
+        }
+      ],
+      "skos:broader": {
+        "@id": "http://vocab.getty.edu/aat/300015029"
+      },
+      "skos:narrower": [
+        {
+          "@id": "http://vocab.getty.edu/aat/300410261"
+        },
+        {
+          "@id": "http://vocab.getty.edu/aat/300015052"
+        }
+      ],
+      "skos:note": "http://vocab.getty.edu/aat/rev/5003365638",
+      "skos:prefLabel": [
+        {
+          "@language": "zh-latn-wadegile",
+          "@value": "yu hsing ch'i"
+        },
+        {
+          "@language": "zh-latn-pinyin-x-notone",
+          "@value": "you xing qi"
+        },
+        {
+          "@language": "es",
+          "@value": "pintura al óleo"
+        },
+        {
+          "@language": "fr",
+          "@value": "peinture à l'huile (oil paint)"
+        },
+        {
+          "@language": "en",
+          "@value": "oil paint (paint)"
+        },
+        {
+          "@language": "zh-latn-pinyin-x-hanyu",
+          "@value": "yóu xìng qī"
+        },
+        {
+          "@language": "nl",
+          "@value": "olieverf"
+        },
+        {
+          "@language": "zh-hant",
+          "@value": "油性漆 (顏料塗層)"
+        }
+      ],
+      "skos:related": [
+        {
+          "@id": "http://vocab.getty.edu/aat/300230810"
+        },
+        {
+          "@id": "http://vocab.getty.edu/aat/300033799"
+        }
+      ]
+    },
+    {
+      "@id": "http://vocab.getty.edu/aat/300177435",
+      "@type": "skos:Concept",
+      "skos:altLabel": [
+        {
+          "@language": "en",
+          "@value": "easel-pieces"
+        },
+        {
+          "@language": "nl",
+          "@value": "schilderij"
+        },
+        {
+          "@language": "de",
+          "@value": "Staffeleibilder"
+        },
+        {
+          "@language": "fr",
+          "@value": "peinture de chevalet"
+        },
+        {
+          "@language": "es",
+          "@value": "tela (pintura de caballete)"
+        }
+      ],
+      "skos:broader": {
+        "@id": "http://vocab.getty.edu/aat/300033618"
+      },
+      "skos:note": "http://vocab.getty.edu/aat/rev/5004142766",
+      "skos:prefLabel": [
+        {
+          "@language": "nl",
+          "@value": "schilderijen"
+        },
+        {
+          "@language": "es",
+          "@value": "pinturas de caballete"
+        },
+        {
+          "@language": "fr",
+          "@value": "peintures de chevalet"
+        },
+        {
+          "@language": "en",
+          "@value": "easel paintings (paintings by form)"
+        },
+        {
+          "@language": "de",
+          "@value": "Staffeleibild"
+        }
+      ],
+      "skos:related": {
+        "@id": "http://vocab.getty.edu/aat/300178674"
+      }
+    },
+    {
+      "@id": "http://www.erfgoedplus.be/details/71022A99.priref.799",
+      "@type": "edm:WebResource"
+    },
+    {
+      "@id": "http://www.pcce.be/egb/place#crab.snid.115144.Provinciehuis",
+      "@type": "edm:Place",
+      "skos:prefLabel": {
+        "@language": "nl",
+        "@value": "Provinciehuis Limburg (Hasselt)"
+      }
+    }
+  ]
+}

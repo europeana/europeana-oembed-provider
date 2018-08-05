@@ -4,10 +4,41 @@
 require 'test_helper'
 require 'json'
 
-WebMock.disable_net_connect!(allow: %r{\Ahttps?://((data.europeana.eu/item)|((www.)?europeana.eu/api/v2/record))})
-
 class AppTest < Minitest::Test
   include Rack::Test::Methods
+
+  def setup
+    WebMock.stub_request(:get, "http://data.europeana.eu/item/000002/_UEDIN_214").
+        with(
+            headers: {
+                'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
+                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                'User-Agent'=>'Ruby'
+            }).
+        to_return(status: 200, body:  get_body('000002/_UEDIN_214'), headers: {'Content-Type'=>'application/ld+json'})
+
+    WebMock.stub_request(:get, "http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212").
+        with(
+            headers: {
+                'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
+                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                'User-Agent'=>'Ruby'
+            }).
+        to_return(status: 200, body:  get_body('9200397/BibliographicResource_3000126284212'), headers: {'Content-Type'=>'application/ld+json'})
+
+    WebMock.stub_request(:get, "http://data.europeana.eu/item/2023008/71022A99_priref_799").
+        with(
+            headers: {
+                'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
+                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+                'User-Agent'=>'Ruby'
+            }).
+        to_return(status: 200, body: get_body("2023008/71022A99_priref_799"), headers: {'Content-Type'=>'application/ld+json'})
+  end
+
+  def get_body(id)
+    File.read("./test/fixtures/#{id.sub(/\//,'_')}.json").strip
+  end
 
   def app
     Europeana::OEmbed::App
@@ -83,6 +114,27 @@ class AppTest < Minitest::Test
   def test_data_item_license_more
     assert true
   end
+
+  def test_data_item_language
+    id = '000002/_UEDIN_214'
+    lang = 'en'
+    get '/', url: "http://data.europeana.eu/item/#{id}"
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal '1.0', json['version']
+    assert_equal 'link', json['type']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
+    assert_equal 'Europeana', json['provider_name']
+    assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
+    %w{width height title description author_name author_url rights_url}.each do |attr|
+      assert json[attr].to_s.length.positive?
+    end
+    %w{thumbnail_url thumbnail_width}.each do |attr|
+      assert_nil json[attr]
+    end
+  end
+
 
   def test_item_page
     id = '9200397/BibliographicResource_3000126284212'
