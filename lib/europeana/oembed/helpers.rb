@@ -71,7 +71,8 @@ module Europeana
           provider_proxy = graph.query(predicate: RDF::Vocab::EDM.europeanaProxy, object: 'false').first.subject
 
           # Aggregations
-          europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
+          # TODO
+          # europeana_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::EDM.EuropeanaAggregation).first.subject
           provider_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::ORE.Aggregation).first.subject
 
           # Title
@@ -126,7 +127,7 @@ module Europeana
               # end
             end
             thumbnail_url = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.object).first.object.to_s
-            thumbnail_by_url = api_thumbnail_by_url.sub('%<uri>', CGI.escape("#{thumbnail_url}&size=w#{width.to_s}"))
+            thumbnail_by_url = api_thumbnail_by_url.sub('%<uri>', CGI.escape("#{thumbnail_url}&size=w#{width}"))
             response[:thumbnail_url] = thumbnail_by_url || ''
             response[:thumbnail_width] = width
             # TODO
