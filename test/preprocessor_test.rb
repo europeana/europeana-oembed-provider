@@ -9,31 +9,31 @@ class AppTest < Minitest::Test
 
   def setup
     WebMock.stub_request(:get, "http://data.europeana.eu/item/000002/_UEDIN_214").
-        with(
-            headers: {
-                'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'User-Agent'=>'Ruby'
-            }).
-        to_return(status: 200, body:  get_body('000002/_UEDIN_214'), headers: {'Content-Type'=>'application/ld+json'})
+      with(
+        headers: {
+          'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Ruby'
+        }).
+      to_return(status: 200, body:  get_body('000002/_UEDIN_214'), headers: {'Content-Type'=>'application/ld+json'})
 
     WebMock.stub_request(:get, "http://data.europeana.eu/item/9200397/BibliographicResource_3000126284212").
-        with(
-            headers: {
-                'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'User-Agent'=>'Ruby'
-            }).
-        to_return(status: 200, body:  get_body('9200397/BibliographicResource_3000126284212'), headers: {'Content-Type'=>'application/ld+json'})
+      with(
+        headers: {
+          'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Ruby'
+        }).
+      to_return(status: 200, body:  get_body('9200397/BibliographicResource_3000126284212'), headers: {'Content-Type'=>'application/ld+json'})
 
     WebMock.stub_request(:get, "http://data.europeana.eu/item/2023008/71022A99_priref_799").
-        with(
-            headers: {
-                'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
-                'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-                'User-Agent'=>'Ruby'
-            }).
-        to_return(status: 200, body: get_body("2023008/71022A99_priref_799"), headers: {'Content-Type'=>'application/ld+json'})
+      with(
+        headers: {
+          'Accept'=>%r{^application/ld\+json, application/x\-ld\+json},
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Ruby'
+        }).
+      to_return(status: 200, body: get_body("2023008/71022A99_priref_799"), headers: {'Content-Type'=>'application/ld+json'})
   end
 
   def get_body(id)
@@ -106,7 +106,7 @@ class AppTest < Minitest::Test
     end
     %w{thumbnail_url thumbnail_width}.each do |attr|
       # TODO: Still fails when run with all tests, for some reason succeeds when run alone.
-      # assert_nil json[attr]
+      assert_nil json[attr]
     end
   end
 
