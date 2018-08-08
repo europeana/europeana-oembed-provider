@@ -60,6 +60,8 @@ module Europeana
         def preprocessor(opts, id, media_url = nil)
           opts = check_opts(opts)
 
+          language = opts['language']
+
           url = "http://data.europeana.eu/item/#{id}"
 
           graph = RDF::Graph.load(url)
@@ -76,16 +78,10 @@ module Europeana
           provider_aggregation = graph.query(predicate: RDF.type, object: RDF::Vocab::ORE.Aggregation).first.subject
 
           # Title
-          title = graph.query(subject: europeana_proxy, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
-          if title.nil?
-            title = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.title).map(&:object).map(&:to_s).first
-          end
+          title = get_RDF_Vocab_DC11_value(graph, [europeana_proxy, provider_proxy], 'title', language)
 
           # Description
-          description = graph.query(subject: europeana_proxy, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
-          if description.nil?
-            description = graph.query(subject: provider_proxy, predicate: RDF::Vocab::DC11.description).map(&:object).map(&:to_s).first
-          end
+          description = get_RDF_Vocab_DC11_value(graph, [europeana_proxy, provider_proxy], 'description', language)
 
           # Author name
           author_name = graph.query(subject: provider_aggregation, predicate: RDF::Vocab::EDM.dataProvider).first&.object.to_s
@@ -162,6 +158,27 @@ module Europeana
               raise "Invalid parameter #{key} must be: #{parameters}"
             end
           end.merge(maxwidth: opts['maxwidth'] || ENV['MAX_WIDTH'], maxheight: opts['maxheight'] ||= ENV['MAX_HEIGHT'])
+        end
+
+        def get_RDF_Vocab_DC11_value(graph, proxy_list, key, language)
+          value = nil
+          proxy_list.each do |proxy|
+            if value.nil?
+              literals = graph.query(subject: proxy, predicate: RDF::Vocab::DC11[key]).map(&:object)
+              unless language.nil?
+                literals.each do |literal|
+                  if literal.language == language
+                    value = literal.object.to_s
+                    break
+                  end
+                end
+              end
+              if value.nil?
+                value = literals.map(&:to_s).first
+              end
+            end
+          end
+          value
         end
 
         # Extract the rights_url from the rdf data

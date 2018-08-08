@@ -40,6 +40,17 @@ class AppTest < Minitest::Test
       ).
       to_return(status: 200, body: get_body('2023008/71022A99_priref_799'),
                 headers: { 'Content-Type': 'application/ld+json' })
+
+    WebMock.stub_request(:get, 'http://data.europeana.eu/item/08623/883').
+      with(
+        headers: {
+          'Accept': %r{^application/ld\+json, application/x\-ld\+json},
+          'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent': 'Ruby'
+          }
+      ).
+      to_return(status: 200, body: get_body('08623/883'),
+                headers: { 'Content-Type': 'application/ld+json' })
   end
 
   def get_body(id)
@@ -121,10 +132,9 @@ class AppTest < Minitest::Test
     assert true
   end
 
-  def test_data_item_language
-    id = '000002/_UEDIN_214'
-    # TODO
-    # lang = 'en'
+  # TODO
+  def test_data_item_language_none
+    id = '08623/883'
     get '/', url: "http://data.europeana.eu/item/#{id}"
     assert last_response.ok?
     assert_equal 'application/json', last_response.headers['Content-Type']
@@ -134,12 +144,63 @@ class AppTest < Minitest::Test
     assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
     assert_equal 'Europeana', json['provider_name']
     assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title description author_name author_url rights_url}.each do |attr|
+    %w{width height title description author_name rights_url}.each do |attr|
       assert json[attr].to_s.length.positive?
     end
+    assert json['author_url'].to_s.length.zero?
     %w{thumbnail_url thumbnail_width}.each do |attr|
       assert_nil json[attr]
     end
+    assert_equal 'English title', json['title']
+    assert_equal 'English description', json['description']
+  end
+
+  # TODO
+  def test_data_item_language_en
+    id = '08623/883'
+    lang = 'en'
+    get '/', url: "http://data.europeana.eu/item/#{id}", language: lang
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal '1.0', json['version']
+    assert_equal 'link', json['type']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
+    assert_equal 'Europeana', json['provider_name']
+    assert_match %r{https://www.europeana.eu/portal/#{lang}/record/#{id}.html}, json['provider_url']
+    %w{width height title description author_name rights_url}.each do |attr|
+      assert json[attr].to_s.length.positive?
+    end
+    assert json['author_url'].to_s.length.zero?
+    %w{thumbnail_url thumbnail_width}.each do |attr|
+      assert_nil json[attr]
+    end
+    assert_equal 'English title', json['title']
+    assert_equal 'English description', json['description']
+  end
+
+  # TODO
+  def test_data_item_language_fr
+    id = '08623/883'
+    lang = 'fr'
+    get '/', url: "http://data.europeana.eu/item/#{id}", language: lang
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal '1.0', json['version']
+    assert_equal 'link', json['type']
+    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
+    assert_equal 'Europeana', json['provider_name']
+    assert_match %r{https://www.europeana.eu/portal/#{lang}/record/#{id}.html}, json['provider_url']
+    %w{width height title description author_name rights_url}.each do |attr|
+      assert json[attr].to_s.length.positive?
+    end
+    assert json['author_url'].to_s.length.zero?
+    %w{thumbnail_url thumbnail_width}.each do |attr|
+      assert_nil json[attr]
+    end
+    assert_equal 'French title', json['title']
+    assert_equal 'French description', json['description']
   end
 
   def test_item_page
