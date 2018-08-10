@@ -132,30 +132,7 @@ class AppTest < Minitest::Test
     assert true
   end
 
-  # TODO
-  def test_data_item_language_none
-    id = '08623/883'
-    get '/', url: "http://data.europeana.eu/item/#{id}"
-    assert last_response.ok?
-    assert_equal 'application/json', last_response.headers['Content-Type']
-    json = JSON.parse(last_response.body)
-    assert_equal '1.0', json['version']
-    assert_equal 'link', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
-    assert_equal 'Europeana', json['provider_name']
-    assert_match %r{https://www.europeana.eu/portal/record/#{id}.html}, json['provider_url']
-    %w{width height title description author_name rights_url}.each do |attr|
-      assert json[attr].to_s.length.positive?
-    end
-    assert json['author_url'].to_s.length.zero?
-    %w{thumbnail_url thumbnail_width}.each do |attr|
-      assert_nil json[attr]
-    end
-    assert_equal 'English title', json['title']
-    assert_equal 'English description', json['description']
-  end
-
-  # TODO
+  # Language EN found (first)
   def test_data_item_language_en
     id = '08623/883'
     lang = 'en'
@@ -163,23 +140,11 @@ class AppTest < Minitest::Test
     assert last_response.ok?
     assert_equal 'application/json', last_response.headers['Content-Type']
     json = JSON.parse(last_response.body)
-    assert_equal '1.0', json['version']
-    assert_equal 'link', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
-    assert_equal 'Europeana', json['provider_name']
-    assert_match %r{https://www.europeana.eu/portal/#{lang}/record/#{id}.html}, json['provider_url']
-    %w{width height title description author_name rights_url}.each do |attr|
-      assert json[attr].to_s.length.positive?
-    end
-    assert json['author_url'].to_s.length.zero?
-    %w{thumbnail_url thumbnail_width}.each do |attr|
-      assert_nil json[attr]
-    end
     assert_equal 'English title', json['title']
     assert_equal 'English description', json['description']
   end
 
-  # TODO
+  # Language FR found (second)
   def test_data_item_language_fr
     id = '08623/883'
     lang = 'fr'
@@ -187,20 +152,31 @@ class AppTest < Minitest::Test
     assert last_response.ok?
     assert_equal 'application/json', last_response.headers['Content-Type']
     json = JSON.parse(last_response.body)
-    assert_equal '1.0', json['version']
-    assert_equal 'link', json['type']
-    assert_match %r{<iframe src="[^"]+#{id}[^"]*"}, json['html']
-    assert_equal 'Europeana', json['provider_name']
-    assert_match %r{https://www.europeana.eu/portal/#{lang}/record/#{id}.html}, json['provider_url']
-    %w{width height title description author_name rights_url}.each do |attr|
-      assert json[attr].to_s.length.positive?
-    end
-    assert json['author_url'].to_s.length.zero?
-    %w{thumbnail_url thumbnail_width}.each do |attr|
-      assert_nil json[attr]
-    end
     assert_equal 'French title', json['title']
     assert_equal 'French description', json['description']
+  end
+
+  # Language DE not found, choose EN (first)
+  def test_data_item_language_de
+    id = '08623/883'
+    lang = 'de'
+    get '/', url: "http://data.europeana.eu/item/#{id}", language: lang
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal 'English title', json['title']
+    assert_equal 'English description', json['description']
+  end
+
+  # No language given, choose EN (first)
+  def test_data_item_language_none
+    id = '08623/883'
+    get '/', url: "http://data.europeana.eu/item/#{id}"
+    assert last_response.ok?
+    assert_equal 'application/json', last_response.headers['Content-Type']
+    json = JSON.parse(last_response.body)
+    assert_equal 'English title', json['title']
+    assert_equal 'English description', json['description']
   end
 
   def test_item_page

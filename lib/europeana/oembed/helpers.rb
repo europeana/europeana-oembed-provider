@@ -163,19 +163,18 @@ module Europeana
         def get_RDF_Vocab_DC11_value(graph, proxy_list, key, language)
           value = nil
           proxy_list.each do |proxy|
-            if value.nil?
-              literals = graph.query(subject: proxy, predicate: RDF::Vocab::DC11[key]).map(&:object)
-              unless language.nil?
-                literals.each do |literal|
-                  if literal.language == language
-                    value = literal.object.to_s
-                    break
-                  end
+            next unless value.nil?
+            literals = graph.query(subject: proxy, predicate: RDF::Vocab::DC11[key]).map(&:object)
+            unless language.nil?
+              literals.each do |literal|
+                if literal.language.to_s == language
+                  value = literal.object.to_s
+                  break
                 end
               end
-              if value.nil?
-                value = literals.map(&:to_s).first
-              end
+            end
+            if value.nil?
+              value = literals.map(&:to_s).first
             end
           end
           value
