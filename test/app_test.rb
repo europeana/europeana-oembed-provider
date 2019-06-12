@@ -55,6 +55,6 @@ class AppTest < Minitest::Test
     assert_equal 'application/json', last_response.headers['Content-Type']
     json = JSON.parse(last_response.body)
     assert_equal 'video', json['type']
-    assert_match %r{<iframe src="https://api.picturepipe.net/api/3.0/playouttoken/53728dac59db46c8a367663cd6359ddb/play"}, json['html']
+    assert_match %r{<iframe src="https://api.picturepipe.net/api/3.0/playouttoken/53728dac59db46c8a367663cd6359ddb/play}, json['html']
   end
 end
