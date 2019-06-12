@@ -7,6 +7,3 @@
 
 # Ignore coverage reports
 /coverage/
-
-# Ignore Ruby version
-.ruby-version
