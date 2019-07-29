@@ -21,17 +21,6 @@ RUN apk update && \
     rm -rf /root/.bundle && \
     apk del .build-deps && \
     rm -rf /var/cache/apk/*
-#
-#
-# RUN apt-get update -qq && \
-#     apt-get install -y build-essential && \
-#     bundle install --without development:test && \
-#     rm -rf vendor/bundle/ruby/2.3.0/bundler/gems/*/.git && \
-#     rm -rf vendor/bundle/ruby/2.3.0/cache && \
-#     rm -rf /root/.bundle && \
-#     apt-get remove -y -q --purge build-essential && \
-#     apt-get autoremove -y -q && \
-#     rm -rf /var/lib/apt/lists/*
 
 # Copy code
 COPY . .
