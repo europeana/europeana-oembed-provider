@@ -1,11 +1,11 @@
 # Build and run Europeana oEmbed provider for production use
 
-FROM ruby:2.3.3-alpine
+FROM ruby:2.6.3-alpine
 
 MAINTAINER Europeana Foundation <development@europeana.eu>
 
-ENV RACK_ENV="production"
-ENV PORT="80"
+ENV RACK_ENV production
+ENV PORT 80
 
 WORKDIR /app
 
@@ -16,8 +16,8 @@ RUN apk update && \
     apk add --no-cache --virtual .build-deps build-base && \
     echo "gem: --no-document" >> /etc/gemrc && \
     bundle install --deployment --without development:test && \
-    rm -rf vendor/bundle/ruby/2.3.0/bundler/gems/*/.git && \
-    rm -rf vendor/bundle/ruby/2.3.0/cache && \
+    rm -rf vendor/bundle/ruby/2.6.0/bundler/gems/*/.git && \
+    rm -rf vendor/bundle/ruby/2.6.0/cache && \
     rm -rf /root/.bundle && \
     apk del .build-deps && \
     rm -rf /var/cache/apk/*
