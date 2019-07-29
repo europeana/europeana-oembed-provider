@@ -42,3 +42,33 @@ Responses are in JSON format.
 | [Ina.fr](http://ina.fr/) | video |
 | [Picturepipe](http://www.picturepipe.com/) | video |
 | [The European Library](http://www.theeuropeanlibrary.org/) | rich |
+
+## Docker
+
+A Dockerfile is included, optimised for small image size, for publication to a
+Docker repository and use in production environments.
+
+### Configure version
+
+```shell
+export VERSION=0.3.1
+```
+
+### Build
+
+```shell
+docker build -t europeana/oembed-provider:${VERSION} .
+```
+
+### Run
+
+```shell
+docker run \
+       -p 8080:80 \
+       europeana/oembed-provider:${VERSION}
+```
+
+### Publish
+```shell
+docker push europeana/oembed-provider:${VERSION}
+```
