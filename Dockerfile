@@ -15,9 +15,9 @@ COPY Gemfile Gemfile.lock ./
 RUN apk update && \
     apk add --no-cache --virtual .build-deps build-base && \
     echo "gem: --no-document" >> /etc/gemrc && \
-    bundle install --deployment --without development:test --jobs=4 --retry=4 && \
-    rm -rf vendor/bundle/ruby/2.5.0/bundler/gems/*/.git && \
-    rm -rf vendor/bundle/ruby/2.5.0/cache && \
+    bundle install --deployment --without development:test && \
+    rm -rf vendor/bundle/ruby/2.3.0/bundler/gems/*/.git && \
+    rm -rf vendor/bundle/ruby/2.3.0/cache && \
     rm -rf /root/.bundle && \
     apk del .build-deps && \
     rm -rf /var/cache/apk/*
