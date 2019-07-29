@@ -1,32 +1,42 @@
-FROM ruby:2.3.3
+# Build and run Europeana oEmbed provider for production use
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-# Set an environment variable where the Rails app is installed to inside of Docker image
+FROM ruby:2.3.3-alpine
 
-ENV RAILS_ROOT /var/www/app_name
-RUN mkdir -p $RAILS_ROOT 
+MAINTAINER Europeana Foundation <development@europeana.eu>
 
-# Set working directory
-WORKDIR $RAILS_ROOT
-
-# Setting env up
 ENV RACK_ENV="production"
 ENV PORT="80"
 
-# Adding gems
-COPY Gemfile Gemfile
-COPY Gemfile.lock Gemfile.lock
+WORKDIR /app
 
-RUN bundle install --jobs 20 --retry 5 --without development test 
+COPY Gemfile Gemfile.lock ./
 
-# Adding project files
-COPY bin ./bin
-COPY config ./config
-COPY lib ./lib
-COPY test ./test
-COPY config.ru LICENSE.md Rakefile README.md ./
+# Install dependencies
+RUN apk update && \
+    apk add --no-cache --virtual .build-deps build-base && \
+    echo "gem: --no-document" >> /etc/gemrc && \
+    bundle install --deployment --without development:test --jobs=4 --retry=4 && \
+    rm -rf vendor/bundle/ruby/2.5.0/bundler/gems/*/.git && \
+    rm -rf vendor/bundle/ruby/2.5.0/cache && \
+    rm -rf /root/.bundle && \
+    apk del .build-deps && \
+    rm -rf /var/cache/apk/*
+#
+#
+# RUN apt-get update -qq && \
+#     apt-get install -y build-essential && \
+#     bundle install --without development:test && \
+#     rm -rf vendor/bundle/ruby/2.3.0/bundler/gems/*/.git && \
+#     rm -rf vendor/bundle/ruby/2.3.0/cache && \
+#     rm -rf /root/.bundle && \
+#     apt-get remove -y -q --purge build-essential && \
+#     apt-get autoremove -y -q && \
+#     rm -rf /var/lib/apt/lists/*
 
-# RUN bundle exec rake assets:precompile
+# Copy code
+COPY . .
 
 EXPOSE 80
-CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]
+
+ENTRYPOINT ["bundle", "exec", "puma"]
+CMD ["-C", "config/puma.rb"]
