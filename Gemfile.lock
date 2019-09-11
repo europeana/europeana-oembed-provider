@@ -30,6 +30,7 @@ GEM
     powerpack (0.1.1)
     puma (3.12.1)
     rack (1.6.11)
+    rack-cors (1.0.3)
     rack-protection (1.5.5)
       rack
     rack-test (0.6.3)
@@ -81,6 +82,7 @@ DEPENDENCIES
   foreman
   minitest
   puma
+  rack-cors
   rack-test
   rake
   rubocop (= 0.39.0)
@@ -90,4 +92,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   2.0.1
+   1.17.2

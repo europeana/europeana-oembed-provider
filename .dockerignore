@@ -1,0 +1,12 @@
+# Ignore dotenv config files
+.env
+.env.*
+
+# Ignore CF manifest
+manifest.yml
+
+# Ignore coverage reports
+coverage/
+
+# Ignore Ruby version
+.ruby-version
