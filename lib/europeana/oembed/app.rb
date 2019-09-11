@@ -1,6 +1,7 @@
 require 'json'
 require 'oembed'
 require 'sinatra'
+require 'rack/cors'
 require 'europeana/oembed'
 
 module Europeana
@@ -8,6 +9,13 @@ module Europeana
     ##
     # Sinatra app to respond to oEmbed requests
     class App < Sinatra::Base
+      use Rack::Cors do
+        allow do
+          origins '*'
+          resource '/', headers: :any, methods: :get
+        end
+      end
+
       get '/' do
         if params.key?('url')
           begin
